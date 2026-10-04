@@ -82,7 +82,7 @@ Jika Chromium sudah tersedia, set `CHROMIUM_PATH` ke executable-nya. Tes mencaku
 
 ## GitHub dan batas penerapan
 
-Target yang disetujui: repo private `ShikinariShiki/KlaimKembar`. Pembuatan repo melalui koneksi GitHub ditolak dengan HTTP 403 (izin token), sehingga publikasi belum selesai. Source siap dipublikasikan setelah akses tulis tersedia. `.env`, database, cache, dan `.venv` dikecualikan. Tidak ada deployment online dalam scope.
+Source telah dipublikasikan ke repo private `ShikinariShiki/klaimkembar` melalui browser GitHub yang disetujui pengguna. Commit source awal: `d1dbc70`. Koneksi MCP masih menolak penulisan dengan HTTP 403; fallback browser berhasil. `.env`, database, cache, dan `.venv` dikecualikan. Tidak ada deployment online dalam scope.
 
 Figma dibaca melalui viewer browser karena koneksi yang tersedia tidak menyediakan `get_design_context` untuk file Design. Viewer menampilkan 12 frame, tetapi inspect/present memerlukan login. Implementasi mengikuti referensi visual dan lampiran proposal; kesamaan piksel serta koneksi prototipe internal Figma tidak diklaim terverifikasi.
 

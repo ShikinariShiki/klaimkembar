@@ -31,6 +31,6 @@
 | CM-EX4 | Batas scope | Pilot, produksi, deployment online, BPJS, mobile | NONE | NONE | Tidak termasuk prototype lokal | OUT-OF-SCOPE | README dan ASSUMPTIONS.md |
 | CM-EX5 | Scope tambahan | Proposal DOCX dan PDF | Dokumen | proposal | QA 18 halaman, 16 media asli tetap | DONE | docs/qa/proposal-qa.json |
 | CM-EX6 | Figma | Ukuran piksel dan koneksi internal prototype | Inspect tidak tersedia | UI | Tidak dapat diverifikasi | UNVERIFIED | Viewer tamu meminta login; tidak mengklaim pixel-perfect |
-| CM-EX7 | Scope tambahan | Push GitHub private | create_repository | repository | Ditolak koneksi | BLOCKED | HTTP 403 Resource not accessible by personal access token |
+| CM-EX7 | Scope tambahan | Push GitHub private | Browser upload | repository main | Commit source | DONE | Repo private; commit d1dbc70; MCP 403 ditangani lewat browser atas izin pengguna |
 
-Jumlah terbaru: 30 baris; 27 DONE, 1 UNVERIFIED, 1 BLOCKED, 1 OUT-OF-SCOPE. Status ini mencakup scope FE/proposal yang ditambahkan pengguna, bukan matriks backend awal. NO-BE sebelumnya sekarang menjadi navigasi UI yang diuji. DONE bukan jaminan bebas kesalahan atau performa data JKN.
+Jumlah terbaru: 30 baris; 28 DONE, 1 UNVERIFIED, 0 BLOCKED, 1 OUT-OF-SCOPE. Status ini mencakup scope FE/proposal yang ditambahkan pengguna, bukan matriks backend awal. NO-BE sebelumnya sekarang menjadi navigasi UI yang diuji. DONE bukan jaminan bebas kesalahan atau performa data JKN.
