@@ -1,0 +1,10 @@
+{
+  "inspected_files": 32,
+  "findings": [],
+  "exclusions": "Original sources, official docs, raw evidence, diagnostic pattern definitions, scanner rule literals, local credentials and caches.",
+  "reviewed_exceptions": [
+    "CLI print calls report command results, not debug payloads.",
+    "Generic exception catch exists only at HTTP boundary and redacts exception values; 500 response tested.",
+    "Static OpenAPI is a published contract, not a hardcoded business response."
+  ]
+}

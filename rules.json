@@ -1,0 +1,25 @@
+{
+  "version": "prototype-1",
+  "blocking_days": 3,
+  "procedure_candidate_similarity": 0.5,
+  "code_similarity_minimum": 0.5,
+  "amount_relative_tolerance": 0.1,
+  "submission_days": 7,
+  "queue_threshold": 50,
+  "high_priority": 85,
+  "medium_priority": 65,
+  "missing_information_reduction": 30,
+  "cancelled_reduction": 50,
+  "protect_reduction": 100,
+  "maximum_candidates": 100000,
+  "maximum_eligible_pairs": 200000,
+  "weights": {
+    "SAME_PARTICIPANT": 30,
+    "SAME_FACILITY": 15,
+    "SERVICE_DATE_NEAR": 15,
+    "SIMILAR_PROCEDURE": 15,
+    "SIMILAR_DIAGNOSIS": 10,
+    "SIMILAR_AMOUNT": 10,
+    "SUBMISSION_DATE_NEAR": 5
+  }
+}

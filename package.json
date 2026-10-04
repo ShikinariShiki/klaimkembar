@@ -1,0 +1,11 @@
+{
+  "name": "klaimkembar-browser-tests",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test:browser": "node tests/browser/full-cycle.cjs && node tests/browser/edge-cases.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

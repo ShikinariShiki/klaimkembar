@@ -1,0 +1,1044 @@
+{
+  "simulation": true,
+  "rules_version": "prototype-1",
+  "rules_hash": "984adbd54f237ee0947c52d68f0ab24c980bf1e75dc3b3ab84b36f8af6783608",
+  "generated_at": "2026-10-04T09:06:39.731731+00:00",
+  "seeds": [
+    {
+      "seed": 104,
+      "claim_count": 5000,
+      "eligible_pair_count": 2132,
+      "positive_pairs": 1214,
+      "prevalence": 0.5694183864915572,
+      "methods": {
+        "exact_match": {
+          "detected_pairs": 354,
+          "true_positives": 269,
+          "false_positives": 85,
+          "false_negatives": 945,
+          "precision": 0.7598870056497176,
+          "recall": 0.2215815485996705,
+          "f1": 0.34311224489795916,
+          "pr_auc": 0.6116227180842633,
+          "false_positive_pairs_per_1000_claims": 17.0,
+          "recall_at_top_10_percent": 0.128500823723229
+        },
+        "similarity_without_guardrails": {
+          "detected_pairs": 1829,
+          "true_positives": 1047,
+          "false_positives": 782,
+          "false_negatives": 167,
+          "precision": 0.5724439584472389,
+          "recall": 0.8624382207578254,
+          "f1": 0.6881367071968452,
+          "pr_auc": 0.5295031708483813,
+          "false_positive_pairs_per_1000_claims": 156.4,
+          "recall_at_top_10_percent": 0.08484349258649095
+        },
+        "similarity_with_guardrails": {
+          "detected_pairs": 1072,
+          "true_positives": 1047,
+          "false_positives": 25,
+          "false_negatives": 167,
+          "precision": 0.976679104477612,
+          "recall": 0.8624382207578254,
+          "f1": 0.916010498687664,
+          "pr_auc": 0.9407684271368032,
+          "false_positive_pairs_per_1000_claims": 5.0,
+          "recall_at_top_10_percent": 0.17627677100494235
+        }
+      },
+      "failure_examples": {
+        "exact_match": [
+          {
+            "claim_a": "SYN-C-104-000003",
+            "claim_b": "SYN-C-104-000004",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000005",
+            "claim_b": "SYN-C-104-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000009",
+            "claim_b": "SYN-C-104-000010",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000015",
+            "claim_b": "SYN-C-104-000016",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000023",
+            "claim_b": "SYN-C-104-000024",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000023",
+            "claim_b": "SYN-C-104-000025",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000024",
+            "claim_b": "SYN-C-104-000025",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000040",
+            "claim_b": "SYN-C-104-000041",
+            "is_duplicate": true
+          }
+        ],
+        "similarity_without_guardrails": [
+          {
+            "claim_a": "SYN-C-104-000005",
+            "claim_b": "SYN-C-104-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000007",
+            "claim_b": "SYN-C-104-000008",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000009",
+            "claim_b": "SYN-C-104-000010",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000011",
+            "claim_b": "SYN-C-104-000012",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000018",
+            "claim_b": "SYN-C-104-000019",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000021",
+            "claim_b": "SYN-C-104-000022",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000029",
+            "claim_b": "SYN-C-104-000030",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000031",
+            "claim_b": "SYN-C-104-000032",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_with_guardrails": [
+          {
+            "claim_a": "SYN-C-104-000005",
+            "claim_b": "SYN-C-104-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000007",
+            "claim_b": "SYN-C-104-000008",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000048",
+            "claim_b": "SYN-C-104-000049",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000068",
+            "claim_b": "SYN-C-104-000069",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000121",
+            "claim_b": "SYN-C-104-000122",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-104-000143",
+            "claim_b": "SYN-C-104-000144",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000189",
+            "claim_b": "SYN-C-104-000190",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-104-000208",
+            "claim_b": "SYN-C-104-000209",
+            "is_duplicate": false
+          }
+        ]
+      },
+      "missing_information_count": 116
+    },
+    {
+      "seed": 211,
+      "claim_count": 5000,
+      "eligible_pair_count": 2226,
+      "positive_pairs": 1135,
+      "prevalence": 0.5098831985624438,
+      "methods": {
+        "exact_match": {
+          "detected_pairs": 353,
+          "true_positives": 251,
+          "false_positives": 102,
+          "false_negatives": 884,
+          "precision": 0.7110481586402266,
+          "recall": 0.2211453744493392,
+          "f1": 0.33736559139784944,
+          "pr_auc": 0.5543698989849315,
+          "false_positive_pairs_per_1000_claims": 20.4,
+          "recall_at_top_10_percent": 0.1436123348017621
+        },
+        "similarity_without_guardrails": {
+          "detected_pairs": 1889,
+          "true_positives": 928,
+          "false_positives": 961,
+          "false_negatives": 207,
+          "precision": 0.4912652196929592,
+          "recall": 0.8176211453744493,
+          "f1": 0.6137566137566137,
+          "pr_auc": 0.48476133514327124,
+          "false_positive_pairs_per_1000_claims": 192.2,
+          "recall_at_top_10_percent": 0.09779735682819383
+        },
+        "similarity_with_guardrails": {
+          "detected_pairs": 971,
+          "true_positives": 928,
+          "false_positives": 43,
+          "false_negatives": 207,
+          "precision": 0.9557157569515963,
+          "recall": 0.8176211453744493,
+          "f1": 0.8812915479582146,
+          "pr_auc": 0.9106130591210714,
+          "false_positive_pairs_per_1000_claims": 8.6,
+          "recall_at_top_10_percent": 0.19647577092511012
+        }
+      },
+      "failure_examples": {
+        "exact_match": [
+          {
+            "claim_a": "SYN-C-211-000007",
+            "claim_b": "SYN-C-211-000008",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000009",
+            "claim_b": "SYN-C-211-000010",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000015",
+            "claim_b": "SYN-C-211-000016",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000031",
+            "claim_b": "SYN-C-211-000032",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000031",
+            "claim_b": "SYN-C-211-000033",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000032",
+            "claim_b": "SYN-C-211-000033",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000034",
+            "claim_b": "SYN-C-211-000035",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000044",
+            "claim_b": "SYN-C-211-000045",
+            "is_duplicate": true
+          }
+        ],
+        "similarity_without_guardrails": [
+          {
+            "claim_a": "SYN-C-211-000005",
+            "claim_b": "SYN-C-211-000006",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000009",
+            "claim_b": "SYN-C-211-000010",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000011",
+            "claim_b": "SYN-C-211-000012",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000017",
+            "claim_b": "SYN-C-211-000018",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000019",
+            "claim_b": "SYN-C-211-000020",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000021",
+            "claim_b": "SYN-C-211-000022",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000024",
+            "claim_b": "SYN-C-211-000025",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000027",
+            "claim_b": "SYN-C-211-000028",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_with_guardrails": [
+          {
+            "claim_a": "SYN-C-211-000017",
+            "claim_b": "SYN-C-211-000018",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000044",
+            "claim_b": "SYN-C-211-000045",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000092",
+            "claim_b": "SYN-C-211-000093",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000099",
+            "claim_b": "SYN-C-211-000100",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000149",
+            "claim_b": "SYN-C-211-000150",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-211-000173",
+            "claim_b": "SYN-C-211-000174",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000181",
+            "claim_b": "SYN-C-211-000182",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-211-000200",
+            "claim_b": "SYN-C-211-000201",
+            "is_duplicate": true
+          }
+        ]
+      },
+      "missing_information_count": 195
+    },
+    {
+      "seed": 307,
+      "claim_count": 5000,
+      "eligible_pair_count": 2201,
+      "positive_pairs": 1296,
+      "prevalence": 0.5888232621535665,
+      "methods": {
+        "exact_match": {
+          "detected_pairs": 294,
+          "true_positives": 170,
+          "false_positives": 124,
+          "false_negatives": 1126,
+          "precision": 0.5782312925170068,
+          "recall": 0.13117283950617284,
+          "f1": 0.2138364779874214,
+          "pr_auc": 0.5874338834203758,
+          "false_positive_pairs_per_1000_claims": 24.8,
+          "recall_at_top_10_percent": 0.10262345679012345
+        },
+        "similarity_without_guardrails": {
+          "detected_pairs": 1968,
+          "true_positives": 1121,
+          "false_positives": 847,
+          "false_negatives": 175,
+          "precision": 0.5696138211382114,
+          "recall": 0.8649691358024691,
+          "f1": 0.6868872549019608,
+          "pr_auc": 0.49061064837268753,
+          "false_positive_pairs_per_1000_claims": 169.4,
+          "recall_at_top_10_percent": 0.07407407407407407
+        },
+        "similarity_with_guardrails": {
+          "detected_pairs": 1163,
+          "true_positives": 1121,
+          "false_positives": 42,
+          "false_negatives": 175,
+          "precision": 0.9638865004299226,
+          "recall": 0.8649691358024691,
+          "f1": 0.9117527450183002,
+          "pr_auc": 0.944478449750654,
+          "false_positive_pairs_per_1000_claims": 8.4,
+          "recall_at_top_10_percent": 0.1705246913580247
+        }
+      },
+      "failure_examples": {
+        "exact_match": [
+          {
+            "claim_a": "SYN-C-307-000005",
+            "claim_b": "SYN-C-307-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000010",
+            "claim_b": "SYN-C-307-000011",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000017",
+            "claim_b": "SYN-C-307-000018",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000020",
+            "claim_b": "SYN-C-307-000021",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000024",
+            "claim_b": "SYN-C-307-000025",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000026",
+            "claim_b": "SYN-C-307-000027",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000032",
+            "claim_b": "SYN-C-307-000033",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000038",
+            "claim_b": "SYN-C-307-000039",
+            "is_duplicate": true
+          }
+        ],
+        "similarity_without_guardrails": [
+          {
+            "claim_a": "SYN-C-307-000007",
+            "claim_b": "SYN-C-307-000008",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000010",
+            "claim_b": "SYN-C-307-000011",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000012",
+            "claim_b": "SYN-C-307-000013",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000022",
+            "claim_b": "SYN-C-307-000023",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000028",
+            "claim_b": "SYN-C-307-000029",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000030",
+            "claim_b": "SYN-C-307-000031",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000035",
+            "claim_b": "SYN-C-307-000036",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000041",
+            "claim_b": "SYN-C-307-000042",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_with_guardrails": [
+          {
+            "claim_a": "SYN-C-307-000010",
+            "claim_b": "SYN-C-307-000011",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000052",
+            "claim_b": "SYN-C-307-000053",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000062",
+            "claim_b": "SYN-C-307-000063",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000064",
+            "claim_b": "SYN-C-307-000065",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-307-000082",
+            "claim_b": "SYN-C-307-000083",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000126",
+            "claim_b": "SYN-C-307-000127",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000173",
+            "claim_b": "SYN-C-307-000174",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-307-000184",
+            "claim_b": "SYN-C-307-000185",
+            "is_duplicate": false
+          }
+        ]
+      },
+      "missing_information_count": 137
+    },
+    {
+      "seed": 409,
+      "claim_count": 5000,
+      "eligible_pair_count": 2222,
+      "positive_pairs": 1176,
+      "prevalence": 0.5292529252925292,
+      "methods": {
+        "exact_match": {
+          "detected_pairs": 343,
+          "true_positives": 222,
+          "false_positives": 121,
+          "false_negatives": 954,
+          "precision": 0.6472303206997084,
+          "recall": 0.18877551020408162,
+          "f1": 0.2922975641869651,
+          "pr_auc": 0.5515241683030682,
+          "false_positive_pairs_per_1000_claims": 24.2,
+          "recall_at_top_10_percent": 0.11479591836734694
+        },
+        "similarity_without_guardrails": {
+          "detected_pairs": 1961,
+          "true_positives": 1031,
+          "false_positives": 930,
+          "false_negatives": 145,
+          "precision": 0.5257521672616012,
+          "recall": 0.8767006802721088,
+          "f1": 0.657315906917437,
+          "pr_auc": 0.4611026033987532,
+          "false_positive_pairs_per_1000_claims": 186.0,
+          "recall_at_top_10_percent": 0.08418367346938775
+        },
+        "similarity_with_guardrails": {
+          "detected_pairs": 1057,
+          "true_positives": 1031,
+          "false_positives": 26,
+          "false_negatives": 145,
+          "precision": 0.9754020813623463,
+          "recall": 0.8767006802721088,
+          "f1": 0.9234214061800269,
+          "pr_auc": 0.9419572059246768,
+          "false_positive_pairs_per_1000_claims": 5.2,
+          "recall_at_top_10_percent": 0.18962585034013604
+        }
+      },
+      "failure_examples": {
+        "exact_match": [
+          {
+            "claim_a": "SYN-C-409-000004",
+            "claim_b": "SYN-C-409-000005",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000004",
+            "claim_b": "SYN-C-409-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000005",
+            "claim_b": "SYN-C-409-000006",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000007",
+            "claim_b": "SYN-C-409-000008",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000013",
+            "claim_b": "SYN-C-409-000014",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000020",
+            "claim_b": "SYN-C-409-000021",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000034",
+            "claim_b": "SYN-C-409-000035",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000038",
+            "claim_b": "SYN-C-409-000039",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_without_guardrails": [
+          {
+            "claim_a": "SYN-C-409-000007",
+            "claim_b": "SYN-C-409-000008",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000011",
+            "claim_b": "SYN-C-409-000012",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000015",
+            "claim_b": "SYN-C-409-000016",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000018",
+            "claim_b": "SYN-C-409-000019",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000023",
+            "claim_b": "SYN-C-409-000024",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000026",
+            "claim_b": "SYN-C-409-000027",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000029",
+            "claim_b": "SYN-C-409-000030",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000031",
+            "claim_b": "SYN-C-409-000032",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_with_guardrails": [
+          {
+            "claim_a": "SYN-C-409-000007",
+            "claim_b": "SYN-C-409-000008",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000102",
+            "claim_b": "SYN-C-409-000103",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-409-000167",
+            "claim_b": "SYN-C-409-000168",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000181",
+            "claim_b": "SYN-C-409-000182",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000189",
+            "claim_b": "SYN-C-409-000190",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000226",
+            "claim_b": "SYN-C-409-000227",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000275",
+            "claim_b": "SYN-C-409-000276",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-409-000277",
+            "claim_b": "SYN-C-409-000278",
+            "is_duplicate": false
+          }
+        ]
+      },
+      "missing_information_count": 111
+    },
+    {
+      "seed": 503,
+      "claim_count": 5000,
+      "eligible_pair_count": 2440,
+      "positive_pairs": 1410,
+      "prevalence": 0.5778688524590164,
+      "methods": {
+        "exact_match": {
+          "detected_pairs": 424,
+          "true_positives": 254,
+          "false_positives": 170,
+          "false_negatives": 1156,
+          "precision": 0.5990566037735849,
+          "recall": 0.18014184397163122,
+          "f1": 0.27699018538713194,
+          "pr_auc": 0.5816856530504351,
+          "false_positive_pairs_per_1000_claims": 34.0,
+          "recall_at_top_10_percent": 0.10567375886524823
+        },
+        "similarity_without_guardrails": {
+          "detected_pairs": 2222,
+          "true_positives": 1274,
+          "false_positives": 948,
+          "false_negatives": 136,
+          "precision": 0.5733573357335734,
+          "recall": 0.9035460992907801,
+          "f1": 0.7015418502202643,
+          "pr_auc": 0.4839010762008543,
+          "false_positive_pairs_per_1000_claims": 189.6,
+          "recall_at_top_10_percent": 0.07163120567375887
+        },
+        "similarity_with_guardrails": {
+          "detected_pairs": 1297,
+          "true_positives": 1274,
+          "false_positives": 23,
+          "false_negatives": 136,
+          "precision": 0.9822667694680031,
+          "recall": 0.9035460992907801,
+          "f1": 0.9412633912079793,
+          "pr_auc": 0.9592838042087863,
+          "false_positive_pairs_per_1000_claims": 4.6,
+          "recall_at_top_10_percent": 0.17304964539007092
+        }
+      },
+      "failure_examples": {
+        "exact_match": [
+          {
+            "claim_a": "SYN-C-503-000001",
+            "claim_b": "SYN-C-503-000002",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000001",
+            "claim_b": "SYN-C-503-000003",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000002",
+            "claim_b": "SYN-C-503-000003",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000008",
+            "claim_b": "SYN-C-503-000009",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000011",
+            "claim_b": "SYN-C-503-000012",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000017",
+            "claim_b": "SYN-C-503-000018",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000019",
+            "claim_b": "SYN-C-503-000020",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000021",
+            "claim_b": "SYN-C-503-000022",
+            "is_duplicate": true
+          }
+        ],
+        "similarity_without_guardrails": [
+          {
+            "claim_a": "SYN-C-503-000004",
+            "claim_b": "SYN-C-503-000005",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000006",
+            "claim_b": "SYN-C-503-000007",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000014",
+            "claim_b": "SYN-C-503-000015",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000017",
+            "claim_b": "SYN-C-503-000018",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000019",
+            "claim_b": "SYN-C-503-000020",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000033",
+            "claim_b": "SYN-C-503-000034",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000035",
+            "claim_b": "SYN-C-503-000036",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000039",
+            "claim_b": "SYN-C-503-000040",
+            "is_duplicate": false
+          }
+        ],
+        "similarity_with_guardrails": [
+          {
+            "claim_a": "SYN-C-503-000019",
+            "claim_b": "SYN-C-503-000020",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000058",
+            "claim_b": "SYN-C-503-000059",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000107",
+            "claim_b": "SYN-C-503-000108",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000112",
+            "claim_b": "SYN-C-503-000113",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000209",
+            "claim_b": "SYN-C-503-000210",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000259",
+            "claim_b": "SYN-C-503-000260",
+            "is_duplicate": false
+          },
+          {
+            "claim_a": "SYN-C-503-000269",
+            "claim_b": "SYN-C-503-000270",
+            "is_duplicate": true
+          },
+          {
+            "claim_a": "SYN-C-503-000301",
+            "claim_b": "SYN-C-503-000302",
+            "is_duplicate": true
+          }
+        ]
+      },
+      "missing_information_count": 95
+    }
+  ],
+  "aggregates": {
+    "exact_match": {
+      "detected_pairs": {
+        "mean": 353.6,
+        "minimum": 294.0,
+        "maximum": 424.0
+      },
+      "true_positives": {
+        "mean": 233.2,
+        "minimum": 170.0,
+        "maximum": 269.0
+      },
+      "false_positives": {
+        "mean": 120.4,
+        "minimum": 85.0,
+        "maximum": 170.0
+      },
+      "false_negatives": {
+        "mean": 1013.0,
+        "minimum": 884.0,
+        "maximum": 1156.0
+      },
+      "precision": {
+        "mean": 0.6590906762560489,
+        "minimum": 0.5782312925170068,
+        "maximum": 0.7598870056497176
+      },
+      "recall": {
+        "mean": 0.18856342334617907,
+        "minimum": 0.13117283950617284,
+        "maximum": 0.2215815485996705
+      },
+      "f1": {
+        "mean": 0.29272041277146543,
+        "minimum": 0.2138364779874214,
+        "maximum": 0.34311224489795916
+      },
+      "pr_auc": {
+        "mean": 0.5773272643686148,
+        "minimum": 0.5515241683030682,
+        "maximum": 0.6116227180842633
+      },
+      "false_positive_pairs_per_1000_claims": {
+        "mean": 24.08,
+        "minimum": 17.0,
+        "maximum": 34.0
+      },
+      "recall_at_top_10_percent": {
+        "mean": 0.11904125850954195,
+        "minimum": 0.10262345679012345,
+        "maximum": 0.1436123348017621
+      }
+    },
+    "similarity_without_guardrails": {
+      "detected_pairs": {
+        "mean": 1973.8,
+        "minimum": 1829.0,
+        "maximum": 2222.0
+      },
+      "true_positives": {
+        "mean": 1080.2,
+        "minimum": 928.0,
+        "maximum": 1274.0
+      },
+      "false_positives": {
+        "mean": 893.6,
+        "minimum": 782.0,
+        "maximum": 961.0
+      },
+      "false_negatives": {
+        "mean": 166.0,
+        "minimum": 136.0,
+        "maximum": 207.0
+      },
+      "precision": {
+        "mean": 0.5464865004547168,
+        "minimum": 0.4912652196929592,
+        "maximum": 0.5733573357335734
+      },
+      "recall": {
+        "mean": 0.8650550562995265,
+        "minimum": 0.8176211453744493,
+        "maximum": 0.9035460992907801
+      },
+      "f1": {
+        "mean": 0.6695276665986242,
+        "minimum": 0.6137566137566137,
+        "maximum": 0.7015418502202643
+      },
+      "pr_auc": {
+        "mean": 0.48997576679278954,
+        "minimum": 0.4611026033987532,
+        "maximum": 0.5295031708483813
+      },
+      "false_positive_pairs_per_1000_claims": {
+        "mean": 178.72,
+        "minimum": 156.4,
+        "maximum": 192.2
+      },
+      "recall_at_top_10_percent": {
+        "mean": 0.0825059605263811,
+        "minimum": 0.07163120567375887,
+        "maximum": 0.09779735682819383
+      }
+    },
+    "similarity_with_guardrails": {
+      "detected_pairs": {
+        "mean": 1112.0,
+        "minimum": 971.0,
+        "maximum": 1297.0
+      },
+      "true_positives": {
+        "mean": 1080.2,
+        "minimum": 928.0,
+        "maximum": 1274.0
+      },
+      "false_positives": {
+        "mean": 31.8,
+        "minimum": 23.0,
+        "maximum": 43.0
+      },
+      "false_negatives": {
+        "mean": 166.0,
+        "minimum": 136.0,
+        "maximum": 207.0
+      },
+      "precision": {
+        "mean": 0.970790042537896,
+        "minimum": 0.9557157569515963,
+        "maximum": 0.9822667694680031
+      },
+      "recall": {
+        "mean": 0.8650550562995265,
+        "minimum": 0.8176211453744493,
+        "maximum": 0.9035460992907801
+      },
+      "f1": {
+        "mean": 0.914747917810437,
+        "minimum": 0.8812915479582146,
+        "maximum": 0.9412633912079793
+      },
+      "pr_auc": {
+        "mean": 0.9394201892283983,
+        "minimum": 0.9106130591210714,
+        "maximum": 0.9592838042087863
+      },
+      "false_positive_pairs_per_1000_claims": {
+        "mean": 6.36,
+        "minimum": 4.6,
+        "maximum": 8.6
+      },
+      "recall_at_top_10_percent": {
+        "mean": 0.18119054580365682,
+        "minimum": 0.1705246913580247,
+        "maximum": 0.19647577092511012
+      }
+    }
+  },
+  "limitations": [
+    "Label dan bukti kasus dibuat generator internal, bukan anotasi verifikator klinis.",
+    "Holdout dibuat setelah rules hash dibekukan; desain generator tetap diketahui pembuat detector.",
+    "PR-AUC memakai average precision. Ties Top-10% dipecah berdasarkan ID sintetis.",
+    "False positive dihitung per alert pasangan, bukan per peserta.",
+    "Waktu benchmark tidak dianggap waktu pemeriksaan manusia.",
+    "Simulasi ini tidak membuktikan performa pada data JKN asli."
+  ]
+}

@@ -1,0 +1,258 @@
+[
+  {
+    "old": "Klaim yang identik mudah ditemukan. Kesulitan muncul ketika data berubah sedikit sehingga pencocokan persis gagal, padahal verifikator tidak mungkin menelusuri pola ini secara manual untuk ribuan klaim.",
+    "new": "Pencocokan persis dapat melewatkan pengajuan ulang ketika tanggal, tindakan, atau nominal berubah. Penelusuran manual kemudian harus membandingkan lebih banyak pasangan. Pergantian nomor klaim saja tidak menggagalkan baseline yang dipakai dalam prototype ini."
+  },
+  {
+    "old": "Sistem mencari klaim yang mirip, mengelompokkannya per peserta dan episode pelayanan.",
+    "new": "Sistem mencari pasangan kandidat pada peserta yang sama, fasilitas terkait, serta jendela tanggal tiga hari. Kelompok kandidat dibentuk dari keterhubungan pasangan; kelompok ini belum membuktikan bahwa seluruh klaim berasal dari satu episode klinis."
+  },
+  {
+    "old": "Pendekatan yang dipilih adalah kemiripan berbasis aturan yang dapat dijelaskan, bukan model AI besar. Alasannya: data klaim berlabel terbatas, hasil harus dapat dijelaskan kepada pemeriksa, dan tim kecil perlu hasil yang dapat diuji ulang. AI digunakan secara tepat guna, bukan sekadar label.",
+    "new": "Prototype memakai kemiripan berbasis aturan yang dapat dijelaskan, bukan model pembelajaran mesin atau model bahasa besar. Tujuh komponen skor dan pengecualian kasus sah dapat diperiksa ulang. Pilihan ini sesuai dengan keterbatasan data klaim berlabel dan kebutuhan menjelaskan alasan prioritas kepada petugas."
+  },
+  {
+    "old": "Validasi data: kolom wajib, tipe data, tanggal tidak valid, nominal negatif, ID kosong, baris ganda, status tidak dikenal. Baris bermasalah tidak dibuang, tetapi diringkas untuk pengguna.",
+    "new": "Validasi memeriksa kolom wajib, tipe data, tanggal, nominal, ID sintetis, baris ganda, dan status klaim. Kesalahan format atau baris menolak seluruh batch tanpa menyimpan sebagian klaim. Nilai diagnosis atau tindakan yang belum tersedia dicatat sebagai data tidak lengkap, bukan sebagai pelanggaran."
+  },
+  {
+    "old": "Guardrail berupa aturan mudah dibaca dan diubah: klaim dibatalkan lalu dikoreksi menurunkan skor; terapi berkala sesuai jadwal menurunkan skor; data tidak lengkap menjadi status \"perlu data\"; dua kunjungan terpisah diperlakukan berbeda.",
+    "new": "Guardrail melindungi pasangan batal-koreksi yang memiliki tautan klaim asli, terapi berkala dengan bukti tanggal jadwal, dan kunjungan berbeda dengan visit_id berbeda. Pasangan terlindungi tidak masuk antrean biasa. Informasi klinis yang kurang menurunkan skor tetapi tetap memerlukan telaah; ketiadaan bukti bukan alasan menyatakan klaim sah."
+  },
+  {
+    "old": "Backend prototype telah diimplementasikan dengan Python 3.13, FastAPI, dan SQLite. Pengujian backend mencakup 70 tes otomatis, pemeriksaan tipe dan lint, serta replay HTTP dari unggah CSV sampai evaluasi dengan pemeriksaan isi database. Line coverage pengujian tersebut mencapai 98,26% pada paket backend dan 97,78% pada domain/service. Angka ini mengukur kode yang dijalankan saat tes, bukan akurasi deteksi atau jaminan aplikasi bebas kesalahan.",
+    "new": "Prototype lokal kini menghubungkan frontend HTML/CSS/JavaScript dengan FastAPI dan SQLite. Alur unggah, validasi, antrean, perbandingan, tiga keputusan, revisi, dan evaluasi berjalan melalui API. Pengujian mencakup 80 tes otomatis backend, dua suite browser Chromium, lint, dan pemeriksaan tipe. Line coverage paket Python mencapai 98,18%; angka ini bukan akurasi deteksi atau jaminan bebas kesalahan."
+  },
+  {
+    "old": "Bobot skor mengikuti titik awal dalam proposal. Jendela candidate blocking tiga hari, ambang prioritas, rumus kemiripan, dan pengurangan skor masih asumsi prototype yang dicatat dalam register. Guardrail memakai bukti sintetis yang dinyatakan pada data, termasuk jadwal, identitas kunjungan, serta tautan klaim koreksi. Sepuluh kolom dasar saja tidak cukup untuk membuktikan seluruh pengecualian tersebut; validasi klinis bersama verifikator belum dilakukan.",
+    "new": "Bobot awal, jendela tiga hari, ambang antrean 50, serta prioritas sedang 65 dan tinggi 85 merupakan asumsi prototype, belum hasil kalibrasi klinis. Bukti pengecualian memakai kolom tambahan jadwal, kunjungan, episode, dan tautan koreksi. Fasilitas terkait dapat dinyatakan melalui facility_group. Aturan dan hash versi dicatat bersama setiap dataset dan keputusan."
+  },
+  {
+    "old": "Generator menghasilkan 5.000 klaim sintetis untuk demo dan lima holdout dengan seed 104, 211, 307, 409, dan 503, masing-masing berisi 5.000 klaim. Label pasangan disimpan terpisah dan tidak diterima oleh detection engine. Evaluasi memuat pencocokan persis, kemiripan tanpa guardrail, dan kemiripan dengan guardrail; setiap metode dilaporkan dengan rata-rata, rentang, serta contoh kegagalan. PR-AUC dihitung sebagai average precision. Semua hasil berasal dari simulasi internal, bukan pengujian data JKN asli.",
+    "new": "Demo berisi 5.000 klaim sintetis. Evaluasi internal memakai seed 104, 211, 307, 409, dan 503, masing-masing 5.000 klaim, dengan label pasangan terpisah dari detection engine. Rata-rata dan rentang precision, recall, F1, average precision, false positive per 1.000 klaim, serta Recall@Top-10% tersedia dalam laporan. Lima seed ini menguji variasi generator yang sama, bukan validasi eksternal pada JKN."
+  },
+  {
+    "old": "API prototype membatasi akses melalui dua bearer lokal untuk peran reviewer dan auditor. Reviewer dapat mengunggah data serta menyimpan keputusan; auditor hanya membaca. Identitas ini mewakili peran demo, bukan akun petugas individual. Log tidak merekam bearer atau payload klaim. Autentikasi produksi, TLS, enkripsi at-rest, pembatasan retensi otomatis, uji beban, dan uji penetrasi belum diimplementasikan atau belum diuji.",
+    "new": "API menyediakan bearer lokal reviewer dan auditor; identitasnya peran demo, bukan akun petugas individual. Frontend memakai sesi HttpOnly, SameSite=strict, dan pemeriksaan origin serta CSRF, khusus localhost. Tidak ada token di source frontend. Log tidak merekam bearer atau payload klaim. TLS, enkripsi at-rest, retensi otomatis, uji beban, dan keamanan produksi masih perlu dikerjakan sebelum pilot."
+  },
+  {
+    "old": "Halaman Unggah Data dan Validasi (semua kondisi disiapkan)",
+    "new": "Halaman Unggah Data dan Validasi"
+  },
+  {
+    "old": "Beberapa orang akan mencoba prototype tanpa banyak arahan. Hasilnya dicatat sebagai temuan, bukan sekadar \"pengguna menyukai tampilannya\".",
+    "new": "Usability testing bersama calon pengguna belum dilakukan. Pengujian browser saat ini memverifikasi perilaku aplikasi, termasuk retry koneksi, konflik keputusan dua sesi, filter, pagination, dan antrean selesai. Rencana berikutnya adalah meminta pengguna mencoba tanpa banyak arahan dan mencatat waktu serta kesulitan nyata."
+  },
+  {
+    "old": "Candidate blocking menghindari perbandingan semua klaim dengan semua klaim, sehingga proses tetap layak saat data bertambah.",
+    "new": "Candidate blocking membatasi perbandingan pada peserta yang sama, fasilitas terkait, dan tanggal berdekatan. Prototype membatasi 10.000 baris, 100.000 pasangan kandidat, serta 200.000 pasangan eligible; kinerja di luar batas ini belum diuji."
+  },
+  {
+    "old": "Kontrak API yang stabil memudahkan antarmuka dihubungkan ke sumber data berbeda di masa depan.",
+    "new": "Kontrak OpenAPI mendokumentasikan unggah, antrean, detail, keputusan, evaluasi, serta pilihan filter. Integrasi dengan sumber data BPJS belum tersedia dan memerlukan penyesuaian skema serta izin tersendiri."
+  },
+  {
+    "old": "Kerja paralel: kontrak data dan API disepakati sejak awal sehingga frontend dan backend berjalan bersamaan.",
+    "new": "Pembagian kerja mencakup desain dan produk serta data dan backend. Implementasi antarmuka mengikuti desain Figma yang sudah dibuat, kemudian dihubungkan ke API dan diuji melalui browser."
+  },
+  {
+    "old": "Bukti yang sudah ada: desain UI/UX lengkap 12 layar, termasuk kondisi galat, proses, dan keputusan.",
+    "new": "Bukti yang tersedia: desain 12 layar, aplikasi lokal yang terhubung ke backend, 80 tes Python, dua suite browser, dan laporan evaluasi lima seed sintetis. Uji verifikator, pilot, serta pengukuran dampak nyata belum dilakukan."
+  },
+  {
+    "old": "Mockup UI/UX selesai (12 layar di Figma); prototype fungsional sedang dikembangkan",
+    "new": "Prototype fungsional lokal selesai pada data sintetis; bukan MVP atau produk produksi"
+  },
+  {
+    "old": "286 juta",
+    "new": "282,7 juta"
+  },
+  {
+    "old": "peserta yang dilayani Program JKN",
+    "new": "peserta JKN pada akhir 2025"
+  },
+  {
+    "old": "Kompas.com, 8 Juli 2026",
+    "new": "Kompas.com, 2 Juli 2026"
+  },
+  {
+    "old": "Rp191,33 T",
+    "new": "Rp191,33 T"
+  },
+  {
+    "old": "pengeluaran layanan BPJS Kesehatan tahun 2025",
+    "new": "pengeluaran layanan BPJS Kesehatan tahun 2025"
+  },
+  {
+    "old": "Kompas.com, 2026",
+    "new": "Kompas.com, 2 Juli 2026"
+  },
+  {
+    "old": "98,62%",
+    "new": "98,62%"
+  },
+  {
+    "old": "penduduk Indonesia telah terdaftar JKN",
+    "new": "penduduk telah terdaftar JKN pada akhir 2025"
+  },
+  {
+    "old": "Kompas.com, 2026",
+    "new": "Kompas.com, 2 Juli 2026"
+  },
+  {
+    "old": "Tidak cocok",
+    "new": "Tetap cocok bila field layanan lain sama"
+  },
+  {
+    "old": "Diagnosis/tindakan berbeda",
+    "new": "Tindakan berbeda"
+  },
+  {
+    "old": "Kode tindakan dibuat berbeda untuk layanan yang sama",
+    "new": "Kode tindakan berubah untuk layanan yang sama"
+  },
+  {
+    "old": "Pengelompokan berdasarkan episode pelayanan",
+    "new": "Pengelompokan kandidat dan bukti episode"
+  },
+  {
+    "old": "Satu layanan dipecah menjadi beberapa klaim",
+    "new": "Membantu telaah pemecahan episode; belum memastikan satu episode klinis"
+  },
+  {
+    "old": "Tanggal, nominal, nomor klaim sedikit berubah",
+    "new": "Tanggal, nominal, atau tindakan berubah"
+  },
+  {
+    "old": "Dikelompokkan per episode",
+    "new": "Kelompok kandidat; perlu bukti episode"
+  },
+  {
+    "old": "Tidak ditandai (diberi pengecualian)",
+    "new": "Dilindungi bila bukti jadwal tersedia"
+  },
+  {
+    "old": "Skor diturunkan",
+    "new": "Dilindungi bila tautan batal-koreksi valid"
+  },
+  {
+    "old": "Sudah selesai",
+    "new": "Sudah selesai"
+  },
+  {
+    "old": "Desain UI/UX 12 layar di Figma (unggah, galat, antrean, detail kasus, keputusan, evaluasi) serta skema data dan API.",
+    "new": "Desain Figma 12 layar, frontend, generator 5.000 klaim, detection engine, API, penyimpanan audit, serta alur lokal dari unggah sampai evaluasi."
+  },
+  {
+    "old": "Sedang dan akan dikerjakan",
+    "new": "Sudah diuji"
+  },
+  {
+    "old": "Generator data sintetis, detection engine, API, dan penyambungan antarmuka ke backend.",
+    "new": "80 tes Python; dua suite Chromium untuk alur utama, error, revisi, konflik dua sesi, reload, dan antrean selesai. Evaluasi internal lima seed tersedia."
+  },
+  {
+    "old": "Belum dilakukan",
+    "new": "Belum dilakukan"
+  },
+  {
+    "old": "Uji pada data riil dan pilot di instansi. Hasil kelak dinyatakan sebagai simulasi internal.",
+    "new": "Usability testing dengan verifikator, kalibrasi klinis, pilot instansi, pengukuran dampak nyata, dan integrasi BPJS."
+  },
+  {
+    "old": "Tiga pendekatan yang dibandingkan",
+    "new": "Evaluasi internal: 5 × 5.000 klaim sintetis"
+  },
+  {
+    "old": "Pencocokan persis (baseline)",
+    "new": "Rata-rata precision / recall / F1"
+  },
+  {
+    "old": "Pencocokan klaim mirip tanpa pengecualian",
+    "new": "Persis: 65,9% / 18,9% / 29,3%"
+  },
+  {
+    "old": "Pencocokan klaim mirip dengan pengecualian kasus sah",
+    "new": "Mirip tanpa pengecualian: 54,6% / 86,5% / 67,0%"
+  },
+  {
+    "old": "Metrik yang ditampilkan",
+    "new": "Mirip dengan pengecualian: 97,1% / 86,5% / 91,5%"
+  },
+  {
+    "old": "Kasus ditemukan dan false positive",
+    "new": "Dengan pengecualian: precision 95,6%–98,2%, recall 81,8%–90,4%."
+  },
+  {
+    "old": "Precision, recall, dan F1",
+    "new": "False positive: 6,36 pasangan per 1.000 klaim (rata-rata)."
+  },
+  {
+    "old": "False positive per 1.000 klaim",
+    "new": "Laporan lengkap memuat average precision, Recall@Top-10%, rentang, dan contoh kegagalan."
+  },
+  {
+    "old": "Recall@Top-10% (apakah antrean teratas efektif)",
+    "new": "Pada antarmuka, dataset tanpa label menampilkan benchmark lima seed dengan sumber yang jelas, bukan akurasi dataset tersebut. Waktu per pendekatan belum diukur."
+  },
+  {
+    "old": "Waktu pemeriksaan per kasus",
+    "new": "Seluruh hasil adalah simulasi internal; belum membuktikan penghematan, akurasi klinis, atau performa pada JKN."
+  },
+  {
+    "old": "Hasil dilaporkan sebagai rata-rata dan rentang dari minimal lima dataset sintetis berbeda, lengkap dengan contoh kasus yang gagal.",
+    "new": ""
+  },
+  {
+    "old": "Kontrak 5 endpoint; desain 12 layar Figma",
+    "new": "Kontrak API inti dan endpoint filter; desain 12 layar Figma"
+  },
+  {
+    "old": "UI, usability test, demo",
+    "new": "UI terhubung dan tes browser; usability test masih direncanakan"
+  },
+  {
+    "old": "Demo maksimal 5 menit; temuan usability",
+    "new": "Aplikasi lokal dan proposal; latihan demo dan uji pengguna berikutnya"
+  },
+  {
+    "old": "Aplikasi web dengan backend API dan antarmuka responsif; tanpa model AI besar, aplikasi mobile, atau integrasi BPJS pada prototype (rincian teknologi dapat disesuaikan)",
+    "new": "Frontend HTML/CSS/JavaScript, FastAPI, SQLite, Python 3.13; lokal melalui python run.py. Tanpa model AI besar, aplikasi mobile, atau integrasi BPJS."
+  },
+  {
+    "old": "Mengungguli exact match pada duplikat yang diubah dengan false positive terkendali",
+    "new": "Pada simulasi internal, recall rata-rata 86,5% versus exact match 18,9%; precision guardrail 97,1%. Belum hasil data riil."
+  },
+  {
+    "old": "Dua klaim berdampingan, bagian beda diberi warna, ada kronologi",
+    "new": "Pengecualian berdasarkan bukti jadwal, tautan koreksi, atau visit_id; data kurang tetap ditelaah"
+  },
+  {
+    "old": "False positive per 1.000 klaim",
+    "new": "False positive pasangan per 1.000 klaim"
+  },
+  {
+    "old": "Berapa klaim normal yang salah ditandai",
+    "new": "Pasangan normal yang salah ditandai, dinormalisasi terhadap jumlah klaim"
+  },
+  {
+    "old": "Seberapa banyak kasus nyata ada di 10% antrean teratas",
+    "new": "Label duplikat yang masuk 10% peringkat teratas dari pasangan eligible berskor positif"
+  },
+  {
+    "old": "Lama petugas memahami satu kasus (diuji pada usability test)",
+    "new": "Usability test belum dilakukan; median waktu keputusan pertama hanya catatan antarmuka"
+  },
+  {
+    "old": "Kami mengusulkan KlaimKembar, sebuah dashboard yang membantu petugas menemukan kemungkinan repeat billing meskipun beberapa bagian klaim telah diubah. Sistem membandingkan klaim dalam satu episode pelayanan, menjelaskan bagian yang sama dan berbeda, serta melindungi kasus sah seperti terapi berkala atau pengajuan ulang setelah pembatalan. Prototype menggunakan data sintetis dan hanya menentukan prioritas pemeriksaan. Keputusan akhir tetap berada pada petugas.",
+    "new": "KlaimKembar memprioritaskan pemeriksaan kemungkinan repeat billing pada fisioterapi rawat jalan. Prototype lokal telah menghubungkan unggah CSV sintetis, validasi, antrean, perbandingan, keputusan petugas, audit, dan evaluasi. Pengecualian membutuhkan bukti jadwal, kunjungan, atau tautan koreksi; kelompok kandidat tidak otomatis membuktikan satu episode klinis. Hasil lima seed merupakan simulasi internal. Keputusan akhir tetap pada petugas, dan pilot bersama verifikator masih diperlukan."
+  },
+  {
+    "old": "Kompas.com (8 Juli 2026). BPJS Kesehatan Sebut Kerugian akibat Fraud di Bidang Kesehatan Turun Rp 6 Triliun. nasional.kompas.com.",
+    "new": "Kompas.com (2 Juli 2026). BPJS Kesehatan: Pengeluaran Layanan 2025 Tembus Rp191,33 Triliun, Rasio Klaim di Atas 100 Persen. nasional.kompas.com/read/2026/07/02/19451181/bpjs-kesehatan-pengeluaran-layanan-2025-tembus-rp-19133-triliun-rasio-klaim"
+  },
+  {
+    "old": "IARFC Indonesia. Rumah Sakit Lakukan Fraud Klaim BPJS Kesehatan Diproses Pidana (data pengendalian Rp866,8 miliar dan Rp397,9 miliar; dugaan Rp35 miliar). iarfcindonesia.com.",
+    "new": "Kompas.com (2 Juli 2026). BPJS Kesehatan: 98,62 Persen Penduduk Telah Terdaftar JKN. nasional.kompas.com/read/2026/07/02/13225401/bpjs-kesehatan-9862-persen-penduduk-telah-terdaftar-jkn. IARFC Indonesia. Rumah Sakit Lakukan Fraud Klaim BPJS Kesehatan Diproses Pidana (Rp866,8 miliar dan Rp397,9 miliar biaya pengendalian, bukan estimasi repeat billing)."
+  }
+]

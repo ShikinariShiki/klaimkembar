@@ -1,0 +1,2326 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "KlaimKembar Prototype API",
+    "version": "1.0.0",
+    "description": "Data sintetis. Skor prioritas pemeriksaan, bukan vonis atau persetujuan pembayaran."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "HealthResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datasets/upload": {
+      "post": {
+        "operationId": "uploadDataset",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "UploadResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file",
+                  "synthetic"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "synthetic": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "labels": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cases": {
+      "get": {
+        "operationId": "listCases",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "risk_level",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            }
+          },
+          {
+            "name": "review_status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "unreviewed",
+                "valid",
+                "needs_documents",
+                "further_review"
+              ]
+            }
+          },
+          {
+            "name": "facility_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "score_desc",
+                "score_asc",
+                "service_date"
+              ],
+              "default": "score_desc"
+            }
+          },
+          {
+            "name": "include_protected",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CasesResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CasesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/facets": {
+      "get": {
+        "operationId": "getFacets",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FacetsResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacetsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/cases/{case_id}": {
+      "get": {
+        "operationId": "getCase",
+        "parameters": [
+          {
+            "name": "case_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CaseDetail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/cases/{case_id}/review": {
+      "post": {
+        "operationId": "reviewCase",
+        "parameters": [
+          {
+            "name": "case_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ReviewResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/evaluation": {
+      "get": {
+        "operationId": "getEvaluation",
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "EvaluationResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MethodMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "detected_pairs": {
+            "title": "Detected Pairs",
+            "type": "integer"
+          },
+          "true_positives": {
+            "title": "True Positives",
+            "type": "integer"
+          },
+          "false_positives": {
+            "title": "False Positives",
+            "type": "integer"
+          },
+          "false_negatives": {
+            "title": "False Negatives",
+            "type": "integer"
+          },
+          "precision": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precision"
+          },
+          "recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall"
+          },
+          "f1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "F1"
+          },
+          "pr_auc": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pr Auc"
+          },
+          "false_positive_pairs_per_1000_claims": {
+            "title": "False Positive Pairs Per 1000 Claims",
+            "type": "number"
+          },
+          "recall_at_top_10_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall At Top 10 Percent"
+          }
+        },
+        "required": [
+          "detected_pairs",
+          "true_positives",
+          "false_positives",
+          "false_negatives",
+          "precision",
+          "recall",
+          "f1",
+          "pr_auc",
+          "false_positive_pairs_per_1000_claims",
+          "recall_at_top_10_percent"
+        ],
+        "title": "MethodMetrics",
+        "type": "object"
+      },
+      "MetricRange": {
+        "additionalProperties": false,
+        "properties": {
+          "mean": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean"
+          },
+          "minimum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum"
+          },
+          "maximum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum"
+          }
+        },
+        "required": [
+          "mean",
+          "minimum",
+          "maximum"
+        ],
+        "title": "MetricRange",
+        "type": "object"
+      },
+      "SeedReport": {
+        "additionalProperties": false,
+        "properties": {
+          "seed": {
+            "title": "Seed",
+            "type": "integer"
+          },
+          "claim_count": {
+            "title": "Claim Count",
+            "type": "integer"
+          },
+          "eligible_pair_count": {
+            "title": "Eligible Pair Count",
+            "type": "integer"
+          },
+          "positive_pairs": {
+            "title": "Positive Pairs",
+            "type": "integer"
+          },
+          "prevalence": {
+            "title": "Prevalence",
+            "type": "number"
+          },
+          "methods": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/MethodMetrics"
+            },
+            "title": "Methods",
+            "type": "object"
+          },
+          "failure_examples": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/TruthPair"
+              },
+              "type": "array"
+            },
+            "title": "Failure Examples",
+            "type": "object"
+          },
+          "missing_information_count": {
+            "title": "Missing Information Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "seed",
+          "claim_count",
+          "eligible_pair_count",
+          "positive_pairs",
+          "prevalence",
+          "methods",
+          "failure_examples",
+          "missing_information_count"
+        ],
+        "title": "SeedReport",
+        "type": "object"
+      },
+      "TruthPair": {
+        "additionalProperties": false,
+        "properties": {
+          "claim_a": {
+            "title": "Claim A",
+            "type": "string"
+          },
+          "claim_b": {
+            "title": "Claim B",
+            "type": "string"
+          },
+          "is_duplicate": {
+            "title": "Is Duplicate",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "claim_a",
+          "claim_b",
+          "is_duplicate"
+        ],
+        "title": "TruthPair",
+        "type": "object"
+      },
+      "BenchmarkReport": {
+        "additionalProperties": false,
+        "properties": {
+          "simulation": {
+            "title": "Simulation",
+            "type": "boolean"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "rules_hash": {
+            "title": "Rules Hash",
+            "type": "string"
+          },
+          "generated_at": {
+            "title": "Generated At",
+            "type": "string"
+          },
+          "seeds": {
+            "items": {
+              "$ref": "#/components/schemas/SeedReport"
+            },
+            "title": "Seeds",
+            "type": "array"
+          },
+          "aggregates": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/MetricRange"
+              },
+              "type": "object"
+            },
+            "title": "Aggregates",
+            "type": "object"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          }
+        },
+        "required": [
+          "simulation",
+          "rules_version",
+          "rules_hash",
+          "generated_at",
+          "seeds",
+          "aggregates",
+          "limitations"
+        ],
+        "title": "BenchmarkReport",
+        "type": "object"
+      },
+      "Claim": {
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {
+            "title": "Claim Id",
+            "type": "string"
+          },
+          "participant_token": {
+            "title": "Participant Token",
+            "type": "string"
+          },
+          "facility_id": {
+            "title": "Facility Id",
+            "type": "string"
+          },
+          "service_date": {
+            "title": "Service Date",
+            "type": "string"
+          },
+          "submission_date": {
+            "title": "Submission Date",
+            "type": "string"
+          },
+          "diagnosis_group": {
+            "title": "Diagnosis Group",
+            "type": "string"
+          },
+          "procedure_group": {
+            "title": "Procedure Group",
+            "type": "string"
+          },
+          "claim_amount": {
+            "title": "Claim Amount",
+            "type": "string"
+          },
+          "claim_status": {
+            "enum": [
+              "active",
+              "cancelled",
+              "corrected"
+            ],
+            "title": "Claim Status",
+            "type": "string"
+          },
+          "original_claim_id": {
+            "default": "",
+            "title": "Original Claim Id",
+            "type": "string"
+          },
+          "facility_group": {
+            "default": "",
+            "title": "Facility Group",
+            "type": "string"
+          },
+          "episode_id": {
+            "default": "",
+            "title": "Episode Id",
+            "type": "string"
+          },
+          "visit_id": {
+            "default": "",
+            "title": "Visit Id",
+            "type": "string"
+          },
+          "scheduled_service": {
+            "default": false,
+            "title": "Scheduled Service",
+            "type": "boolean"
+          },
+          "scheduled_date": {
+            "default": "",
+            "title": "Scheduled Date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "claim_id",
+          "participant_token",
+          "facility_id",
+          "service_date",
+          "submission_date",
+          "diagnosis_group",
+          "procedure_group",
+          "claim_amount",
+          "claim_status"
+        ],
+        "title": "Claim",
+        "type": "object"
+      },
+      "ComparedField": {
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "title": "Field",
+            "type": "string"
+          },
+          "claim_a": {
+            "title": "Claim A",
+            "type": "string"
+          },
+          "claim_b": {
+            "title": "Claim B",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "same",
+              "different",
+              "missing"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "claim_a",
+          "claim_b",
+          "state"
+        ],
+        "title": "ComparedField",
+        "type": "object"
+      },
+      "Contribution": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "points": {
+            "title": "Points",
+            "type": "number"
+          },
+          "maximum": {
+            "title": "Maximum",
+            "type": "number"
+          }
+        },
+        "required": [
+          "code",
+          "points",
+          "maximum"
+        ],
+        "title": "Contribution",
+        "type": "object"
+      },
+      "PairAssessment": {
+        "additionalProperties": false,
+        "properties": {
+          "claim_a": {
+            "title": "Claim A",
+            "type": "string"
+          },
+          "claim_b": {
+            "title": "Claim B",
+            "type": "string"
+          },
+          "episode_group": {
+            "title": "Episode Group",
+            "type": "string"
+          },
+          "baseline_match": {
+            "title": "Baseline Match",
+            "type": "boolean"
+          },
+          "raw_score": {
+            "title": "Raw Score",
+            "type": "number"
+          },
+          "risk_score": {
+            "title": "Risk Score",
+            "type": "number"
+          },
+          "risk_level": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ],
+            "title": "Risk Level",
+            "type": "string"
+          },
+          "triggered_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Triggered Reasons",
+            "type": "array"
+          },
+          "contributions": {
+            "items": {
+              "$ref": "#/components/schemas/Contribution"
+            },
+            "title": "Contributions",
+            "type": "array"
+          },
+          "risk_reducers": {
+            "items": {
+              "$ref": "#/components/schemas/Reducer"
+            },
+            "title": "Risk Reducers",
+            "type": "array"
+          },
+          "missing_information": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Information",
+            "type": "array"
+          },
+          "protected": {
+            "title": "Protected",
+            "type": "boolean"
+          },
+          "needs_data": {
+            "title": "Needs Data",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "claim_a",
+          "claim_b",
+          "episode_group",
+          "baseline_match",
+          "raw_score",
+          "risk_score",
+          "risk_level",
+          "triggered_reasons",
+          "contributions",
+          "risk_reducers",
+          "missing_information",
+          "protected",
+          "needs_data"
+        ],
+        "title": "PairAssessment",
+        "type": "object"
+      },
+      "QueueSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "total_cases": {
+            "title": "Total Cases",
+            "type": "integer"
+          },
+          "reviewed_cases": {
+            "title": "Reviewed Cases",
+            "type": "integer"
+          },
+          "remaining_cases": {
+            "title": "Remaining Cases",
+            "type": "integer"
+          },
+          "next_case_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Case Id"
+          }
+        },
+        "required": [
+          "total_cases",
+          "reviewed_cases",
+          "remaining_cases",
+          "next_case_id"
+        ],
+        "title": "QueueSummary",
+        "type": "object"
+      },
+      "Reducer": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "points": {
+            "title": "Points",
+            "type": "number"
+          },
+          "evidence": {
+            "title": "Evidence",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "points",
+          "evidence"
+        ],
+        "title": "Reducer",
+        "type": "object"
+      },
+      "ReviewRecord": {
+        "additionalProperties": false,
+        "properties": {
+          "review_id": {
+            "title": "Review Id",
+            "type": "string"
+          },
+          "actor": {
+            "title": "Actor",
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "valid",
+              "needs_documents",
+              "further_review"
+            ],
+            "title": "Decision",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "reviewed_at": {
+            "title": "Reviewed At",
+            "type": "string"
+          },
+          "elapsed_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Elapsed Seconds"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "rules_hash": {
+            "title": "Rules Hash",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "review_id",
+          "actor",
+          "decision",
+          "note",
+          "reviewed_at",
+          "elapsed_seconds",
+          "rules_version",
+          "rules_hash",
+          "version"
+        ],
+        "title": "ReviewRecord",
+        "type": "object"
+      },
+      "TimelineEvent": {
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "event": {
+            "title": "Event",
+            "type": "string"
+          },
+          "claim_id": {
+            "title": "Claim Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "event",
+          "claim_id"
+        ],
+        "title": "TimelineEvent",
+        "type": "object"
+      },
+      "CaseDetail": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "title": "Case Id",
+            "type": "string"
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "claim_a": {
+            "$ref": "#/components/schemas/Claim"
+          },
+          "claim_b": {
+            "$ref": "#/components/schemas/Claim"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/PairAssessment"
+          },
+          "review_status": {
+            "enum": [
+              "unreviewed",
+              "valid",
+              "needs_documents",
+              "further_review"
+            ],
+            "title": "Review Status",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/ComparedField"
+            },
+            "title": "Fields",
+            "type": "array"
+          },
+          "timeline": {
+            "items": {
+              "$ref": "#/components/schemas/TimelineEvent"
+            },
+            "title": "Timeline",
+            "type": "array"
+          },
+          "reviews": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewRecord"
+            },
+            "title": "Reviews",
+            "type": "array"
+          },
+          "queue": {
+            "$ref": "#/components/schemas/QueueSummary"
+          },
+          "advisory": {
+            "title": "Advisory",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_id",
+          "dataset_id",
+          "claim_a",
+          "claim_b",
+          "assessment",
+          "review_status",
+          "version",
+          "fields",
+          "timeline",
+          "reviews",
+          "queue",
+          "advisory"
+        ],
+        "title": "CaseDetail",
+        "type": "object"
+      },
+      "CaseSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "title": "Case Id",
+            "type": "string"
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "claim_a": {
+            "$ref": "#/components/schemas/Claim"
+          },
+          "claim_b": {
+            "$ref": "#/components/schemas/Claim"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/PairAssessment"
+          },
+          "review_status": {
+            "enum": [
+              "unreviewed",
+              "valid",
+              "needs_documents",
+              "further_review"
+            ],
+            "title": "Review Status",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "case_id",
+          "dataset_id",
+          "claim_a",
+          "claim_b",
+          "assessment",
+          "review_status",
+          "version"
+        ],
+        "title": "CaseSummary",
+        "type": "object"
+      },
+      "CasesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CaseSummary"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "type": "integer"
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer"
+          },
+          "queue": {
+            "$ref": "#/components/schemas/QueueSummary"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "page_size",
+          "queue"
+        ],
+        "title": "CasesResponse",
+        "type": "object"
+      },
+      "FieldIssue": {
+        "additionalProperties": false,
+        "properties": {
+          "row": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Row"
+          },
+          "field": {
+            "title": "Field",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "code",
+          "message"
+        ],
+        "title": "FieldIssue",
+        "type": "object"
+      },
+      "ValidationSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "total_rows": {
+            "title": "Total Rows",
+            "type": "integer"
+          },
+          "valid_rows": {
+            "title": "Valid Rows",
+            "type": "integer"
+          },
+          "invalid_rows": {
+            "title": "Invalid Rows",
+            "type": "integer"
+          },
+          "incomplete_rows": {
+            "title": "Incomplete Rows",
+            "type": "integer"
+          },
+          "missing_columns": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Columns",
+            "type": "array"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/FieldIssue"
+            },
+            "title": "Issues",
+            "type": "array"
+          },
+          "issues_total": {
+            "title": "Issues Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total_rows",
+          "valid_rows",
+          "invalid_rows",
+          "incomplete_rows",
+          "missing_columns",
+          "issues",
+          "issues_total"
+        ],
+        "title": "ValidationSummary",
+        "type": "object"
+      },
+      "ErrorBody": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "details": {
+            "items": {
+              "$ref": "#/components/schemas/FieldIssue"
+            },
+            "title": "Details",
+            "type": "array"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ValidationSummary"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "details",
+          "request_id"
+        ],
+        "title": "ErrorBody",
+        "type": "object"
+      },
+      "ErrorEnvelope": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorBody"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorEnvelope",
+        "type": "object"
+      },
+      "EvaluationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "simulation": {
+            "title": "Simulation",
+            "type": "boolean"
+          },
+          "label_status": {
+            "enum": [
+              "available",
+              "not_provided"
+            ],
+            "title": "Label Status",
+            "type": "string"
+          },
+          "dataset_methods": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/MethodMetrics"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dataset Methods"
+          },
+          "benchmark": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BenchmarkReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "queue": {
+            "$ref": "#/components/schemas/QueueSummary"
+          },
+          "median_review_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median Review Seconds"
+          },
+          "review_time_source": {
+            "title": "Review Time Source",
+            "type": "string"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "rules_hash": {
+            "title": "Rules Hash",
+            "type": "string"
+          },
+          "metric_definitions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Metric Definitions",
+            "type": "object"
+          }
+        },
+        "required": [
+          "dataset_id",
+          "simulation",
+          "label_status",
+          "dataset_methods",
+          "benchmark",
+          "queue",
+          "median_review_seconds",
+          "review_time_source",
+          "rules_version",
+          "rules_hash",
+          "metric_definitions"
+        ],
+        "title": "EvaluationResponse",
+        "type": "object"
+      },
+      "FacetsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "facilities": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Facilities",
+            "type": "array"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reasons",
+            "type": "array"
+          }
+        },
+        "required": [
+          "facilities",
+          "reasons"
+        ],
+        "title": "FacetsResponse",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "const": "ok",
+            "title": "Status",
+            "type": "string"
+          },
+          "database": {
+            "const": "sqlite",
+            "title": "Database",
+            "type": "string"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "database",
+          "rules_version"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "ReviewRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "review_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Review Id",
+            "type": "string"
+          },
+          "expected_version": {
+            "minimum": 0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "decision": {
+            "enum": [
+              "valid",
+              "needs_documents",
+              "further_review"
+            ],
+            "title": "Decision",
+            "type": "string"
+          },
+          "note": {
+            "default": "",
+            "maxLength": 2000,
+            "title": "Note",
+            "type": "string"
+          },
+          "elapsed_seconds": {
+            "anyOf": [
+              {
+                "maximum": 3600,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Elapsed Seconds"
+          }
+        },
+        "required": [
+          "review_id",
+          "expected_version",
+          "decision"
+        ],
+        "title": "ReviewRequest",
+        "type": "object"
+      },
+      "ReviewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "title": "Case Id",
+            "type": "string"
+          },
+          "review_status": {
+            "enum": [
+              "unreviewed",
+              "valid",
+              "needs_documents",
+              "further_review"
+            ],
+            "title": "Review Status",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "review": {
+            "$ref": "#/components/schemas/ReviewRecord"
+          },
+          "queue": {
+            "$ref": "#/components/schemas/QueueSummary"
+          }
+        },
+        "required": [
+          "case_id",
+          "review_status",
+          "version",
+          "review",
+          "queue"
+        ],
+        "title": "ReviewResponse",
+        "type": "object"
+      },
+      "UploadResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "size_bytes": {
+            "title": "Size Bytes",
+            "type": "integer"
+          },
+          "status": {
+            "const": "ready",
+            "title": "Status",
+            "type": "string"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "validation": {
+            "$ref": "#/components/schemas/ValidationSummary"
+          },
+          "case_count": {
+            "title": "Case Count",
+            "type": "integer"
+          },
+          "protected_pair_count": {
+            "title": "Protected Pair Count",
+            "type": "integer"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "rules_hash": {
+            "title": "Rules Hash",
+            "type": "string"
+          },
+          "simulation": {
+            "title": "Simulation",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "dataset_id",
+          "filename",
+          "size_bytes",
+          "status",
+          "created_at",
+          "validation",
+          "case_count",
+          "protected_pair_count",
+          "rules_version",
+          "rules_hash",
+          "simulation"
+        ],
+        "title": "UploadResponse",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "DemoBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

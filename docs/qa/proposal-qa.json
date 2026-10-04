@@ -1,0 +1,8 @@
+{
+  "pages": 18,
+  "media_preserved": 16,
+  "docx_sha256": "b5d2c90865c23e77d8ba48125c4675af7e34084c563e775f924cb0f6915a2913",
+  "pdf_sha256": "3d59040b3d998b40ae1ddaba9defc1eb5a2ea6df5c35adf359f0d2f59e50c915",
+  "visual_review": "Reviewed every rendered page. Fixed TOC tab width/page numbers, split example table, heading pagination, technical density and impact-table mapping.",
+  "limits": "DOCX pagination can vary with fonts/viewer. PDF is the checked rendering. Not an administrative eligibility certification."
+}

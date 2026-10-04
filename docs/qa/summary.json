@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "command": "python run.py",
+      "passed": true,
+      "health": {
+        "status": "ok",
+        "database": "sqlite",
+        "rules_version": "prototype-1"
+      }
+    },
+    {
+      "command": "CLEANROOM/.venv/bin/python -m scripts.build_contract",
+      "exit_code": 0,
+      "log": "contract.log"
+    },
+    {
+      "command": "CLEANROOM/.venv/bin/ruff check klaimkembar tests scripts",
+      "exit_code": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "CLEANROOM/.venv/bin/mypy",
+      "exit_code": 0,
+      "log": "types.log"
+    },
+    {
+      "command": "CLEANROOM/.venv/bin/python -m pytest -q --cov=klaimkembar --cov-report=term-missing",
+      "exit_code": 0,
+      "log": "tests.log"
+    },
+    {
+      "command": "CLEANROOM/.venv/bin/python -m pip check",
+      "exit_code": 0,
+      "log": "dependencies.log"
+    },
+    {
+      "command": "node tests/browser/full-cycle.cjs",
+      "exit_code": 0,
+      "log": "browser-main.log"
+    },
+    {
+      "command": "node tests/browser/edge-cases.cjs",
+      "exit_code": 0,
+      "log": "browser-edges.log"
+    }
+  ]
+}
