@@ -2268,7 +2268,10 @@
             "type": "string"
           },
           "database": {
-            "const": "sqlite",
+            "enum": [
+              "sqlite",
+              "postgres"
+            ],
             "title": "Database",
             "type": "string"
           },

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import median
-from typing import Literal, cast
+from typing import Any, Literal, cast
 from uuid import uuid4
 
 from klaimkembar.database import Database
@@ -28,6 +28,7 @@ from klaimkembar.models import (
     TruthPair,
     UploadResponse,
 )
+from klaimkembar.postgres_database import PostgresDatabase
 from klaimkembar.settings import Rules, Settings
 from klaimkembar.validation import COLUMNS, eligible_pairs, parse_claims, parse_truth
 
@@ -46,7 +47,7 @@ class ClaimsWorkflow:
     def __init__(self, settings: Settings):
         self.settings = settings
         self.rules = Rules.load(settings.rules_path)
-        self.db = Database(settings.db_path)
+        self.db: Any = PostgresDatabase(settings.postgres_url) if settings.cloud_demo and settings.postgres_url else Database(settings.db_path)
         self.db.verify_schema()
 
     def _dataset(self, connection: sqlite3.Connection, dataset_id: str) -> sqlite3.Row:
@@ -76,7 +77,7 @@ class ClaimsWorkflow:
         if not synthetic:
             raise Rejection(422, 'SYNTHETIC_DECLARATION', 'Prototype hanya menerima data sintetis. Nyatakan synthetic=true.')
         if len(content) > self.settings.max_upload_bytes or (labels is not None and len(labels) > self.settings.max_upload_bytes):
-            raise Rejection(413, 'FILE_TOO_LARGE', 'Maksimal 5 MiB per file. Pecah dataset menjadi file lebih kecil.')
+            raise Rejection(413, 'FILE_TOO_LARGE', f'Maksimal {self.settings.max_upload_bytes // (1024 * 1024)} MiB per file. Pecah dataset menjadi file lebih kecil.')
         batch = parse_claims(content, filename, self.settings.max_rows)
         eligible_pairs(batch.claims, self.rules.maximum_eligible_pairs)
         pairs = detect(batch.claims, self.rules)

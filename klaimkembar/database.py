@@ -7,6 +7,8 @@ from klaimkembar.settings import ROOT
 
 
 class Database:
+    kind = "sqlite"
+
     def __init__(self, path: Path):
         self.path = path
 

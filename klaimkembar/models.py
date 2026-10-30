@@ -236,7 +236,7 @@ class EvaluationResponse(Record):
 
 class HealthResponse(Record):
     status: Literal['ok']
-    database: Literal['sqlite']
+    database: Literal['sqlite', 'postgres']
     rules_version: str
 
 

@@ -1,4 +1,5 @@
-﻿import hmac
+import hashlib
+import hmac
 import json
 import logging
 import sqlite3
@@ -11,12 +12,14 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from psycopg import OperationalError as PostgresOperationalError
 from starlette.concurrency import run_in_threadpool
 from starlette.exceptions import HTTPException
 from starlette.middleware import Middleware
 from starlette.middleware.base import RequestResponseEndpoint
 from starlette.responses import Response
 
+from klaimkembar.cloud_ui import cloud_session_actor, install_cloud_ui
 from klaimkembar.errors import Rejection
 from klaimkembar.local_ui import install_ui, session_actor
 from klaimkembar.models import (
@@ -77,6 +80,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 response.headers['Vary'] = 'Origin'
         if request.method == 'OPTIONS' and response.status_code >= 400:
             response = envelope(request, 400, 'CORS_REJECTED', 'Origin atau header frontend tidak diizinkan. Periksa CORS_ORIGINS.')
+        if config.cloud_demo:
+            response.headers['Cache-Control'] = 'no-store'
+            response.headers['X-Content-Type-Options'] = 'nosniff'
+            response.headers['Referrer-Policy'] = 'no-referrer'
         response.headers['X-Request-ID'] = request.state.request_id
         route = getattr(request.scope.get('route'), 'path', 'unmatched')
         LOGGER.info(json.dumps({'event': 'request', 'request_id': request.state.request_id, 'method': request.method,
@@ -101,11 +108,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return envelope(request, exc.status_code, code, message)
 
     @app.exception_handler(sqlite3.OperationalError)
-    async def storage_error(request: Request, exc: sqlite3.OperationalError) -> JSONResponse:
+    @app.exception_handler(PostgresOperationalError)
+    async def storage_error(request: Request, exc: Exception) -> JSONResponse:
         LOGGER.error(json.dumps({'event': 'storage_unavailable', 'request_id': request.state.request_id, 'exception_type': type(exc).__name__}))
         return envelope(request, 503, 'STORAGE_UNAVAILABLE', 'Penyimpanan belum tersedia. Coba lagi atau hubungi pengelola.')
 
     def authenticated(request: Request, credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(BEARER)]) -> Actor:
+        if credentials is None and config.cloud_demo and cloud_session_actor(request, config.cloud_session_secret, config.cloud_origin):
+            return Actor('cloud-demo-reviewer', 'reviewer')
         if credentials is None and config.local_ui and session_actor(request, app.state.ui_sessions):
             return Actor('prototype-reviewer', 'reviewer')
         if credentials is None:
@@ -126,7 +136,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def health() -> HealthResponse:
         with workflow.db.connect() as connection:
             connection.execute('SELECT version FROM schema_version').fetchone()
-        return HealthResponse(status='ok', database='sqlite', rules_version=workflow.rules.version)
+        return HealthResponse(status='ok', database=workflow.db.kind, rules_version=workflow.rules.version)
 
     @app.get('/api/v1/ml/status', response_model=MLStatusResponse)
     def ml_status(actor: Annotated[Actor, Depends(authenticated)]) -> MLStatusResponse:
@@ -138,7 +148,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         form = await request.form()
         if set(form.keys()) - {'file', 'synthetic', 'labels'} or any(len(form.getlist(key)) != 1 for key in form.keys()):
             raise Rejection(422, 'UPLOAD_FIELDS', 'Gunakan satu file, satu synthetic, dan paling banyak satu labels.')
+        if config.cloud_demo and (labels is not None or not synthetic):
+            raise Rejection(422, 'DEMO_FIXTURE_ONLY', 'Demo online hanya menerima file contoh sintetis yang disediakan.')
         content = await file.read(config.max_upload_bytes + 1)
+        if config.cloud_demo:
+            expected = hashlib.sha256((ROOT / 'examples/claims.csv').read_bytes()).digest()
+            if not hmac.compare_digest(hashlib.sha256(content).digest(), expected):
+                raise Rejection(422, 'DEMO_FIXTURE_ONLY', 'Demo online hanya menerima file contoh sintetis yang disediakan.')
         truth = await labels.read(config.max_upload_bytes + 1) if labels is not None else None
         return await run_in_threadpool(workflow.upload, file.filename or '', content, synthetic, truth)
 
@@ -178,5 +194,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                                              expose_headers=['X-Request-ID']))
     if config.local_ui:
         install_ui(app, ROOT)
+    elif config.cloud_demo:
+        install_cloud_ui(app, ROOT, config.cloud_origin, config.cloud_session_secret, config.cloud_demo_passcode)
     return app
 

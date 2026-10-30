@@ -3,6 +3,7 @@ import json
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -59,17 +60,36 @@ class Settings:
     max_upload_bytes: int = 5 * 1024 * 1024
     max_rows: int = 10000
     local_ui: bool = False
+    cloud_demo: bool = False
+    cloud_origin: str = ""
+    cloud_session_secret: str = ""
+    cloud_demo_passcode: str = ""
+    postgres_url: str = ""
 
     def __post_init__(self) -> None:
         if min(len(self.reviewer_token), len(self.auditor_token)) < 32 or self.reviewer_token == self.auditor_token:
             raise ValueError('two distinct tokens of at least 32 characters are required')
+        if self.cloud_demo:
+            parts = urlsplit(self.cloud_origin)
+            if self.local_ui or parts.scheme != 'https' or not parts.hostname or parts.path or parts.query or parts.fragment:
+                raise ValueError('cloud demo requires an explicit HTTPS origin and cannot use local UI')
+            if len(self.cloud_session_secret) < 32 or len(self.cloud_demo_passcode) < 32 or self.cloud_session_secret == self.cloud_demo_passcode:
+                raise ValueError('cloud demo requires distinct session secret and passcode of at least 32 characters')
         if '*' in self.origins:
             raise ValueError('explicit frontend origins are required')
 
     @classmethod
     def from_env(cls) -> 'Settings':
+        if os.environ.get("CLOUD_DEMO", "false").lower() == "true" and not os.environ.get("POSTGRES_URL"):
+            raise ValueError("cloud demo requires POSTGRES_URL")
         return cls(
+            postgres_url=os.environ.get("POSTGRES_URL", ""),
             local_ui=os.environ.get('LOCAL_UI', 'false').lower() == 'true',
+            cloud_demo=os.environ.get('CLOUD_DEMO', 'false').lower() == 'true',
+            max_upload_bytes=4 * 1024 * 1024 if os.environ.get('CLOUD_DEMO', 'false').lower() == 'true' else 5 * 1024 * 1024,
+            cloud_origin=os.environ.get('CLOUD_ORIGIN', ''),
+            cloud_session_secret=os.environ.get('CLOUD_SESSION_SECRET', ''),
+            cloud_demo_passcode=os.environ.get('CLOUD_DEMO_PASSCODE', ''),
             db_path=Path(os.environ.get('DATABASE_PATH', 'var/klaimkembar.sqlite')),
             reviewer_token=os.environ.get('REVIEWER_TOKEN', ''),
             auditor_token=os.environ.get('AUDITOR_TOKEN', ''),
