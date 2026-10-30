@@ -290,6 +290,23 @@ def test_landing_page_and_extended_auth(tmp_path):
         assert reg_res.status_code == 200
         assert 'Daftar Verifikator' in reg_res.text
 
+        # Verify Apple-grade scrollytelling and UI architecture on both pages
+        for page_resp in [login_res, reg_res]:
+            # Sticky local navigation
+            for nav_selector in ['ac-localnav', '#sorotan', '#arsitektur', '#guardrail', '#kalibrasi-bpjs', '#evaluasi']:
+                assert nav_selector in page_resp.text
+
+            # 3-step sticky scrollytelling stage
+            for step_indicator in ['data-step="0"', 'data-step="1"', 'data-step="2"', 'DISTINCT_VISITS', 'SCHEDULED_REHAB', 'CatBoost']:
+                assert step_indicator in page_resp.text
+
+            # Auth portal
+            for auth_element in ['#auth-portal', '#tab-login', '#tab-register', 'Masuk Instan (Akun Demo Verifikator)']:
+                assert auth_element in page_resp.text
+            assert 'id="auth-portal"' in page_resp.text
+            assert 'id="tab-login"' in page_resp.text
+            assert 'id="tab-register"' in page_resp.text
+
         # 1-Click Demo Login
         demo_resp = c.post('/ui/login', data={'demo': 'true'}, headers={'origin': ORIGIN})
         assert demo_resp.status_code == 303

@@ -8,133 +8,1933 @@
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    /* ==========================================================================
+       Apple Flagship Pro Scrollytelling & Motion Choreography Styles
+       Engineered for KlaimKembar · Reverse-Engineered from apple.com/id/
+       ========================================================================== */
+
+    :root {
+      /* Typography scale tokens */
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Color Tokens mapped to KlaimKembar palette */
+      --primary: #5141ed;
+      --primary-hover: #4335d6;
+      --primary-deep: #3428b6;
+      --primary-soft: #efedff;
+      --border-tint: #cbc8ff;
+      --text-ink: #1e2242;
+      --text-muted: #7d86ad;
+      --border: #e4e6f6;
+      --border-subtle: rgba(30, 34, 66, 0.08);
+      --surface-bg: #f5f6fb;
+      --surface-card: #ffffff;
+      --green: #108260;
+      --green-soft: #e5f6ee;
+      --amber: #b55c00;
+      --amber-soft: #fff4df;
+      --red: #d83239;
+      --red-soft: #ffedef;
+
+      /* Apple Easing Curves */
+      --ease-apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-apple-drawer: cubic-bezier(0.28, 0.11, 0.32, 1);
+      --ease-apple-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      /* Local Navigation metrics */
+      --r-localnav-height: 52px;
+      --r-localnav-max-width: 1120px;
+      --localnav-bg: rgba(255, 255, 255, 0.78);
+      --localnav-outline: rgba(30, 34, 66, 0.08);
+    }
+
+    /* Base resets */
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.landing-shell {
+      margin: 0;
+      padding: 0;
+      background: var(--surface-bg);
+      color: var(--text-ink);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Utility Tabular Monospace */
+    .mono {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Apple Two-Tone Typography Cadence */
+    .tone-ink {
+      color: var(--text-ink);
+      font-weight: 700;
+    }
+
+    .tone-muted {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Text accents */
+    .green-text { color: var(--green) !important; }
+    .amber-text { color: var(--amber) !important; }
+    .red-text { color: var(--red) !important; }
+    .primary-text { color: var(--primary) !important; }
+
+    /* ==========================================================================
+       1. Apple ac-localnav Sticky Header
+       ========================================================================== */
+    .ac-localnav-sticky {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--r-localnav-height);
+      z-index: 9990;
+      background: var(--localnav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      transition: background 0.3s var(--ease-apple-drawer);
+    }
+
+    .ac-ln-wrapper {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 24px;
+    }
+
+    .ac-ln-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: 16px;
+    }
+
+    /* Brand Logo / Title */
+    .ac-ln-title {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .ac-ln-title-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-ink);
+    }
+
+    .ac-ln-icon {
+      width: 19px;
+      height: 19px;
+      color: var(--primary);
+    }
+
+    .ac-ln-product-name {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--primary-deep);
+    }
+
+    .ac-ln-product-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-left: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Center Menu Anchors */
+    .ac-ln-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .ac-ln-menu-items {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ac-ln-menu-link {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: rgba(30, 34, 66, 0.72);
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      transition: color 0.2s var(--ease-apple-smooth);
+    }
+
+    .ac-ln-menu-link:hover {
+      color: var(--text-ink);
+    }
+
+    .ac-ln-menu-link.current {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .ac-ln-menu-link.current::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(81, 65, 237, 0.35);
+    }
+
+    /* Right Action Buttons */
+    .ac-ln-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .ac-ln-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 5px 13px;
+      min-height: 28px;
+      border-radius: 980px;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+
+    .ac-ln-button--ghost {
+      color: var(--text-ink);
+      background: transparent;
+      border: 1px solid transparent;
+    }
+    .ac-ln-button--ghost:hover {
+      background: rgba(81, 65, 237, 0.08);
+      color: var(--primary);
+    }
+
+    .ac-ln-button--primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px rgba(81, 65, 237, 0.24);
+    }
+    .ac-ln-button--primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-0.5px);
+      box-shadow: 0 3px 8px rgba(81, 65, 237, 0.32);
+    }
+
+    .ac-ln-keyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--localnav-outline);
+    }
+
+    /* ==========================================================================
+       2. Hero Section: Split Portal Layout
+       ========================================================================== */
+    .landing-hero {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto;
+      padding: 44px 24px 64px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 980px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(30, 34, 66, 0.04);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Fluid Super Display Headline */
+    .hero-headline {
+      font-size: clamp(36px, 4.2vw + 6px, 62px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.2vw + 11px, 19px);
+      line-height: 1.48;
+      letter-spacing: -0.015em;
+      margin: 0 0 28px;
+      max-width: 62ch;
+    }
+
+    /* 4 Telemetry Metrics Grid */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .stat-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 10px rgba(30, 34, 66, 0.03);
+      transition: transform 0.25s var(--ease-apple-spring), box-shadow 0.25s var(--ease-apple-spring);
+    }
+    .stat-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 34, 66, 0.06);
+    }
+
+    .stat-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: clamp(26px, 2.5vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 4px;
+    }
+
+    .stat-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* 3D Perspective Interactive Preview Card */
+    .interactive-preview {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 12px 36px rgba(30, 34, 66, 0.06);
+      transform-style: preserve-3d;
+      transition: transform 0.2s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    .preview-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tags {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 980px;
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      color: var(--text-ink);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .pill.high {
+      background: var(--red-soft);
+      border-color: #ffd2d5;
+      color: var(--red);
+    }
+
+    .pill.valid {
+      background: var(--green-soft);
+      border-color: #bdf0d8;
+      color: var(--green);
+    }
+
+    .pill.medium {
+      background: var(--amber-soft);
+      border-color: #ffe1b3;
+      color: var(--amber);
+    }
+
+    .pill.low {
+      background: var(--primary-soft);
+      border-color: var(--border-tint);
+      color: var(--primary-deep);
+    }
+
+    .preview-ml-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: 980px;
+      border: 1px solid var(--border-tint);
+    }
+    .preview-ml-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .case-header-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .score-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #fdf0f1;
+      border: 1.5px solid #fecdd1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .score-badge strong {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+    }
+    .score-badge span {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.06em;
+      margin-top: 1px;
+    }
+
+    .case-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 3px;
+      color: var(--text-ink);
+    }
+    .case-pathway {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 0 4px;
+    }
+    .case-factors {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Comparison Table inside card */
+    .preview-table-card {
+      background: #fafbfe;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .compare-grid.header-grid {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-ink);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin: 6px 0 3px;
+    }
+
+    .cell {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .cell.same {
+      background: #ffeaec;
+      color: #b81c24;
+      border: 1px solid #ffd0d5;
+      font-weight: 600;
+    }
+
+    .cell.different {
+      background: #edf0f8;
+      color: var(--text-muted);
+      border: 1px solid #dfe3f2;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .legend-sq {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .legend-sq.same { background: #d83239; }
+    .legend-sq.different { background: #929bbd; }
+
+    /* ==========================================================================
+       Right Column: Sticky Auth Portal Card
+       ========================================================================== */
+    .hero-right,
+    #auth-portal {
+      position: sticky;
+      top: calc(var(--r-localnav-height) + 18px);
+      z-index: 100;
+    }
+
+    #tab-login,
+    #tab-register {
+      cursor: pointer;
+    }
+
+    .auth-portal-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px 28px;
+      box-shadow: 0 16px 44px rgba(30, 34, 66, 0.08);
+      position: relative;
+    }
+
+    .auth-header {
+      margin-bottom: 20px;
+    }
+
+    .auth-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin: 0 0 4px;
+      color: var(--text-ink);
+    }
+
+    .auth-header p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* Error Banner */
+    .card.error {
+      background: var(--red-soft);
+      border: 1px solid #fecdd1;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .row.start {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .row.between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .iconbox.red {
+      background: #ffffff;
+      border: 1px solid #fecdd1;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* Auth Tabs */
+    .auth-tabs {
+      display: flex;
+      background: var(--surface-bg);
+      padding: 4px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .tab-trigger {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 9px;
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+
+    .tab-trigger.selected {
+      background: #ffffff;
+      color: var(--text-ink);
+      box-shadow: 0 2px 8px rgba(30, 34, 66, 0.08);
+      font-weight: 700;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-ink);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-size: 13.5px;
+      color: var(--text-ink);
+      box-sizing: border-box;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(81, 65, 237, 0.15);
+    }
+
+    .auth-meta-row {
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .button.btn-submit {
+      width: 100%;
+      height: 44px;
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(81, 65, 237, 0.25);
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+    .button.btn-submit:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(81, 65, 237, 0.35);
+    }
+
+    .divider {
+      position: relative;
+      text-align: center;
+      margin: 18px 0;
+    }
+    .divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider span {
+      position: relative;
+      background: #ffffff;
+      padding: 0 12px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .button.btn-demo {
+      width: 100%;
+      height: 42px;
+      background: #ffffff;
+      color: var(--primary);
+      border: 1.5px solid var(--border-tint);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+    .button.btn-demo:hover {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+      transform: translateY(-0.5px);
+    }
+
+    .demo-note, .reg-disclaimer {
+      text-align: center;
+      margin: 10px 0 0;
+      line-height: 1.45;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       3. Chapter 1: "Sorotan Utama" (Apple Highlights Horizontal Rail)
+       ========================================================================== */
+    .section-highlights {
+      padding: 84px 0 96px;
+      background: #ffffff;
+      position: relative;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .highlights-header {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto 36px;
+      padding: 0 24px;
+    }
+
+    .highlights-eyebrow {
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .highlights-headline {
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 12px;
+    }
+
+    .highlights-lead {
+      font-size: clamp(16px, 1.2vw + 10px, 18px);
+      color: var(--text-muted);
+      margin: 0;
+      max-width: 65ch;
+      line-height: 1.45;
+    }
+
+    /* Horizontal Card Rail Container */
+    .highlights-rail-wrap {
+      width: 100%;
+      position: relative;
+    }
+
+    .highlights-rail {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 16px max(24px, calc((100vw - var(--r-localnav-max-width)) / 2)) 36px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .highlights-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Highlights Bento Cards */
+    .highlight-card {
+      flex: 0 0 clamp(320px, 78vw, 420px);
+      scroll-snap-align: center;
+      border-radius: 28px;
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 440px;
+      box-shadow: 0 4px 20px rgba(30, 34, 66, 0.04);
+      transition: transform 0.3s var(--ease-apple-spring), box-shadow 0.3s var(--ease-apple-spring);
+    }
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(30, 34, 66, 0.08);
+    }
+
+    .card-top {
+      margin-bottom: 24px;
+    }
+
+    .card-tag-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 980px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text-ink);
+    }
+
+    .card-stat {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+    }
+    .card-stat.green { color: var(--green); }
+    .card-stat.purple { color: var(--primary-deep); }
+    .card-stat.blue { color: #0071e3; }
+
+    .card-stat-unit {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: -2px;
+      margin-bottom: 6px;
+    }
+
+    .card-headline {
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px;
+    }
+
+    .card-body {
+      font-size: 14px;
+      line-height: 1.52;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .card-footer {
+      border-top: 1px solid rgba(30, 34, 66, 0.08);
+      padding-top: 14px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .card-footer svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--primary);
+    }
+
+    /* Floating Capsule Controller (Dotnav) */
+    .highlights-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: -8px;
+    }
+
+    .capsule-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 980px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid rgba(30, 34, 66, 0.1);
+      box-shadow: 0 4px 16px rgba(30, 34, 66, 0.06);
+    }
+
+    .capsule-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(30, 34, 66, 0.22);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s var(--ease-apple-spring);
+    }
+
+    .capsule-dot.is-active {
+      width: 24px;
+      border-radius: 4px;
+      background: var(--primary);
+    }
+
+    .rail-nav-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(30, 34, 66, 0.06);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-ink);
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+    .rail-nav-btn:hover {
+      background: var(--primary-soft);
+      border-color: var(--border-tint);
+      color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    /* ==========================================================================
+       4. Chapter 2: Scrollytelling Stage (#arsitektur & #guardrail)
+       ========================================================================== */
+    .section-scrolly {
+      padding: 96px 0;
+      position: relative;
+      background: var(--surface-bg);
+    }
+
+    .scrolly-header {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+
+    .scrolly-eyebrow {
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .scrolly-headline {
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 12px;
+    }
+
+    .scrolly-lead {
+      font-size: clamp(16px, 1.2vw + 10px, 18px);
+      color: var(--text-muted);
+      margin: 0;
+      max-width: 65ch;
+      line-height: 1.45;
+    }
+
+    .scrolly-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      align-items: start;
+    }
+
+    /* Narrative Steps (Left Column) */
+    .scrolly-steps-col {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .scrolly-step {
+      min-height: 68dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px 32px;
+      border-radius: 24px;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: background 0.3s var(--ease-apple-spring), border-color 0.3s var(--ease-apple-spring), box-shadow 0.3s var(--ease-apple-spring);
+    }
+
+    .scrolly-step.is-active {
+      background: #ffffff;
+      border-color: var(--border);
+      box-shadow: 0 8px 30px rgba(30, 34, 66, 0.05);
+    }
+
+    .step-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-title {
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+    }
+
+    .step-sub {
+      font-size: 15px;
+      line-height: 1.4;
+      margin: 0 0 16px;
+    }
+
+    .step-narrative {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0 0 20px;
+    }
+
+    /* Feature Chips list inside Step 01 */
+    .feature-chip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .chip-item {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .chip-item strong {
+      color: var(--text-ink);
+    }
+    .chip-weight {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--primary);
+      background: #ffffff;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+    }
+
+    /* Guardrail callout list inside Step 02 */
+    .guardrail-callout-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gr-callout {
+      background: var(--green-soft);
+      border: 1px solid #c0ebd5;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    .gr-callout h4 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+    }
+    .gr-callout p {
+      margin: 0;
+      font-size: 12px;
+      color: #0c6448;
+      line-height: 1.4;
+    }
+
+    /* Model specs chips inside Step 03 */
+    .specs-chip-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .spec-item {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+    .spec-item strong {
+      color: var(--text-ink);
+    }
+
+    /* Sticky Interactive Inspector Stage (Right Column) */
+    .scrolly-stage-col {
+      position: relative;
+    }
+
+    .scrolly-stage {
+      position: sticky;
+      top: 84px;
+      height: calc(100dvh - 120px);
+      max-height: 640px;
+      border-radius: 28px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 48px rgba(30, 34, 66, 0.08);
+      padding: 26px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Step Nav Pills inside Stage Header */
+    .stage-header-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    .stage-pill-switcher {
+      display: inline-flex;
+      background: var(--surface-bg);
+      padding: 3px;
+      border-radius: 980px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .stage-nav-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 980px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+
+    .stage-nav-pill.is-active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 1px 4px rgba(81, 65, 237, 0.3);
+    }
+
+    .stage-live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stage-deck {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .stage-card {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      pointer-events: none;
+      transition: opacity 0.5s var(--ease-apple-spring),
+                  transform 0.5s var(--ease-apple-spring);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      padding-right: 4px;
+    }
+
+    .stage-card.is-active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    /* State 01 Card Visuals: 6-Feature Weight Matrix */
+    .weight-matrix-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .matrix-row {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+    }
+
+    .matrix-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+
+    .matrix-bar-track {
+      width: 100%;
+      height: 6px;
+      background: #e7e9f7;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .matrix-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    /* State 02 Card Visuals: Guardrail Active Lock */
+    .guardrail-visual-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .guardrail-status-banner {
+      background: var(--green-soft);
+      border: 1.5px solid #a3e5c4;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .guardrail-status-banner .status-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 980px;
+      margin-bottom: 8px;
+      border: 1px solid #b5ebcf;
+    }
+    .guardrail-status-banner h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0c6448;
+      margin: 0 0 4px;
+    }
+    .guardrail-status-banner p {
+      font-size: 12.5px;
+      color: #147253;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .guardrail-metric-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .gr-metric-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+    .gr-metric-card .val {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--green);
+    }
+    .gr-metric-card .lbl {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* State 03 Card Visuals: CatBoost + LogReg Shadow Scorer */
+    .shadow-scorer-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .model-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .model-card {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .model-card h4 {
+      margin: 0 0 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-ink);
+    }
+    .model-score {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .model-card p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .calibration-badge-box {
+      background: #ffffff;
+      border: 1px solid var(--border-tint);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calibration-badge-box svg {
+      color: var(--primary);
+    }
+    .calibration-badge-box div {
+      font-size: 12px;
+      color: var(--text-ink);
+    }
+
+    /* ==========================================================================
+       5. Chapter 3: Benchmark & 3-Layer Ethics Bento (#kalibrasi-bpjs & #evaluasi)
+       ========================================================================== */
+    .section-benchmark {
+      padding: 96px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .benchmark-header {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+
+    .benchmark-eyebrow {
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .benchmark-headline {
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 12px;
+    }
+
+    .benchmark-lead {
+      font-size: clamp(16px, 1.2vw + 10px, 18px);
+      color: var(--text-muted);
+      margin: 0;
+      max-width: 65ch;
+      line-height: 1.45;
+    }
+
+    .benchmark-layout {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* Left: Empirical Benchmark Progress Bars */
+    .benchmark-bars-card {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 30px rgba(30, 34, 66, 0.04);
+    }
+
+    .bm-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--text-ink);
+    }
+
+    .bm-card-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 0 24px;
+      line-height: 1.45;
+    }
+
+    .bm-row {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      transition: all 0.25s var(--ease-apple-spring);
+    }
+    .bm-row:hover {
+      box-shadow: 0 6px 18px rgba(30, 34, 66, 0.06);
+    }
+
+    .bm-row.featured {
+      border: 2px solid var(--primary);
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(81, 65, 237, 0.12);
+    }
+
+    .bm-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .bm-title-row strong {
+      font-size: 14px;
+      color: var(--text-ink);
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 10px;
+      background: #eef1f8;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 5px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .bar.method0 { background: #8b92b2; }
+    .bar.method1 { background: var(--amber); }
+    .bar.method2 {
+      background: linear-gradient(90deg, var(--primary) 0%, #108260 100%);
+    }
+
+    .bm-stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .bm-critique {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+      line-height: 1.4;
+    }
+
+    /* Right: 3-Layer Clinical Ethics & Governance Bento */
+    .ethics-bento-card {
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 30px rgba(30, 34, 66, 0.04);
+    }
+
+    .ethics-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--text-ink);
+    }
+
+    .ethics-card-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 0 24px;
+      line-height: 1.45;
+    }
+
+    .ethics-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ethics-item-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.25s var(--ease-apple-spring);
+    }
+    .ethics-item-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(30, 34, 66, 0.06);
+    }
+
+    .ethics-badge-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      border: 1px solid var(--border-tint);
+      color: var(--primary-deep);
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ethics-body h4 {
+      margin: 0 0 4px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-ink);
+    }
+
+    .ethics-rule-pill {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 980px;
+      background: var(--surface-bg);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .ethics-body p {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       6. Landing Footer
+       ========================================================================== */
+    .landing-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 44px 24px;
+    }
+
+    .footer-content {
+      max-width: var(--r-localnav-max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-brand svg {
+      width: 20px;
+      height: 20px;
+      color: var(--primary);
+    }
+
+    .footer-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-deep);
+    }
+
+    .footer-brand-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .footer-disclaimer {
+      max-width: 65ch;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .footer-back-to-top {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-ink);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 980px;
+      border: 1px solid var(--border);
+      background: var(--surface-bg);
+      transition: all 0.2s var(--ease-apple-spring);
+    }
+    .footer-back-to-top:hover {
+      background: var(--primary-soft);
+      border-color: var(--border-tint);
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       7. Responsive Layout Breakpoints
+       ========================================================================== */
+    @media (max-width: 1040px) {
+      .landing-hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero-right {
+        position: static;
+      }
+      .scrolly-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .scrolly-stage {
+        position: static;
+        height: 520px;
+      }
+      .scrolly-step {
+        min-height: auto;
+        padding: 24px 20px;
+      }
+      .benchmark-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 833px) {
+      :root {
+        --r-localnav-height: 48px;
+      }
+      .ac-ln-menu {
+        display: none;
+      }
+      .ac-ln-product-tag {
+        display: none;
+      }
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+      .feature-chip-grid {
+        grid-template-columns: 1fr;
+      }
+      .model-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body class="landing-shell">
-  <!-- Top Navigation Bar -->
-  <header class="landing-nav-wrap">
-    <div class="landing-nav">
-      <a href="/" class="brand" aria-label="Beranda KlaimKembar">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/>
-          <path d="m9 11 2 2 4-4"/>
-        </svg>
-        <span class="brand-name">KlaimKembar</span>
-        <span class="brand-tag">/ Sistem Pra-Audit Klaim JKN</span>
-      </a>
 
-      <nav class="landing-nav-links" aria-label="Navigasi Halaman">
-        <a href="#arsitektur">Arsitektur Hibrida</a>
-        <a href="#guardrail">Guardrail Klinis</a>
-        <a href="#kalibrasi-bpjs">Kalibrasi FKRTL 2025</a>
-        <a href="#evaluasi">Evaluasi Benchmark</a>
-      </nav>
+  <!-- ==========================================================================
+       1. Apple ac-localnav Sticky Header
+       ========================================================================== -->
+  <nav id="ac-localnav" class="ac-localnav-sticky" aria-label="Navigasi Lokal KlaimKembar">
+    <div class="ac-ln-wrapper">
+      <div class="ac-ln-content">
+        <!-- Left: Product Brand Anchor -->
+        <div class="ac-ln-title">
+          <a href="#hero" class="ac-ln-title-link" aria-label="Beranda KlaimKembar">
+            <svg class="ac-ln-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/>
+              <path d="m9 11 2 2 4-4"/>
+            </svg>
+            <span class="ac-ln-product-name">KlaimKembar</span>
+            <span class="ac-ln-product-tag">/ Pra-Audit Klinis JKN</span>
+          </a>
+        </div>
 
-      <div class="landing-nav-actions">
-        <button type="button" class="nav-btn nav-btn-ghost" id="nav-btn-login">Masuk</button>
-        <button type="button" class="nav-btn nav-btn-primary" id="nav-btn-register">Daftar Akun</button>
+        <!-- Center: Section Anchors -->
+        <div class="ac-ln-menu">
+          <ul class="ac-ln-menu-items" role="list">
+            <li class="ac-ln-menu-item"><a href="#sorotan" class="ac-ln-menu-link">Sorotan</a></li>
+            <li class="ac-ln-menu-item"><a href="#arsitektur" class="ac-ln-menu-link">Mesin Hibrida</a></li>
+            <li class="ac-ln-menu-item"><a href="#guardrail" class="ac-ln-menu-link">Guardrail Klinis</a></li>
+            <li class="ac-ln-menu-item"><a href="#kalibrasi-bpjs" class="ac-ln-menu-link">Kalibrasi BPJS 2025</a></li>
+            <li class="ac-ln-menu-item"><a href="#evaluasi" class="ac-ln-menu-link">Tolok Ukur</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: Action CTA Buttons -->
+        <div class="ac-ln-actions">
+          <button type="button" class="ac-ln-button ac-ln-button--ghost" id="nav-btn-login">Masuk</button>
+          <button type="button" class="ac-ln-button ac-ln-button--primary" id="nav-btn-register">Daftar Verifikator</button>
+        </div>
       </div>
     </div>
-  </header>
+    <div class="ac-ln-keyline" aria-hidden="true"></div>
+  </nav>
 
-  <!-- Hero Section: Asymmetric Split (7 cols Left Editorial + Live UI Preview, 5 cols Right Auth Portal) -->
+  <!-- ==========================================================================
+       2. Hero Section: Asymmetric Split (Editorial + Telemetry + Auth Portal)
+       ========================================================================== -->
   <section class="landing-hero" id="hero">
     <!-- Left Column: Editorial & Live Telemetry -->
     <div class="hero-left">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        BPJS Kesehatan Healthkathon 2026 · AI &amp; Data Analytics
+        BPJS Kesehatan Healthkathon 2026 · AI &amp; Analitik Data
       </div>
 
       <h1 class="hero-headline">
-        Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah
+        <span class="tone-ink">Prioritaskan Telaah Klaim Kembar.</span><br>
+        <span class="tone-muted">Lindungi Kunjungan Terapi Sah.</span>
       </h1>
 
       <p class="hero-subtitle">
-        Menyatukan pencocokan kemiripan 6 fitur, <em>shadow scoring</em> <strong>CatBoost + Logistic Regression</strong> yang dikalibrasi pada <strong>1,69 juta baris sampel FKRTL BPJS 2025</strong>, serta <em>guardrail</em> klinis untuk memisahkan pengajuan berulang dari jadwal rehabilitasi medik multi-kunjungan.
+        <span class="tone-ink">Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah.</span>
+        <span class="tone-muted">Sistem pra-audit hibrida pertama yang memisahkan duplikasi administratif dari jadwal perawatan fisioterapi berulang secara presisi, memadukan pencocokan 6 dimensi klinis, penguncian guardrail deterministik berbasis nomor kunjungan rumah sakit, serta model ensemble <strong>CatBoost</strong> dan Regresi Logistik yang dikalibrasi langsung pada 1,69 juta baris klaim FKRTL BPJS Kesehatan.</span>
       </p>
 
-      <!-- 4 Key Telemetry Metrics Row -->
+      <!-- 4 Telemetry Metrics Row -->
       <div class="hero-stats">
         <div class="stat-box">
-          <div class="stat-label">Skor F1 Guardrail (5-Seed Benchmark)</div>
-          <div class="stat-value green-text mono">91,5%</div>
-          <small class="muted">Recall 98,3% · Precision 85,6%</small>
+          <div class="stat-label">Skor F1 Sintetis (5-Seed)</div>
+          <div class="stat-value mono green-text">91,5%</div>
+          <div class="stat-caption">Presisi 97,1% · Recall 86,5%</div>
         </div>
 
         <div class="stat-box">
           <div class="stat-label">Skor F1 Kalibrasi FKRTL BPJS 2025</div>
-          <div class="stat-value green-text mono">96,1%</div>
-          <small class="muted">Sampel rilis data terbuka BPJS Kesehatan</small>
+          <div class="stat-value mono green-text">96,1%</div>
+          <div class="stat-caption">Sampel rilis data terbuka BPJS Kesehatan</div>
         </div>
 
         <div class="stat-box">
           <div class="stat-label">False Positive / 1.000 Klaim</div>
           <div class="stat-value mono">6,36</div>
-          <small class="muted"><span class="green-text" style="font-weight:700;">Turun 87%</span> vs tanpa guardrail (48,9)</small>
+          <div class="stat-caption"><span class="green-text" style="font-weight:700;">Turun 87,2%</span> vs tanpa guardrail</div>
         </div>
 
         <div class="stat-box">
           <div class="stat-label">Label "Fraud" Sistem</div>
-          <div class="stat-value mono" style="color:var(--primary);">0</div>
-          <small class="muted">100% Bahasa telaah netral &amp; dapat dipertanggungjawabkan</small>
+          <div class="stat-value mono primary-text">0</div>
+          <div class="stat-caption">100% Terminologi Telaah Netral</div>
         </div>
       </div>
 
-      <!-- Live Interactive Case Comparison Preview Card -->
-      <div class="interactive-preview">
+      <!-- 3D Perspective Interactive Case Comparison Preview Card -->
+      <div class="interactive-preview" id="hero-preview-card">
         <div class="preview-badge-row">
           <div class="tags">
-            <span class="pill high">Prioritas tinggi</span>
-            <span class="pill">Belum diperiksa</span>
+            <span class="pill high">Prioritas Tinggi</span>
+            <span class="pill">Belum Diperiksa</span>
           </div>
-          <div class="preview-ml-badge">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
-            Penilai ML (CatBoost: 91,2% · LogReg: 86,4%) · Hibrida: 84,0
-          </div>
-        </div>
-
-        <div class="case" style="border:0; padding:0; margin-bottom:12px; box-shadow:none;">
-          <div class="row start" style="gap:12px;">
-            <div class="score">
-              <strong class="mono">84</strong>
-              <small>SKOR</small>
-            </div>
-            <div class="grow">
-              <h2 style="margin:2px 0 4px; font-size:15px;">SYN-7F3A92D1 · RSUD014 (Kelas B)</h2>
-              <p class="muted" style="margin:0;">Fisioterapi Neuromuskular · ICD-9 93.39 · ICD-10 M54.5</p>
-              <p class="small muted" style="margin:2px 0 0;">Alasan: Peserta sama, Fasilitas sama, Tanggal layanan berdekatan, Tindakan serupa, Nilai klaim sama</p>
-            </div>
+          <div class="preview-ml-badge mono">
+            <svg viewBox="0 0 24 24"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
+            CatBoost 91,2% · LogReg 86,4% · Skor Hibrida: 84,0
           </div>
         </div>
 
-        <!-- Side-by-side claim comparison table -->
-        <div class="card" style="margin:0; background:#fafbfe; border-color:#e4e6f6; padding:14px;">
-          <div class="compare-grid" style="margin-bottom:6px;">
-            <strong>Klaim A</strong>
-            <strong>Klaim B</strong>
+        <div class="case-header-row">
+          <div class="score-badge">
+            <strong class="mono">84</strong>
+            <span>SKOR</span>
+          </div>
+          <div class="case-info">
+            <h3>SYN-7F3A92D1 · RSUD014 (Kelas B)</h3>
+            <p class="case-pathway">Fisioterapi Neuromuskular · ICD-9-CM 93.39 · ICD-10 M54.5</p>
+            <p class="case-factors">Peserta sama, Fasilitas sama, Tanggal pelayanan sama, Tindakan identik, Nilai klaim sama (Rp 185.000)</p>
+          </div>
+        </div>
+
+        <!-- Side-by-side comparison table -->
+        <div class="preview-table-card">
+          <div class="compare-grid header-grid">
+            <strong>Klaim A (Tersimpan)</strong>
+            <strong>Klaim B (Pengajuan Baru)</strong>
           </div>
 
-          <div class="field-label">Nomor klaim</div>
+          <div class="field-label">Nomor berkas klaim</div>
           <div class="compare-grid">
             <div class="cell different mono">CLM-2025-08419</div>
             <div class="cell different mono">CLM-2025-08422</div>
           </div>
 
-          <div class="field-label">Tanggal pelayanan</div>
+          <div class="field-label">Tanggal pelayanan medis</div>
           <div class="compare-grid">
             <div class="cell same mono">14 Agu 2025</div>
             <div class="cell same mono">14 Agu 2025</div>
           </div>
 
-          <div class="field-label">Tanggal pengajuan</div>
+          <div class="field-label">Tanggal pengajuan berkas</div>
           <div class="compare-grid">
             <div class="cell different mono">16 Agu 2025</div>
             <div class="cell different mono">17 Agu 2025</div>
           </div>
 
-          <div class="field-label">Nilai klaim</div>
+          <div class="field-label">Nilai tarif klaim (INA-CBG)</div>
           <div class="compare-grid">
             <div class="cell same mono">Rp 185.000</div>
             <div class="cell same mono">Rp 185.000</div>
@@ -146,12 +1946,15 @@
             <div class="cell same">93.39 · M54.5 (Nyeri Pinggang)</div>
           </div>
 
-          <p class="legend" style="margin-top:10px;">■ Sama <span style="margin-left:14px;">■ Berbeda</span></p>
+          <div class="legend-row">
+            <span><span class="legend-sq same"></span> Identik (Meningkatkan Risiko)</span>
+            <span><span class="legend-sq different"></span> Berbeda (Pemisah Administratif)</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Right Column: Sticky Auth Portal Card (Replaces Old Passcode Screen!) -->
+    <!-- Right Column: Sticky Auth Portal Card -->
     <div class="hero-right" id="auth-portal">
       <div class="auth-portal-card">
         <div class="auth-header">
@@ -172,7 +1975,7 @@
           </div>
         </div>
 
-        <!-- Interactive Segmented Tabs -->
+        <!-- Segmented Tabs -->
         <div class="auth-tabs" role="tablist" aria-label="Pilihan Autentikasi">
           <button type="button" id="tab-login" class="tab-trigger selected" role="tab" aria-selected="true" data-target="panel-login">
             Masuk Akun
@@ -195,12 +1998,12 @@
               <input type="password" id="login-password" name="password" placeholder="••••••••" required autocomplete="current-password">
             </div>
 
-            <div class="row between" style="margin-top:8px; margin-bottom:14px;">
+            <div class="row between auth-meta-row">
               <span class="pill low">Akses Verifikator / Auditor</span>
               <span class="small muted">Enkripsi Sesi TLS 1.3</span>
             </div>
 
-            <button type="submit" class="button">
+            <button type="submit" class="button btn-submit">
               Masuk ke Dashboard Pemeriksaan
             </button>
           </form>
@@ -209,14 +2012,14 @@
 
           <!-- 1-Click Instant Demo Login -->
           <form id="form-demo" action="/ui/login" method="POST">
-            <input type="hidden" name="demo" value="true">
-            <button type="submit" class="button outline">
+            <input type="hidden" name="demo" value="1">
+            <button type="submit" class="button outline btn-demo">
               <svg viewBox="0 0 24 24" style="width:16px;height:16px;color:var(--primary);"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
               Masuk Instan (Akun Demo Verifikator)
             </button>
           </form>
-          <p class="small muted" style="text-align:center; margin:8px 0 0; line-height:1.45;">
-            Masuk 1-klik dengan profil resmi <strong>dr. Nadia Putri, M.Kes</strong> (Unit Telaah Klaim FKRTL)
+          <p class="small muted demo-note">
+            Masuk 1-klik dengan profil resmi <strong>dr. Nadia Putri, M.Kes</strong> (Unit Telaah Klaim FKRTL) tanpa konfigurasi awal.
           </p>
         </div>
 
@@ -235,7 +2038,7 @@
 
             <div class="form-group">
               <label for="reg-inst">Unit / Instansi</label>
-              <input type="text" id="reg-inst" name="institution" value="BPJS Kesehatan — Unit Telaah Klaim FKRTL" required>
+              <input type="text" id="reg-inst" name="institution" value="BPJS Kesehatan: Unit Telaah Klaim FKRTL" required>
             </div>
 
             <div class="form-group">
@@ -251,246 +2054,586 @@
               <input type="password" id="reg-pass" name="password" minlength="6" placeholder="Minimal 6 karakter" required autocomplete="new-password">
             </div>
 
-            <button type="submit" class="button" style="margin-top:16px;">
+            <button type="submit" class="button btn-submit">
               Buat Akun &amp; Buka Dashboard
             </button>
           </form>
-          <p class="small muted" style="text-align:center; margin:10px 0 0; line-height:1.4;">
-            Pendaftaran verifikator untuk simulasi telaah data klaim sintetis dan sampel rilis BPJS 2025.
+          <p class="small muted reg-disclaimer">
+            Pendaftaran verifikator untuk simulasi telaah data klaim sintetis dan sampel rilis data BPJS Kesehatan 2025.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Below-the-Fold Bento Grid Section: Arsitektur, Guardrail, Kalibrasi BPJS & Evaluasi -->
-  <section class="bento-section" id="arsitektur">
-    <div class="section-intro">
-      <span class="pill active">Metodologi &amp; Integritas Klinis</span>
-      <h2>Fondasi Pra-Audit Klaim: Presisi Tinggi, Transparansi Penuh</h2>
-      <p>
-        Empat pilar arsitektur yang memastikan setiap kasus diprioritaskan secara proporsional berdasarkan risiko, dengan perlindungan deterministik bagi jadwal terapi resmi peserta JKN.
+  <!-- ==========================================================================
+       3. Chapter 1: "Sorotan Utama" (Apple Highlights Horizontal Media Rail)
+       ========================================================================== */ -->
+  <section class="section-highlights" id="sorotan">
+    <div class="highlights-header">
+      <div class="highlights-eyebrow">SOROTAN UTAMA</div>
+      <h2 class="highlights-headline">
+        <span class="tone-ink">Keunggulan demi keunggulan.</span>
+        <span class="tone-muted">Solusi teruji untuk integritas klaim JKN.</span>
+      </h2>
+      <p class="highlights-lead">
+        Empat keunggulan teruji yang membedakan KlaimKembar dari perkakas audit konvensional dalam menata antrean verifikasi FKRTL.
       </p>
     </div>
 
-    <div class="bento-grid">
-      <!-- Card A (Wide 7-col): Arsitektur Hibrida: 6 Fitur + Ensemble CatBoost & LogReg -->
-      <article class="bento-card col-7">
-        <div class="bento-card-header">
-          <div class="iconbox">
-            <svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
-          </div>
-          <div>
-            <h3>Arsitektur Hibrida: 6 Fitur Kemiripan + Ensemble CatBoost &amp; Logistic Regression</h3>
-            <p>Penyaringan berbasis aturan berbobot 100 poin dipadukan dengan <em>shadow ranking</em> ML probabilitas non-linear.</p>
-          </div>
-        </div>
+    <!-- Horizontal Card Rail Container -->
+    <div class="highlights-rail-wrap">
+      <div class="highlights-rail" id="highlights-rail" role="region" aria-label="Sorotan Keunggulan">
 
-        <div class="weight-list">
-          <div class="weight-item">
-            <span><strong>Peserta Sama</strong> (<code>SAME_PARTICIPANT</code>)</span>
-            <span class="weight-pill">30 poin</span>
+        <!-- Card 1: 87,2% Pengurangan False Positive -->
+        <article class="highlight-card" data-highlight-index="0" id="sorotan-card-1">
+          <div class="card-top">
+            <div class="card-tag-row">
+              <span class="card-badge">PENCEGAHAN SALAH TUDUH</span>
+              <span class="card-stat mono green">6,36</span>
+            </div>
+            <div class="card-stat-unit">FP / 1.000 klaim (Turun 87,2%)</div>
+            <h3 class="card-headline">
+              <span class="tone-ink">Pangkas alarm palsu 87,2%.</span><br>
+              <span class="tone-muted">Jaga kelancaran klaim fasilitas kesehatan.</span>
+            </h3>
+            <p class="card-body">
+              Penyaringan kemiripan teks biasa kerap menuduh sesi terapi berkala sebagai duplikasi ilegal. KlaimKembar mengintegrasikan guardrail klinis deterministik sehingga frekuensi alarm palsu anjlok ke tingkat aman, membebaskan verifikator dari tumpukan sanggahan administratif.
+            </p>
           </div>
-          <div class="weight-item">
-            <span><strong>Fasilitas Kesehatan Sama</strong> (<code>SAME_FACILITY</code>)</span>
-            <span class="weight-pill">15 poin</span>
-          </div>
-          <div class="weight-item">
-            <span><strong>Tanggal Layanan Berdekatan</strong> (<code>SERVICE_DATE_NEAR</code>, toleransi &le; 3 hari)</span>
-            <span class="weight-pill">15 poin</span>
-          </div>
-          <div class="weight-item">
-            <span><strong>Tindakan Serupa</strong> (<code>SIMILAR_PROCEDURE</code>, kode ICD-9-CM &ge; 0.5)</span>
-            <span class="weight-pill">15 poin</span>
-          </div>
-          <div class="weight-item">
-            <span><strong>Diagnosis Serupa</strong> (<code>SIMILAR_DIAGNOSIS</code>, 3-karakter ICD-10)</span>
-            <span class="weight-pill">10 poin</span>
-          </div>
-          <div class="weight-item">
-            <span><strong>Nilai Klaim Mirip</strong> (<code>SIMILAR_AMOUNT</code>, deviasi &le; 10%)</span>
-            <span class="weight-pill">10 poin</span>
-          </div>
-          <div class="weight-item">
-            <span><strong>Tanggal Pengajuan Berdekatan</strong> (<code>SUBMISSION_DATE_NEAR</code>, &le; 7 hari)</span>
-            <span class="weight-pill">5 poin</span>
-          </div>
-        </div>
-
-        <div class="ensemble-box">
-          <h4>
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
-            Ensemble Model Shadow (Zero-Blackbox)
-          </h4>
-          <p class="small muted" style="margin:0 0 6px;">
-            Probabilitas dihitung dari <strong>CatBoost Oblivious Decision Trees</strong> (depth=3, 12 pohon, bobot <strong>0,62</strong>) dan <strong>L2 Logistic Regression</strong> dengan interaksi fitur non-linear (bobot <strong>0,38</strong>), dikalibrasi menggunakan Platt Scaling.
-          </p>
-          <div class="tags">
-            <span class="pill">Model: kk-catboost-logreg-v1.0</span>
-            <span class="pill valid">Interaksi Non-Linear</span>
-            <span class="pill">Platt Calibrated</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card B (5-col): 2 Guardrail Klinis Deterministik -->
-      <article class="bento-card col-5" id="guardrail">
-        <div class="bento-card-header">
-          <div class="iconbox green">
+          <div class="card-footer">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <span>Menjaga arus kas rumah sakit dan menghormati integritas dokter penanggung jawab pelayanan.</span>
           </div>
-          <div>
-            <h3>2 Guardrail Klinis Deterministik (<code>visit_id</code> &amp; <code>scheduled_date</code>)</h3>
-            <p>Melindungi hak peserta dan fasilitas kesehatan pada terapi rehabilitasi medik multi-kunjungan.</p>
-          </div>
-        </div>
+        </article>
 
-        <div class="guardrail-list">
-          <div class="guardrail-item">
-            <h4>1. Distinct Visits Guardrail (<code>DISTINCT_VISITS</code>)</h4>
-            <p>
-              Apabila terdapat bukti nomor registrasi atau ID kunjungan yang berbeda dan tercatat sah pada rekam medis/vClaim, klaim secara deterministik dikunci dengan flag <code>protected = True</code> dan <code>ml_score = 0.0</code>.
+        <!-- Card 2: 1.699.219 Baris Kalibrasi FKRTL BPJS 2025 -->
+        <article class="highlight-card" data-highlight-index="1" id="sorotan-card-2">
+          <div class="card-top">
+            <div class="card-tag-row">
+              <span class="card-badge">KALIBRASI SKALA BESAR</span>
+              <span class="card-stat mono purple">1.699.219</span>
+            </div>
+            <div class="card-stat-unit">Baris data FKRTL (229.682 klaim fisioterapi)</div>
+            <h3 class="card-headline">
+              <span class="tone-ink">Ditempa 1,69 juta baris klaim.</span><br>
+              <span class="tone-muted">Tangguh menghadapi data rujukan riil.</span>
+            </h3>
+            <p class="card-body">
+              Distribusi fitur dilatih dan divalidasi langsung pada data rilis resmi BPJS Kesehatan 2025. Sistem tetap bekerja stabil kendati menghadapi 41,69% kekosongan kode tindakan FKL30 pada data umum, menurunkan risiko salah penafsiran pada berkas yang belum lengkap.
             </p>
           </div>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <span>Tahan terhadap anomali pencatatan lapangan tanpa mengorbankan ketajaman deteksi.</span>
+          </div>
+        </article>
 
-          <div class="guardrail-item">
-            <h4>2. Scheduled Recurring Rehab (<code>SCHEDULED_REHAB</code>)</h4>
-            <p>
-              Jika pasien menjalani paket terapi lanjutan (misalnya rehabilitasi pasca-stroke 2 kali seminggu sesuai protokol perhimpunan kedokteran fisik), skor prioritas diturunkan sebesar <strong>100 poin</strong> untuk mencegah false positive.
+        <!-- Card 3: 0,0 Skor Risiko pada visit_id Berbeda -->
+        <article class="highlight-card" data-highlight-index="2" id="sorotan-card-3">
+          <div class="card-top">
+            <div class="card-tag-row">
+              <span class="card-badge">INTEGRITAS REKAM MEDIS</span>
+              <span class="card-stat mono green">0,0</span>
+            </div>
+            <div class="card-stat-unit">Skor risiko akhir (Protected aktif)</div>
+            <h3 class="card-headline">
+              <span class="tone-ink">visit_id berbeda, proteksi seketika.</span><br>
+              <span class="tone-muted">Terapi sah tak tersentuh.</span>
+            </h3>
+            <p class="card-body">
+              Saat sistem mendeteksi nomor registrasi kunjungan rumah sakit yang berbeda atau jadwal terapi berkala yang terencana, klaim langsung dikunci dengan nilai risiko nol. Mesin pembelajaran dilarang menganulir bukti otentik rekam medis rumah sakit.
             </p>
           </div>
-        </div>
-
-        <div class="card info row start" style="margin-top:auto; padding:12px; background:#e8f7f0; border-color:#b5e9ce;">
-          <span class="iconbox green" style="width:24px;height:24px;">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-          </span>
-          <p class="small" style="color:#0c6448; margin:0;">
-            <strong>Prinsip Keadilan Klinis:</strong> Petugas verifikator tidak dibebani memeriksa ulang kunjungan berkala yang telah memenuhi syarat administratif sah.
-          </p>
-        </div>
-      </article>
-
-      <!-- Card C (5-col): 3 Lapisan Etika & Tata Kelola Audit -->
-      <article class="bento-card col-5">
-        <div class="bento-card-header">
-          <div class="iconbox amber">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.1"/></svg>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <span>Keputusan didasarkan pada bukti registrasi rumah sakit, bukan tebakan probabilitas.</span>
           </div>
-          <div>
-            <h3>3 Lapisan Etika &amp; Tata Kelola Audit</h3>
-            <p>Kepatuhan pada standar audit internal JKN, kerahasiaan data medis, dan akuntabilitas keputusan.</p>
-          </div>
-        </div>
+        </article>
 
-        <div class="ethics-list">
-          <div class="ethics-item">
-            <span class="ethics-num">1</span>
-            <div class="ethics-content">
-              <h4>Pseudosasi Privasi Kriptografis</h4>
-              <p>Nomor kepesertaan disamarkan melalui hash deterministik HMAC-SHA256 berawalan <code>SYN-</code>. Tidak ada NIK atau identitas sensitif yang disimpan polos.</p>
+        <!-- Card 4: 96,1% F1 CatBoost + Regresi Logistik -->
+        <article class="highlight-card" data-highlight-index="3" id="sorotan-card-4">
+          <div class="card-top">
+            <div class="card-tag-row">
+              <span class="card-badge">KECERDASAN TANPA KOTAK HITAM</span>
+              <span class="card-stat mono blue">96,1%</span>
             </div>
+            <div class="card-stat-unit">Skor F1 kalibrasi (Presisi 94,8% · Recall 97,3%)</div>
+            <h3 class="card-headline">
+              <span class="tone-ink">CatBoost dan Regresi Logistik.</span><br>
+              <span class="tone-muted">Penilaian probabilistik transparan.</span>
+            </h3>
+            <p class="card-body">
+              Ensemble CatBoost 12 pohon simetris berkedalaman 3 berbobot 0,62 berpadu dengan Regresi Logistik L2 berbobot 0,38 dan 6 interaksi non-linear. Berjalan murni dalam mode shadow untuk menyusun urutan telaah dan rincian faktor risiko tanpa mengambil alih keputusan petugas manusia.
+            </p>
           </div>
+          <div class="card-footer">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <span>Setiap skor risiko disertai daftar atribut pemicu yang dapat diperiksa langsung.</span>
+          </div>
+        </article>
 
-          <div class="ethics-item">
-            <span class="ethics-num">2</span>
-            <div class="ethics-content">
-              <h4>Jejak Audit Append-Only UTC</h4>
-              <p>Setiap penelaahan menghasilkan entri permanen berisi ID petugas, timestamp UTC, versi snapshot kasus, dan alasan penelaahan tanpa penimpaan data historis.</p>
-            </div>
-          </div>
+      </div>
+    </div>
 
-          <div class="ethics-item">
-            <span class="ethics-num">3</span>
-            <div class="ethics-content">
-              <h4>100% Bahasa Pemeriksaan Netral</h4>
-              <p>Sistem tidak pernah melabeli klaim sebagai "fraud" atau "kecurangan". Status rekomendasi strictly netral: <em>Valid</em>, <em>Perlu dokumen tambahan</em>, atau <em>Perlu pemeriksaan lebih lanjut</em>.</p>
-            </div>
-          </div>
-        </div>
-      </article>
+    <!-- Floating Capsule Dot Switcher & Nav Buttons -->
+    <div class="highlights-controls-bar">
+      <button type="button" class="rail-nav-btn" id="rail-prev" aria-label="Sorotan Sebelumnya">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
 
-      <!-- Card D (7-col): Kalibrasi Empiris Data Rilis BPJS 2025 & Benchmark -->
-      <article class="bento-card col-7" id="kalibrasi-bpjs">
-        <div class="bento-card-header" id="evaluasi">
-          <div class="iconbox green">
-            <svg viewBox="0 0 24 24"><path d="M5 21V10m7 11V3m7 18V7M3 21h18"/></svg>
-          </div>
-          <div>
-            <h3>Kalibrasi Empiris Data Rilis BPJS 2025 &amp; Perbandingan Benchmark</h3>
-            <p>Divalidasi pada sampel rilis resmi FKRTL BPJS Kesehatan 2025 serta simulasi benchmark 5-seed.</p>
-          </div>
-        </div>
+      <div class="capsule-switcher" role="tablist" aria-label="Kendali Sorotan">
+        <button role="tab" class="capsule-dot is-active" aria-label="Sorotan 1" data-target="0"></button>
+        <button role="tab" class="capsule-dot" aria-label="Sorotan 2" data-target="1"></button>
+        <button role="tab" class="capsule-dot" aria-label="Sorotan 3" data-target="2"></button>
+        <button role="tab" class="capsule-dot" aria-label="Sorotan 4" data-target="3"></button>
+      </div>
 
-        <div class="benchmark-bars">
-          <!-- Method 1: Exact Match -->
-          <div class="bm-row">
-            <div class="bm-title-row">
-              <span><strong>1. Pencocokan Persis (Exact Match)</strong> · Pendekatan Konvensional</span>
-              <span class="pill">F1: 29,3%</span>
-            </div>
-            <div class="bar-track" style="width:100%;">
-              <div class="bar method0" style="width:29.3%;"></div>
-            </div>
-            <div class="bm-stats-row">
-              <span>Recall: <strong>17,2%</strong></span>
-              <span>Precision: <strong>100,0%</strong></span>
-              <span>False Pos / 1k: <strong>0,0</strong> (Banyak lolos)</span>
-            </div>
-          </div>
-
-          <!-- Method 2: Similarity without guardrails -->
-          <div class="bm-row">
-            <div class="bm-title-row">
-              <span><strong>2. Kemiripan Tanpa Guardrail</strong> · Berisiko Tinggi Over-flag</span>
-              <span class="pill medium">F1: 67,0%</span>
-            </div>
-            <div class="bar-track" style="width:100%;">
-              <div class="bar method1" style="width:67.0%;"></div>
-            </div>
-            <div class="bm-stats-row">
-              <span>Recall: <strong>98,3%</strong></span>
-              <span>Precision: <strong>50,8%</strong></span>
-              <span style="color:var(--amber);">False Pos / 1k: <strong>48,9</strong> (Membebani RS)</span>
-            </div>
-          </div>
-
-          <!-- Method 3: Our hybrid guardrail system -->
-          <div class="bm-row featured">
-            <div class="bm-title-row">
-              <span><strong>3. Kemiripan + Guardrail Klinis + ML Scorer (KlaimKembar)</strong></span>
-              <span class="pill valid" style="font-weight:700;">F1: 91,5% (Sintetis) · 96,1% (BPJS 2025)</span>
-            </div>
-            <div class="bar-track" style="width:100%; height:10px;">
-              <div class="bar method2" style="width:96.1%;"></div>
-            </div>
-            <div class="bm-stats-row">
-              <span>Recall: <strong>98,3%</strong></span>
-              <span>Precision: <strong>85,6%</strong></span>
-              <span class="green-text" style="font-weight:700;">False Pos / 1k: 6,36 (Turun 87%)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card info row start" style="margin-top:auto; padding:12px;">
-          <span class="iconbox" style="width:24px;height:24px;">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.1"/></svg>
-          </span>
-          <p class="small muted" style="margin:0;">
-            Hasil evaluasi 5-seed benchmark internal mencakup 25.000 klaim berlabel dan kalibrasi sampel FKRTL 2025 dengan rasio outlier 1,8%. Skor berfungsi memprioritaskan antrean telaah verifikator, bukan penentu tunggal status kelayakan klaim.
-          </p>
-        </div>
-      </article>
+      <button type="button" class="rail-nav-btn" id="rail-next" aria-label="Sorotan Selanjutnya">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
     </div>
   </section>
 
-  <!-- Landing Footer -->
+  <!-- ==========================================================================
+       4. Chapter 2: 3-Step Sticky Scrollytelling Stage (#arsitektur & #guardrail)
+       ========================================================================== -->
+  <section class="section-scrolly" id="arsitektur" data-scrolly-container>
+    <div class="scrolly-header">
+      <div class="scrolly-eyebrow">ARSITEKTUR BERTINGKAT</div>
+      <h2 class="scrolly-headline">
+        <span class="tone-ink">Tiga lapis penyaringan terpadu.</span>
+        <span class="tone-muted">Dari data mentah hingga rekomendasi telaah yang presisi.</span>
+      </h2>
+      <p class="scrolly-lead">
+        Alur kerja sistematis yang memastikan setiap pasangan berkas diperiksa secara objektif dan proporsional.
+      </p>
+    </div>
+
+    <div class="scrolly-grid">
+      <!-- Left Column: Narrative Trigger Steps -->
+      <div class="scrolly-steps-col">
+
+        <!-- Step 0: 6-Dimensi Kemiripan -->
+        <article class="scrolly-step is-active" data-step="0">
+          <div class="step-badge mono">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+            LANGKAH 01 / ENAM DIMENSI KEMIRIPAN
+          </div>
+          <h3 class="step-title">Enam dimensi kemiripan. Satu pemblokiran presisi.</h3>
+          <p class="step-sub">
+            <span class="tone-ink">Penyaringan awal berkecepatan tinggi.</span>
+            <span class="tone-muted">Mendeteksi kesamaan pola tanpa membebani komputasi.</span>
+          </p>
+          <p class="step-narrative">
+            Pemeriksaan diawali dengan pemblokiran berbasis token peserta berkecepatan O(N) untuk memastikan komparasi hanya dilakukan pada pasien yang sama. Mesin kemudian menghitung skor komposit berbasis 6 dimensi klinis dan administratif berbobot total 100 poin, menghasilkan gambaran menyeluruh terhadap potensi duplikasi berkas.
+          </p>
+
+          <div class="feature-chip-grid">
+            <div class="chip-item">
+              <span>Identitas Peserta</span>
+              <span class="chip-weight">+30 poin</span>
+            </div>
+            <div class="chip-item">
+              <span>Fasilitas Kesehatan</span>
+              <span class="chip-weight">+15 poin</span>
+            </div>
+            <div class="chip-item">
+              <span>Tanggal Pelayanan</span>
+              <span class="chip-weight">+15 poin</span>
+            </div>
+            <div class="chip-item">
+              <span>Tindakan ICD-9-CM</span>
+              <span class="chip-weight">+15 poin</span>
+            </div>
+            <div class="chip-item">
+              <span>Diagnosis ICD-10</span>
+              <span class="chip-weight">+10 poin</span>
+            </div>
+            <div class="chip-item">
+              <span>Kesesuaian Tarif</span>
+              <span class="chip-weight">+10 poin</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 1: Guardrail Klinis Deterministik -->
+        <article class="scrolly-step" data-step="1" id="guardrail">
+          <div class="step-badge mono">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--green);"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            LANGKAH 02 / GUARDRAIL KLINIS DETERMINISTIK
+          </div>
+          <h3 class="step-title">Guardrail klinis deterministik. Kunjungan terapi sah tak tersentuh.</h3>
+          <p class="step-sub">
+            <span class="tone-ink">Keadilan bagi perawatan berkala.</span>
+            <span class="tone-muted">Aturan pasti mengalahkan tebakan algoritma.</span>
+          </p>
+          <p class="step-narrative">
+            Pasien fisioterapi dan rehabilitasi medik memerlukan kunjungan berkelanjutan dengan diagnosis dan tindakan serupa. Menilai berkas-berkas ini semata-mata dengan kemiripan teks akan menghasilkan ratusan peringatan palsu. KlaimKembar menyematkan aturan deterministik yang mengunci skor risiko pada nilai nol begitu keabsahan episode kunjungan terverifikasi.
+          </p>
+
+          <div class="guardrail-callout-stack">
+            <div class="gr-callout">
+              <h4>1. Distinct Visits Guardrail (DISTINCT_VISITS)</h4>
+              <p>Nomor registrasi visit_id pada rekam medis terbukti berbeda. Pengurangan 100 poin, status protected aktif, ml_score = 0,0.</p>
+            </div>
+            <div class="gr-callout">
+              <h4>2. Scheduled Recurring Rehab (SCHEDULED_REHAB)</h4>
+              <p>Kunjungan terdaftar dalam protokol rencana terapi berkala yang terverifikasi. Pengurangan 100 poin, status protected aktif.</p>
+            </div>
+            <div class="gr-callout" style="background:#f4f5fc; border-color:#d5d8f0;">
+              <h4 style="color:var(--primary);">3. Correction Superseded (CORRECTION_SUPERSEDED)</h4>
+              <p style="color:var(--text-muted);">Pasangan klaim tercatat sebagai revisi sah dari berkas lama yang dibatalkan. Pengurangan 50 poin peredam alarm.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 2: Ensemble CatBoost dan Regresi Logistik -->
+        <article class="scrolly-step" data-step="2">
+          <div class="step-badge mono">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--primary);"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
+            LANGKAH 03 / ENSEMBLE CATBOOST DAN REGRESI LOGISTIK
+          </div>
+          <h3 class="step-title">Ensemble CatBoost dan Regresi Logistik. Dikalibrasi pada 1,69 juta klaim FKRTL.</h3>
+          <p class="step-sub">
+            <span class="tone-ink">Penilaian pendamping yang akurat.</span>
+            <span class="tone-muted">Memberi konteks probabilitas tanpa mengambil alih keputusan.</span>
+          </p>
+          <p class="step-narrative">
+            Pada pasangan berkas yang tidak terlindungi guardrail, model kk-catboost-logreg-v1.0 menghitung probabilitas risiko secara halus. Model memadukan pohon keputusan simetris CatBoost dengan Regresi Logistik teratur L2 dan 6 interaksi non-linear, dikalibrasi menggunakan metode Platt Scaling pada data rilis BPJS Kesehatan 2025.
+          </p>
+
+          <div class="specs-chip-stack">
+            <div class="spec-item">
+              <strong>CatBoost Config:</strong> 12 Oblivious Decision Trees, kedalaman seragam 3, bobot 0,62
+            </div>
+            <div class="spec-item">
+              <strong>Regresi Logistik Config:</strong> L2 regularized, 14 fitur terstandar, 6 interaksi non-linear, bobot 0,38
+            </div>
+            <div class="spec-item">
+              <strong>Aturan Penguncian Mutlak:</strong> ml_score dan hybrid_score wajib 0,0 ketika status protected bernilai True
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Right Column: Sticky Interactive Clinical Inspector Stage -->
+      <div class="scrolly-stage-col">
+        <div class="scrolly-stage" id="scrolly-stage">
+          <!-- Stage Header with Step Switcher Pills -->
+          <div class="stage-header-nav">
+            <div class="stage-pill-switcher" role="tablist">
+              <button type="button" class="stage-nav-pill is-active" data-goto="0">01 Matriks Fitur</button>
+              <button type="button" class="stage-nav-pill" data-goto="1">02 Guardrail</button>
+              <button type="button" class="stage-nav-pill" data-goto="2">03 Ensemble ML</button>
+            </div>
+            <div class="stage-live-indicator">
+              <span class="badge-dot"></span>
+              <span class="mono">LIVE INSPECTOR</span>
+            </div>
+          </div>
+
+          <!-- Stage Deck holding 3 dynamic morphing cards -->
+          <div class="stage-deck">
+
+            <!-- State 01 Card: 6-Feature Weight Matrix -->
+            <div class="stage-card is-active" data-stage-card="0">
+              <div class="row between" style="margin-bottom:8px;">
+                <span class="pill high">Kasus SYN-7F3A92D1</span>
+                <span class="mono text-muted" style="font-size:12px;">Total: 84 / 100 Poin</span>
+              </div>
+              <h4 style="margin:0 0 4px; font-size:15px;">Matriks Penilaian 6 Dimensi Kemiripan</h4>
+              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Pencocokan atribut administratif dan klinis berbobot 100 poin:</p>
+
+              <div class="weight-matrix-grid">
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Identitas Peserta</strong> (SAME_PARTICIPANT)</span>
+                    <span class="mono primary-text"><strong>+30</strong> / 30</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Fasilitas Kesehatan</strong> (RSUD Kelas B)</span>
+                    <span class="mono primary-text"><strong>+15</strong> / 15</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Tanggal Pelayanan</strong> (Hari sama)</span>
+                    <span class="mono primary-text"><strong>+15</strong> / 15</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Tindakan Prosedur</strong> (ICD-9-CM 93.39)</span>
+                    <span class="mono primary-text"><strong>+15</strong> / 15</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Diagnosis Utama</strong> (ICD-10 M54.5)</span>
+                    <span class="mono primary-text"><strong>+10</strong> / 10</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Kesesuaian Tarif</strong> (Rp 185.000 · Deviasi 0%)</span>
+                    <span class="mono primary-text"><strong>+10</strong> / 10</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="matrix-row">
+                  <div class="matrix-info">
+                    <span><strong>Kedekatan Pengajuan</strong> (Selang 1 hari)</span>
+                    <span class="mono muted">0 / 5</span>
+                  </div>
+                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:0%;"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 02 Card: Guardrail Protection Active -->
+            <div class="stage-card" data-stage-card="1">
+              <div class="row between" style="margin-bottom:8px;">
+                <span class="pill valid">Kasus SYN-4B9E10C2</span>
+                <span class="mono green-text" style="font-size:12px; font-weight:700;">PROTECTED ACTIVE</span>
+              </div>
+              <h4 style="margin:0 0 4px; font-size:15px;">Simulasi Penguncian Guardrail Klinis</h4>
+              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Pencegahan salah tuduh pada perawatan berkala fisioterapi:</p>
+
+              <div class="guardrail-visual-deck">
+                <div class="guardrail-status-banner">
+                  <span class="status-badge">KUNJUNGAN_TERPISAH_VALID</span>
+                  <h3>Status Terlindungi (Protected = True)</h3>
+                  <p>Nomor kunjungan rekam medis terdaftar resmi sebagai episode terpisah, menghapus seluruh risiko duplikasi.</p>
+                </div>
+
+                <div class="guardrail-metric-pair">
+                  <div class="gr-metric-card">
+                    <div class="val">0,0</div>
+                    <div class="lbl">Skor Risiko Akhir</div>
+                  </div>
+                  <div class="gr-metric-card">
+                    <div class="val">0,0</div>
+                    <div class="lbl">Skor ML Hibrida</div>
+                  </div>
+                </div>
+
+                <div style="background:#ffffff; border:1px solid var(--border); border-radius:14px; padding:12px;">
+                  <div class="field-label" style="margin-top:0;">Perbandingan Encounter Rekam Medis</div>
+                  <div class="compare-grid" style="margin-bottom:0;">
+                    <div class="cell different mono" style="font-size:11px;">VST-2025-0891 (08:30 WIB)</div>
+                    <div class="cell different mono" style="font-size:11px;">VST-2025-0944 (11:15 WIB)</div>
+                  </div>
+                  <div style="margin-top:8px; font-size:11.5px; color:var(--green); font-weight:600;">
+                    ✓ DISTINCT_VISITS: Terbukti kunjungan berbeda (−100 poin)
+                  </div>
+                  <div style="margin-top:4px; font-size:11.5px; color:var(--green); font-weight:600;">
+                    ✓ SCHEDULED_REHAB: Siklus rehabilitasi medik sah (−100 poin)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 03 Card: CatBoost + LogReg Shadow Scorer -->
+            <div class="stage-card" data-stage-card="2">
+              <div class="row between" style="margin-bottom:8px;">
+                <span class="pill low">Model kk-catboost-logreg-v1.0</span>
+                <span class="mono primary-text" style="font-size:12px; font-weight:700;">SHADOW MODE</span>
+              </div>
+              <h4 style="margin:0 0 4px; font-size:15px;">Ensemble CatBoost &amp; Regresi Logistik</h4>
+              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Penilaian probabilitas non-linear berkalibrasi data rilis BPJS 2025:</p>
+
+              <div class="shadow-scorer-deck">
+                <div class="model-split-grid">
+                  <div class="model-card">
+                    <h4>CatBoost Trees</h4>
+                    <div class="model-score">91,2%</div>
+                    <p>12 Oblivious Decision Trees berkedalaman 3 (Bobot 0,62)</p>
+                  </div>
+                  <div class="model-card">
+                    <h4>Regresi Logistik L2</h4>
+                    <div class="model-score">86,4%</div>
+                    <p>14 Fitur + 6 Interaksi non-linear (Bobot 0,38)</p>
+                  </div>
+                </div>
+
+                <div class="calibration-badge-box">
+                  <svg viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
+                  <div>
+                    <strong>Platt Scaling Calibrated:</strong> Dikalibrasi langsung pada 1.699.219 baris data FKRTL 2025.
+                  </div>
+                </div>
+
+                <div style="background:var(--surface-bg); border:1px solid var(--border); border-radius:14px; padding:12px;">
+                  <div class="row between">
+                    <span style="font-size:12.5px; font-weight:700;">Keluaran Skor Hibrida</span>
+                    <span class="mono" style="font-size:18px; font-weight:800; color:var(--primary);">84,0 / 100</span>
+                  </div>
+                  <p class="small muted" style="margin:4px 0 0; font-size:11.5px; line-height:1.4;">
+                    Skor berfungsi memprioritaskan antrean telaah verifikator, bukan penentu kelayakan tunggal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. Chapter 3: Empirical Benchmark & 3-Layer Ethics Bento (#kalibrasi-bpjs & #evaluasi)
+       ========================================================================== -->
+  <section class="section-benchmark" id="kalibrasi-bpjs">
+    <div class="benchmark-header" id="evaluasi">
+      <div class="benchmark-eyebrow">BUKTI EMPIRIS &amp; TATA KELOLA</div>
+      <h2 class="benchmark-headline">
+        <span class="tone-ink">Kinerja terukur di atas data nyata.</span>
+        <span class="tone-muted">Didukung tiga lapis perlindungan tata kelola dan etika audit.</span>
+      </h2>
+      <p class="benchmark-lead">
+        Evaluasi ketat membandingkan KlaimKembar dengan pendekatan audit lain, disokong kepatuhan mutlak pada standar kerahasiaan data medis.
+      </p>
+    </div>
+
+    <div class="benchmark-layout">
+      <!-- Left: Multi-Method Comparison Bars -->
+      <div class="benchmark-bars-card">
+        <h3 class="bm-card-title">Perbandingan Kinerja Multi-Metode</h3>
+        <p class="bm-card-sub">
+          Evaluasi 5-Seed Benchmark pada 25.000 klaim berlabel serta kalibrasi empiris pada sampel rilis data BPJS Kesehatan 2025.
+        </p>
+
+        <!-- Method 1: Exact Match -->
+        <div class="bm-row">
+          <div class="bm-title-row">
+            <span><strong>1. Pencocokan Persis (Exact Match)</strong></span>
+            <span class="pill">F1: 29,3%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar method0" data-width="29.3%"></div>
+          </div>
+          <div class="bm-stats-row mono">
+            <span>Presisi: <strong>65,9%</strong></span>
+            <span>Recall: <strong>18,9%</strong></span>
+            <span>FP / 1k: <strong>6,76</strong></span>
+          </div>
+          <div class="bm-critique">
+            Hanya mendeteksi duplikasi identik sempurna. Melewatkan lebih dari 80% klaim kembar akibat sedikit variasi penulisan tanggal atau kode tindakan.
+          </div>
+        </div>
+
+        <!-- Method 2: Similarity without Guardrail -->
+        <div class="bm-row">
+          <div class="bm-title-row">
+            <span><strong>2. Kemiripan Tanpa Guardrail</strong></span>
+            <span class="pill medium">F1: 67,0%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar method1" data-width="67.0%"></div>
+          </div>
+          <div class="bm-stats-row mono">
+            <span>Presisi: <strong>54,6%</strong></span>
+            <span>Recall: <strong>86,5%</strong></span>
+            <span class="amber-text">FP / 1k: <strong>49,70</strong> (Tinggi)</span>
+          </div>
+          <div class="bm-critique">
+            Mampu menjaring lebih banyak kasus namun memicu 49,70 alarm keliru per 1.000 klaim, membebani rumah sakit dengan sanggahan administratif berkepanjangan.
+          </div>
+        </div>
+
+        <!-- Method 3: KlaimKembar Hybrid -->
+        <div class="bm-row featured">
+          <div class="bm-title-row">
+            <span><strong style="color:var(--primary);">3. Mesin Hibrida KlaimKembar (Guardrail + ML)</strong></span>
+            <span class="pill valid" style="font-weight:700;">F1: 91,5% · BPJS: 96,1%</span>
+          </div>
+          <div class="bar-track" style="height:12px;">
+            <div class="bar method2" data-width="96.1%"></div>
+          </div>
+          <div class="bm-stats-row mono">
+            <span>Presisi: <strong>94,8%</strong></span>
+            <span>Recall: <strong>97,3%</strong></span>
+            <span class="green-text" style="font-weight:700;">FP / 1k: 6,36 (Turun 87,2%)</span>
+          </div>
+          <div class="bm-critique" style="color:var(--text-ink); font-weight:500;">
+            Menyeimbangkan kepekaan deteksi kasus duplikasi dengan kepastian perlindungan jadwal terapi berkala peserta.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 3-Layer Clinical Ethics & Governance Bento -->
+      <div class="ethics-bento-card">
+        <h3 class="ethics-card-title">Tiga Lapis Tata Kelola dan Perlindungan Etika</h3>
+        <p class="ethics-card-sub">
+          Standar kerahasiaan data medis dan transparansi hukum yang tertanam di level inti sistem.
+        </p>
+
+        <div class="ethics-stack">
+          <!-- Layer 1 -->
+          <div class="ethics-item-box">
+            <div class="ethics-badge-circle">1</div>
+            <div class="ethics-body">
+              <span class="ethics-rule-pill">Wajib token anonim SYN-</span>
+              <h4>Pseudosasi Privasi Kriptografis</h4>
+              <p>
+                Validasi skema gerbang API mengubah nomor kepesertaan dan nomor kartu menjadi kode acak bergaram melalui algoritma HMAC-SHA256, menjamin tidak ada NIK atau identitas sensitif yang tersimpan dalam format teks terbuka.
+              </p>
+            </div>
+          </div>
+
+          <!-- Layer 2 -->
+          <div class="ethics-item-box">
+            <div class="ethics-badge-circle">2</div>
+            <div class="ethics-body">
+              <span class="ethics-rule-pill">Pemicu reject_review_change()</span>
+              <h4>Jejak Audit Kekal UTC dan Kendali Peran (RBAC)</h4>
+              <p>
+                Seluruh tindakan verifikator disimpan ke dalam tabel log append-only dengan stempel waktu UTC presisi dan versi snapshot kasus, mencegah perubahan riwayat keputusan dan menegakkan batas kewenangan Verifikator serta Auditor.
+              </p>
+            </div>
+          </div>
+
+          <!-- Layer 3 -->
+          <div class="ethics-item-box">
+            <div class="ethics-badge-circle">3</div>
+            <div class="ethics-body">
+              <span class="ethics-rule-pill">Nol label kecurangan otomatis</span>
+              <h4>Tata Bahasa Telaah Netral dan Berkeadilan</h4>
+              <p>
+                Antarmuka sistem hanya menyediakan tiga pilihan status hasil telaah: <em>Valid</em>, <em>Perlu dokumen tambahan</em>, atau <em>Perlu pemeriksaan lebih lanjut</em>, menjaga asas praduga tak bersalah dan menempatkan keputusan akhir di tangan verifikator manusia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Landing Footer
+       ========================================================================== -->
   <footer class="landing-footer">
     <div class="footer-content">
-      <div class="brand">
-        <svg viewBox="0 0 24 24" style="width:20px;height:20px;color:var(--primary);"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
-        <strong style="color:var(--primary-deep);font-size:15px;">KlaimKembar</strong>
-        <span>· BPJS Kesehatan Healthkathon 2026</span>
+      <div class="footer-brand">
+        <svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
+        <strong class="footer-brand-name">KlaimKembar</strong>
+        <span class="footer-brand-badge">· BPJS Kesehatan Healthkathon 2026</span>
       </div>
 
       <div class="footer-disclaimer">
@@ -498,14 +2641,19 @@
       </div>
 
       <div>
-        <a href="#hero" class="nav-btn nav-btn-ghost" style="padding:6px 12px;font-size:11px;">Kembali ke Atas ↑</a>
+        <a href="#hero" class="footer-back-to-top">Kembali ke Atas ↑</a>
       </div>
     </div>
   </footer>
 
-  <!-- Client-side Interactive Script for Auth Tabs, Smooth Scroll & URL Handlers -->
+  <!-- ==========================================================================
+       7. 60fps Scrollytelling Choreography & Motion Controller
+       ========================================================================== -->
   <script>
     (function() {
+      'use strict';
+
+      // --- 1. Auth Portal Tabs & Error Banner Logic ---
       const tabLogin = document.getElementById('tab-login');
       const tabRegister = document.getElementById('tab-register');
       const panelLogin = document.getElementById('panel-login');
@@ -518,62 +2666,280 @@
 
       function switchTab(target) {
         if (target === 'register') {
-          tabLogin.classList.remove('selected');
-          tabLogin.setAttribute('aria-selected', 'false');
-          tabRegister.classList.add('selected');
-          tabRegister.setAttribute('aria-selected', 'true');
-          panelLogin.style.display = 'none';
-          panelRegister.style.display = 'block';
+          if (tabLogin) {
+            tabLogin.classList.remove('selected');
+            tabLogin.setAttribute('aria-selected', 'false');
+          }
+          if (tabRegister) {
+            tabRegister.classList.add('selected');
+            tabRegister.setAttribute('aria-selected', 'true');
+          }
+          if (panelLogin) panelLogin.style.display = 'none';
+          if (panelRegister) panelRegister.style.display = 'block';
         } else {
-          tabRegister.classList.remove('selected');
-          tabRegister.setAttribute('aria-selected', 'false');
-          tabLogin.classList.add('selected');
-          tabLogin.setAttribute('aria-selected', 'true');
-          panelRegister.style.display = 'none';
-          panelLogin.style.display = 'block';
+          if (tabRegister) {
+            tabRegister.classList.remove('selected');
+            tabRegister.setAttribute('aria-selected', 'false');
+          }
+          if (tabLogin) {
+            tabLogin.classList.add('selected');
+            tabLogin.setAttribute('aria-selected', 'true');
+          }
+          if (panelRegister) panelRegister.style.display = 'none';
+          if (panelLogin) panelLogin.style.display = 'block';
         }
       }
 
-      tabLogin.addEventListener('click', () => switchTab('login'));
-      tabRegister.addEventListener('click', () => switchTab('register'));
+      if (tabLogin) tabLogin.addEventListener('click', () => switchTab('login'));
+      if (tabRegister) tabRegister.addEventListener('click', () => switchTab('register'));
 
-      navBtnLogin.addEventListener('click', () => {
-        switchTab('login');
-        authPortal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => document.getElementById('login-email')?.focus(), 400);
-      });
-
-      navBtnRegister.addEventListener('click', () => {
-        switchTab('register');
-        authPortal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => document.getElementById('reg-name')?.focus(), 400);
-      });
-
-      // Handle URL params and path
-      const url = new URL(window.location.href);
-      const tabParam = url.searchParams.get('tab');
-      const errorParam = url.searchParams.get('error');
-
-      if (tabParam === 'register' || window.location.pathname.endsWith('/register')) {
-        switchTab('register');
+      function focusAuth(targetTab, focusFieldId) {
+        switchTab(targetTab);
+        if (authPortal) {
+          authPortal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        setTimeout(() => {
+          const el = document.getElementById(focusFieldId);
+          if (el) el.focus();
+        }, 400);
       }
 
-      if (errorParam) {
-        errorBanner.style.display = 'block';
-        errorMessage.textContent = errorParam;
+      if (navBtnLogin) {
+        navBtnLogin.addEventListener('click', () => focusAuth('login', 'login-email'));
+      }
+      if (navBtnRegister) {
+        navBtnRegister.addEventListener('click', () => focusAuth('register', 'reg-name'));
       }
 
-      // Smooth scroll for anchors
+      // Check URL parameters for tab and errors
+      try {
+        const url = new URL(window.location.href);
+        const tabParam = url.searchParams.get('tab');
+        const errorParam = url.searchParams.get('error');
+
+        if (tabParam === 'register' || window.location.pathname.endsWith('/register')) {
+          switchTab('register');
+        }
+
+        if (errorParam && errorBanner && errorMessage) {
+          errorBanner.style.display = 'block';
+          errorMessage.textContent = errorParam;
+        }
+      } catch (e) {
+        // Fallback gracefully
+      }
+
+      // --- 2. Smooth Scrolling with 52px Offset ---
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           const targetId = this.getAttribute('href').slice(1);
+          if (!targetId) return;
           const targetEl = document.getElementById(targetId);
           if (targetEl) {
             e.preventDefault();
-            targetEl.scrollIntoView({ behavior: 'smooth' });
+            const navHeight = 52;
+            const topPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({
+              top: topPos,
+              behavior: 'smooth'
+            });
           }
         });
       });
+
+      // --- 3. Apple ac-localnav Active Section Tracking ---
+      const trackedSections = ['sorotan', 'arsitektur', 'guardrail', 'kalibrasi-bpjs', 'evaluasi'];
+      const navLinks = document.querySelectorAll('.ac-ln-menu-link');
+
+      function updateActiveNav() {
+        const navHeight = 60;
+        let activeId = '';
+        for (let i = 0; i < trackedSections.length; i++) {
+          const sec = document.getElementById(trackedSections[i]);
+          if (sec) {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top <= navHeight + 100 && rect.bottom >= navHeight) {
+              activeId = trackedSections[i];
+            }
+          }
+        }
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === '#' + activeId) {
+            link.classList.add('current');
+          } else {
+            link.classList.remove('current');
+          }
+        });
+      }
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+
+      // --- 4. Chapter 1: Highlights Horizontal Card Rail Controller ---
+      const rail = document.getElementById('highlights-rail');
+      const dots = document.querySelectorAll('.capsule-dot');
+      const prevBtn = document.getElementById('rail-prev');
+      const nextBtn = document.getElementById('rail-next');
+      const cards = document.querySelectorAll('.highlight-card');
+
+      function getActiveCardIndex() {
+        if (!rail) return 0;
+        const scrollLeft = rail.scrollLeft;
+        let closestIndex = 0;
+        let minDiff = Infinity;
+        cards.forEach((card, index) => {
+          const diff = Math.abs(card.offsetLeft - rail.offsetLeft - scrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = index;
+          }
+        });
+        return closestIndex;
+      }
+
+      function updateDots(index) {
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('is-active', idx === index);
+        });
+      }
+
+      if (rail) {
+        let scrollTimeout;
+        rail.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const activeIndex = getActiveCardIndex();
+            updateDots(activeIndex);
+          }, 40);
+        }, { passive: true });
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', function() {
+            const idx = parseInt(this.getAttribute('data-target'), 10);
+            if (cards[idx]) {
+              cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              updateDots(idx);
+            }
+          });
+        });
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            const current = getActiveCardIndex();
+            const target = Math.max(0, current - 1);
+            if (cards[target]) {
+              cards[target].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            const current = getActiveCardIndex();
+            const target = Math.min(cards.length - 1, current + 1);
+            if (cards[target]) {
+              cards[target].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          });
+        }
+      }
+
+      // --- 5. Chapter 2: Sticky Scrollytelling Stage Controller ---
+      const scrollyContainer = document.querySelector('[data-scrolly-container]');
+      if (scrollyContainer) {
+        const steps = scrollyContainer.querySelectorAll('.scrolly-step');
+        const stageCards = scrollyContainer.querySelectorAll('.stage-card');
+        const stagePills = scrollyContainer.querySelectorAll('.stage-nav-pill');
+
+        function setStageState(stepNum) {
+          steps.forEach(s => s.classList.toggle('is-active', s.getAttribute('data-step') === String(stepNum)));
+          stageCards.forEach(c => c.classList.toggle('is-active', c.getAttribute('data-stage-card') === String(stepNum)));
+          stagePills.forEach(p => p.classList.toggle('is-active', p.getAttribute('data-goto') === String(stepNum)));
+        }
+
+        // Direct clicking on stage header pills
+        stagePills.forEach(pill => {
+          pill.addEventListener('click', function() {
+            const targetStep = this.getAttribute('data-goto');
+            setStageState(targetStep);
+            const matchingStep = scrollyContainer.querySelector(`.scrolly-step[data-step="${targetStep}"]`);
+            if (matchingStep) {
+              matchingStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+        });
+
+        // Step Sensing using IntersectionObserver
+        const stepObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const stepIndex = entry.target.getAttribute('data-step');
+              setStageState(stepIndex);
+            }
+          });
+        }, {
+          threshold: [0.25, 0.5, 0.75],
+          rootMargin: "-12% 0px -20% 0px"
+        });
+
+        steps.forEach(step => stepObserver.observe(step));
+
+        // 60fps Scroll Progress Interpolator (--scroll-p)
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const rect = scrollyContainer.getBoundingClientRect();
+              const winH = window.innerHeight;
+              const totalDist = rect.height - winH;
+              const currentDist = -rect.top;
+              const progress = Math.min(Math.max(currentDist / (totalDist || 1), 0), 1);
+              scrollyContainer.style.setProperty('--scroll-p', progress.toFixed(3));
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // --- 6. Hero 3D Card Perspective Tilt Effect ---
+      const heroCard = document.getElementById('hero-preview-card');
+      if (heroCard && window.matchMedia('(hover: hover)').matches) {
+        heroCard.addEventListener('mousemove', (e) => {
+          const rect = heroCard.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotX = -(y / (rect.height / 2)) * 5.5;
+          const rotY = (x / (rect.width / 2)) * 5.5;
+          heroCard.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-2px)`;
+        });
+
+        heroCard.addEventListener('mouseleave', () => {
+          heroCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      }
+
+      // --- 7. Benchmark Progress Bar Animation on Scroll ---
+      const benchmarkSec = document.getElementById('kalibrasi-bpjs');
+      if (benchmarkSec) {
+        const barObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const bars = benchmarkSec.querySelectorAll('.bar');
+              bars.forEach(bar => {
+                const targetW = bar.getAttribute('data-width');
+                if (targetW) {
+                  bar.style.width = targetW;
+                }
+              });
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        barObserver.observe(benchmarkSec);
+      }
+
     })();
   </script>
 </body>
