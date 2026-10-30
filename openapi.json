@@ -129,6 +129,129 @@
         }
       }
     },
+    "/api/v1/ml/status": {
+      "get": {
+        "operationId": "getMLStatus",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "MLStatusResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MLStatusResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ErrorEnvelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/datasets/upload": {
       "post": {
         "operationId": "uploadDataset",
@@ -2160,6 +2283,47 @@
           "rules_version"
         ],
         "title": "HealthResponse",
+        "type": "object"
+      },
+      "MLStatusResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "const": "rules_only",
+            "default": "rules_only",
+            "title": "Mode",
+            "type": "string"
+          },
+          "model_status": {
+            "const": "not_available",
+            "default": "not_available",
+            "title": "Model Status",
+            "type": "string"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Model Version"
+          },
+          "shadow_enabled": {
+            "default": false,
+            "title": "Shadow Enabled",
+            "type": "boolean"
+          },
+          "message": {
+            "default": "Model ML belum tersedia; antrean menggunakan aturan.",
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "title": "MLStatusResponse",
         "type": "object"
       },
       "ReviewRequest": {

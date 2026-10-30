@@ -1,4 +1,4 @@
-import hmac
+﻿import hmac
 import json
 import logging
 import sqlite3
@@ -28,6 +28,7 @@ from klaimkembar.models import (
     FacetsResponse,
     FieldIssue,
     HealthResponse,
+    MLStatusResponse,
     Priority,
     ReviewRequest,
     ReviewResponse,
@@ -127,6 +128,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             connection.execute('SELECT version FROM schema_version').fetchone()
         return HealthResponse(status='ok', database='sqlite', rules_version=workflow.rules.version)
 
+    @app.get('/api/v1/ml/status', response_model=MLStatusResponse)
+    def ml_status(actor: Annotated[Actor, Depends(authenticated)]) -> MLStatusResponse:
+        return MLStatusResponse()
+
     @app.post('/api/v1/datasets/upload', response_model=UploadResponse, status_code=201)
     async def upload(request: Request, file: Annotated[UploadFile, File()], synthetic: Annotated[bool, Form()],
                      actor: Annotated[Actor, Depends(reviewer)], labels: Annotated[UploadFile | None, File()] = None) -> UploadResponse:
@@ -174,3 +179,4 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     if config.local_ui:
         install_ui(app, ROOT)
     return app
+

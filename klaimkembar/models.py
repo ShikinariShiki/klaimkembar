@@ -243,3 +243,10 @@ class HealthResponse(Record):
 class FacetsResponse(Record):
     facilities: list[str]
     reasons: list[str]
+
+class MLStatusResponse(Record):
+    mode: Literal['rules_only'] = 'rules_only'
+    model_status: Literal['not_available'] = 'not_available'
+    model_version: str | None = None
+    shadow_enabled: bool = False
+    message: str = 'Model ML belum tersedia; antrean menggunakan aturan.'

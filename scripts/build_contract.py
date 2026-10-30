@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 
 from openapi_spec_validator import validate
@@ -27,6 +27,7 @@ uuid = {'type': 'string', 'format': 'uuid'}
 paths = {}
 operations = [
     ('get', '/health', 'health', 'HealthResponse', []),
+    ('get', '/api/v1/ml/status', 'getMLStatus', 'MLStatusResponse', []),
     ('post', '/api/v1/datasets/upload', 'uploadDataset', 'UploadResponse', []),
     ('get', '/api/v1/cases', 'listCases', 'CasesResponse', [
         parameter('dataset_id', 'query', uuid, True),
@@ -63,3 +64,4 @@ contract = {'openapi': '3.1.0', 'info': {'title': 'KlaimKembar Prototype API', '
 Path('openapi.json').write_text(json.dumps(contract, ensure_ascii=False, indent=2) + '\n')
 validate(contract)
 print(f'Contract lint PASS: {len(operations)} operations, {len(schemas)} schemas')
+
