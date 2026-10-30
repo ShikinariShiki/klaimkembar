@@ -8,3 +8,6 @@ __pycache__/
 .coverage
 node_modules/
 var/browser-qa/
+
+.vercel
+.env*
