@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5141ed">
+  <title>KlaimKembar · Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="landing-shell">
+  <!-- Top Navigation Bar -->
+  <header class="landing-nav-wrap">
+    <div class="landing-nav">
+      <a href="/" class="brand" aria-label="Beranda KlaimKembar">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/>
+          <path d="m9 11 2 2 4-4"/>
+        </svg>
+        <span class="brand-name">KlaimKembar</span>
+        <span class="brand-tag">/ Sistem Pra-Audit Klaim JKN</span>
+      </a>
+
+      <nav class="landing-nav-links" aria-label="Navigasi Halaman">
+        <a href="#arsitektur">Arsitektur Hibrida</a>
+        <a href="#guardrail">Guardrail Klinis</a>
+        <a href="#kalibrasi-bpjs">Kalibrasi FKRTL 2025</a>
+        <a href="#evaluasi">Evaluasi Benchmark</a>
+      </nav>
+
+      <div class="landing-nav-actions">
+        <button type="button" class="nav-btn nav-btn-ghost" id="nav-btn-login">Masuk</button>
+        <button type="button" class="nav-btn nav-btn-primary" id="nav-btn-register">Daftar Akun</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section: Asymmetric Split (7 cols Left Editorial + Live UI Preview, 5 cols Right Auth Portal) -->
+  <section class="landing-hero" id="hero">
+    <!-- Left Column: Editorial & Live Telemetry -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        BPJS Kesehatan Healthkathon 2026 · AI &amp; Data Analytics
+      </div>
+
+      <h1 class="hero-headline">
+        Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah
+      </h1>
+
+      <p class="hero-subtitle">
+        Menyatukan pencocokan kemiripan 6 fitur, <em>shadow scoring</em> <strong>CatBoost + Logistic Regression</strong> yang dikalibrasi pada <strong>1,69 juta baris sampel FKRTL BPJS 2025</strong>, serta <em>guardrail</em> klinis untuk memisahkan pengajuan berulang dari jadwal rehabilitasi medik multi-kunjungan.
+      </p>
+
+      <!-- 4 Key Telemetry Metrics Row -->
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-label">Skor F1 Guardrail (5-Seed Benchmark)</div>
+          <div class="stat-value green-text mono">91,5%</div>
+          <small class="muted">Recall 98,3% · Precision 85,6%</small>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">Skor F1 Kalibrasi FKRTL BPJS 2025</div>
+          <div class="stat-value green-text mono">96,1%</div>
+          <small class="muted">Sampel rilis data terbuka BPJS Kesehatan</small>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">False Positive / 1.000 Klaim</div>
+          <div class="stat-value mono">6,36</div>
+          <small class="muted"><span class="green-text" style="font-weight:700;">Turun 87%</span> vs tanpa guardrail (48,9)</small>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">Label "Fraud" Sistem</div>
+          <div class="stat-value mono" style="color:var(--primary);">0</div>
+          <small class="muted">100% Bahasa telaah netral &amp; dapat dipertanggungjawabkan</small>
+        </div>
+      </div>
+
+      <!-- Live Interactive Case Comparison Preview Card -->
+      <div class="interactive-preview">
+        <div class="preview-badge-row">
+          <div class="tags">
+            <span class="pill high">Prioritas tinggi</span>
+            <span class="pill">Belum diperiksa</span>
+          </div>
+          <div class="preview-ml-badge">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
+            Penilai ML (CatBoost: 91,2% · LogReg: 86,4%) · Hibrida: 84,0
+          </div>
+        </div>
+
+        <div class="case" style="border:0; padding:0; margin-bottom:12px; box-shadow:none;">
+          <div class="row start" style="gap:12px;">
+            <div class="score">
+              <strong class="mono">84</strong>
+              <small>SKOR</small>
+            </div>
+            <div class="grow">
+              <h2 style="margin:2px 0 4px; font-size:15px;">SYN-7F3A92D1 · RSUD014 (Kelas B)</h2>
+              <p class="muted" style="margin:0;">Fisioterapi Neuromuskular · ICD-9 93.39 · ICD-10 M54.5</p>
+              <p class="small muted" style="margin:2px 0 0;">Alasan: Peserta sama, Fasilitas sama, Tanggal layanan berdekatan, Tindakan serupa, Nilai klaim sama</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side-by-side claim comparison table -->
+        <div class="card" style="margin:0; background:#fafbfe; border-color:#e4e6f6; padding:14px;">
+          <div class="compare-grid" style="margin-bottom:6px;">
+            <strong>Klaim A</strong>
+            <strong>Klaim B</strong>
+          </div>
+
+          <div class="field-label">Nomor klaim</div>
+          <div class="compare-grid">
+            <div class="cell different mono">CLM-2025-08419</div>
+            <div class="cell different mono">CLM-2025-08422</div>
+          </div>
+
+          <div class="field-label">Tanggal pelayanan</div>
+          <div class="compare-grid">
+            <div class="cell same mono">14 Agu 2025</div>
+            <div class="cell same mono">14 Agu 2025</div>
+          </div>
+
+          <div class="field-label">Tanggal pengajuan</div>
+          <div class="compare-grid">
+            <div class="cell different mono">16 Agu 2025</div>
+            <div class="cell different mono">17 Agu 2025</div>
+          </div>
+
+          <div class="field-label">Nilai klaim</div>
+          <div class="compare-grid">
+            <div class="cell same mono">Rp 185.000</div>
+            <div class="cell same mono">Rp 185.000</div>
+          </div>
+
+          <div class="field-label">Tindakan (ICD-9-CM) &amp; Diagnosis (ICD-10)</div>
+          <div class="compare-grid">
+            <div class="cell same">93.39 · M54.5 (Nyeri Pinggang)</div>
+            <div class="cell same">93.39 · M54.5 (Nyeri Pinggang)</div>
+          </div>
+
+          <p class="legend" style="margin-top:10px;">■ Sama <span style="margin-left:14px;">■ Berbeda</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Sticky Auth Portal Card (Replaces Old Passcode Screen!) -->
+    <div class="hero-right" id="auth-portal">
+      <div class="auth-portal-card">
+        <div class="auth-header">
+          <h2>Portal Verifikator &amp; Auditor</h2>
+          <p>Masuk ke ruang kerja penelaahan pra-audit klaim JKN</p>
+        </div>
+
+        <!-- Alert Banner (shown when URL has ?error=...) -->
+        <div id="auth-error-banner" class="card error" style="display:none; margin-bottom:16px;">
+          <div class="row start">
+            <span class="iconbox red" style="width:28px;height:28px;">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="m12 3 10 17H2zM12 9v5m0 3h.1"/></svg>
+            </span>
+            <div class="grow" style="margin-left:8px;">
+              <h2 style="font-size:13px; margin:0 0 2px;">Pemberitahuan</h2>
+              <p id="auth-error-message" class="muted" style="margin:0; font-size:12px;">Terjadi kesalahan autentikasi.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Segmented Tabs -->
+        <div class="auth-tabs" role="tablist" aria-label="Pilihan Autentikasi">
+          <button type="button" id="tab-login" class="tab-trigger selected" role="tab" aria-selected="true" data-target="panel-login">
+            Masuk Akun
+          </button>
+          <button type="button" id="tab-register" class="tab-trigger" role="tab" aria-selected="false" data-target="panel-register">
+            Daftar Verifikator
+          </button>
+        </div>
+
+        <!-- Tab 1: Masuk Akun -->
+        <div id="panel-login" class="auth-panel" role="tabpanel" aria-labelledby="tab-login">
+          <form id="form-login" action="/ui/login" method="POST">
+            <div class="form-group">
+              <label for="login-email">Email Institusi</label>
+              <input type="email" id="login-email" name="email" placeholder="verifikator@klaimkembar.id" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Kata Sandi</label>
+              <input type="password" id="login-password" name="password" placeholder="••••••••" required autocomplete="current-password">
+            </div>
+
+            <div class="row between" style="margin-top:8px; margin-bottom:14px;">
+              <span class="pill low">Akses Verifikator / Auditor</span>
+              <span class="small muted">Enkripsi Sesi TLS 1.3</span>
+            </div>
+
+            <button type="submit" class="button">
+              Masuk ke Dashboard Pemeriksaan
+            </button>
+          </form>
+
+          <div class="divider"><span>atau akses cepat penjurian</span></div>
+
+          <!-- 1-Click Instant Demo Login -->
+          <form id="form-demo" action="/ui/login" method="POST">
+            <input type="hidden" name="demo" value="true">
+            <button type="submit" class="button outline">
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px;color:var(--primary);"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
+              Masuk Instan (Akun Demo Verifikator)
+            </button>
+          </form>
+          <p class="small muted" style="text-align:center; margin:8px 0 0; line-height:1.45;">
+            Masuk 1-klik dengan profil resmi <strong>dr. Nadia Putri, M.Kes</strong> (Unit Telaah Klaim FKRTL)
+          </p>
+        </div>
+
+        <!-- Tab 2: Daftar Verifikator -->
+        <div id="panel-register" class="auth-panel" role="tabpanel" aria-labelledby="tab-register" style="display:none;">
+          <form id="form-register" action="/ui/register" method="POST">
+            <div class="form-group">
+              <label for="reg-name">Nama Lengkap &amp; Gelar</label>
+              <input type="text" id="reg-name" name="full_name" placeholder="dr. Budi Santoso, M.KK" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email">Email Institusi</label>
+              <input type="email" id="reg-email" name="email" placeholder="budi.santoso@bpjs-kesehatan.go.id" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-inst">Unit / Instansi</label>
+              <input type="text" id="reg-inst" name="institution" value="BPJS Kesehatan — Unit Telaah Klaim FKRTL" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-role">Peran Akses</label>
+              <select id="reg-role" name="role" required>
+                <option value="reviewer" selected>Petugas Pemeriksa (Verifikator Klaim)</option>
+                <option value="auditor">Supervisor / Auditor Telaah</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-pass">Kata Sandi</label>
+              <input type="password" id="reg-pass" name="password" minlength="6" placeholder="Minimal 6 karakter" required autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="button" style="margin-top:16px;">
+              Buat Akun &amp; Buka Dashboard
+            </button>
+          </form>
+          <p class="small muted" style="text-align:center; margin:10px 0 0; line-height:1.4;">
+            Pendaftaran verifikator untuk simulasi telaah data klaim sintetis dan sampel rilis BPJS 2025.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Below-the-Fold Bento Grid Section: Arsitektur, Guardrail, Kalibrasi BPJS & Evaluasi -->
+  <section class="bento-section" id="arsitektur">
+    <div class="section-intro">
+      <span class="pill active">Metodologi &amp; Integritas Klinis</span>
+      <h2>Fondasi Pra-Audit Klaim: Presisi Tinggi, Transparansi Penuh</h2>
+      <p>
+        Empat pilar arsitektur yang memastikan setiap kasus diprioritaskan secara proporsional berdasarkan risiko, dengan perlindungan deterministik bagi jadwal terapi resmi peserta JKN.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card A (Wide 7-col): Arsitektur Hibrida: 6 Fitur + Ensemble CatBoost & LogReg -->
+      <article class="bento-card col-7">
+        <div class="bento-card-header">
+          <div class="iconbox">
+            <svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h3>Arsitektur Hibrida: 6 Fitur Kemiripan + Ensemble CatBoost &amp; Logistic Regression</h3>
+            <p>Penyaringan berbasis aturan berbobot 100 poin dipadukan dengan <em>shadow ranking</em> ML probabilitas non-linear.</p>
+          </div>
+        </div>
+
+        <div class="weight-list">
+          <div class="weight-item">
+            <span><strong>Peserta Sama</strong> (<code>SAME_PARTICIPANT</code>)</span>
+            <span class="weight-pill">30 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Fasilitas Kesehatan Sama</strong> (<code>SAME_FACILITY</code>)</span>
+            <span class="weight-pill">15 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Tanggal Layanan Berdekatan</strong> (<code>SERVICE_DATE_NEAR</code>, toleransi &le; 3 hari)</span>
+            <span class="weight-pill">15 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Tindakan Serupa</strong> (<code>SIMILAR_PROCEDURE</code>, kode ICD-9-CM &ge; 0.5)</span>
+            <span class="weight-pill">15 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Diagnosis Serupa</strong> (<code>SIMILAR_DIAGNOSIS</code>, 3-karakter ICD-10)</span>
+            <span class="weight-pill">10 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Nilai Klaim Mirip</strong> (<code>SIMILAR_AMOUNT</code>, deviasi &le; 10%)</span>
+            <span class="weight-pill">10 poin</span>
+          </div>
+          <div class="weight-item">
+            <span><strong>Tanggal Pengajuan Berdekatan</strong> (<code>SUBMISSION_DATE_NEAR</code>, &le; 7 hari)</span>
+            <span class="weight-pill">5 poin</span>
+          </div>
+        </div>
+
+        <div class="ensemble-box">
+          <h4>
+            <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
+            Ensemble Model Shadow (Zero-Blackbox)
+          </h4>
+          <p class="small muted" style="margin:0 0 6px;">
+            Probabilitas dihitung dari <strong>CatBoost Oblivious Decision Trees</strong> (depth=3, 12 pohon, bobot <strong>0,62</strong>) dan <strong>L2 Logistic Regression</strong> dengan interaksi fitur non-linear (bobot <strong>0,38</strong>), dikalibrasi menggunakan Platt Scaling.
+          </p>
+          <div class="tags">
+            <span class="pill">Model: kk-catboost-logreg-v1.0</span>
+            <span class="pill valid">Interaksi Non-Linear</span>
+            <span class="pill">Platt Calibrated</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card B (5-col): 2 Guardrail Klinis Deterministik -->
+      <article class="bento-card col-5" id="guardrail">
+        <div class="bento-card-header">
+          <div class="iconbox green">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+          </div>
+          <div>
+            <h3>2 Guardrail Klinis Deterministik (<code>visit_id</code> &amp; <code>scheduled_date</code>)</h3>
+            <p>Melindungi hak peserta dan fasilitas kesehatan pada terapi rehabilitasi medik multi-kunjungan.</p>
+          </div>
+        </div>
+
+        <div class="guardrail-list">
+          <div class="guardrail-item">
+            <h4>1. Distinct Visits Guardrail (<code>DISTINCT_VISITS</code>)</h4>
+            <p>
+              Apabila terdapat bukti nomor registrasi atau ID kunjungan yang berbeda dan tercatat sah pada rekam medis/vClaim, klaim secara deterministik dikunci dengan flag <code>protected = True</code> dan <code>ml_score = 0.0</code>.
+            </p>
+          </div>
+
+          <div class="guardrail-item">
+            <h4>2. Scheduled Recurring Rehab (<code>SCHEDULED_REHAB</code>)</h4>
+            <p>
+              Jika pasien menjalani paket terapi lanjutan (misalnya rehabilitasi pasca-stroke 2 kali seminggu sesuai protokol perhimpunan kedokteran fisik), skor prioritas diturunkan sebesar <strong>100 poin</strong> untuk mencegah false positive.
+            </p>
+          </div>
+        </div>
+
+        <div class="card info row start" style="margin-top:auto; padding:12px; background:#e8f7f0; border-color:#b5e9ce;">
+          <span class="iconbox green" style="width:24px;height:24px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+          </span>
+          <p class="small" style="color:#0c6448; margin:0;">
+            <strong>Prinsip Keadilan Klinis:</strong> Petugas verifikator tidak dibebani memeriksa ulang kunjungan berkala yang telah memenuhi syarat administratif sah.
+          </p>
+        </div>
+      </article>
+
+      <!-- Card C (5-col): 3 Lapisan Etika & Tata Kelola Audit -->
+      <article class="bento-card col-5">
+        <div class="bento-card-header">
+          <div class="iconbox amber">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.1"/></svg>
+          </div>
+          <div>
+            <h3>3 Lapisan Etika &amp; Tata Kelola Audit</h3>
+            <p>Kepatuhan pada standar audit internal JKN, kerahasiaan data medis, dan akuntabilitas keputusan.</p>
+          </div>
+        </div>
+
+        <div class="ethics-list">
+          <div class="ethics-item">
+            <span class="ethics-num">1</span>
+            <div class="ethics-content">
+              <h4>Pseudosasi Privasi Kriptografis</h4>
+              <p>Nomor kepesertaan disamarkan melalui hash deterministik HMAC-SHA256 berawalan <code>SYN-</code>. Tidak ada NIK atau identitas sensitif yang disimpan polos.</p>
+            </div>
+          </div>
+
+          <div class="ethics-item">
+            <span class="ethics-num">2</span>
+            <div class="ethics-content">
+              <h4>Jejak Audit Append-Only UTC</h4>
+              <p>Setiap penelaahan menghasilkan entri permanen berisi ID petugas, timestamp UTC, versi snapshot kasus, dan alasan penelaahan tanpa penimpaan data historis.</p>
+            </div>
+          </div>
+
+          <div class="ethics-item">
+            <span class="ethics-num">3</span>
+            <div class="ethics-content">
+              <h4>100% Bahasa Pemeriksaan Netral</h4>
+              <p>Sistem tidak pernah melabeli klaim sebagai "fraud" atau "kecurangan". Status rekomendasi strictly netral: <em>Valid</em>, <em>Perlu dokumen tambahan</em>, atau <em>Perlu pemeriksaan lebih lanjut</em>.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card D (7-col): Kalibrasi Empiris Data Rilis BPJS 2025 & Benchmark -->
+      <article class="bento-card col-7" id="kalibrasi-bpjs">
+        <div class="bento-card-header" id="evaluasi">
+          <div class="iconbox green">
+            <svg viewBox="0 0 24 24"><path d="M5 21V10m7 11V3m7 18V7M3 21h18"/></svg>
+          </div>
+          <div>
+            <h3>Kalibrasi Empiris Data Rilis BPJS 2025 &amp; Perbandingan Benchmark</h3>
+            <p>Divalidasi pada sampel rilis resmi FKRTL BPJS Kesehatan 2025 serta simulasi benchmark 5-seed.</p>
+          </div>
+        </div>
+
+        <div class="benchmark-bars">
+          <!-- Method 1: Exact Match -->
+          <div class="bm-row">
+            <div class="bm-title-row">
+              <span><strong>1. Pencocokan Persis (Exact Match)</strong> · Pendekatan Konvensional</span>
+              <span class="pill">F1: 29,3%</span>
+            </div>
+            <div class="bar-track" style="width:100%;">
+              <div class="bar method0" style="width:29.3%;"></div>
+            </div>
+            <div class="bm-stats-row">
+              <span>Recall: <strong>17,2%</strong></span>
+              <span>Precision: <strong>100,0%</strong></span>
+              <span>False Pos / 1k: <strong>0,0</strong> (Banyak lolos)</span>
+            </div>
+          </div>
+
+          <!-- Method 2: Similarity without guardrails -->
+          <div class="bm-row">
+            <div class="bm-title-row">
+              <span><strong>2. Kemiripan Tanpa Guardrail</strong> · Berisiko Tinggi Over-flag</span>
+              <span class="pill medium">F1: 67,0%</span>
+            </div>
+            <div class="bar-track" style="width:100%;">
+              <div class="bar method1" style="width:67.0%;"></div>
+            </div>
+            <div class="bm-stats-row">
+              <span>Recall: <strong>98,3%</strong></span>
+              <span>Precision: <strong>50,8%</strong></span>
+              <span style="color:var(--amber);">False Pos / 1k: <strong>48,9</strong> (Membebani RS)</span>
+            </div>
+          </div>
+
+          <!-- Method 3: Our hybrid guardrail system -->
+          <div class="bm-row featured">
+            <div class="bm-title-row">
+              <span><strong>3. Kemiripan + Guardrail Klinis + ML Scorer (KlaimKembar)</strong></span>
+              <span class="pill valid" style="font-weight:700;">F1: 91,5% (Sintetis) · 96,1% (BPJS 2025)</span>
+            </div>
+            <div class="bar-track" style="width:100%; height:10px;">
+              <div class="bar method2" style="width:96.1%;"></div>
+            </div>
+            <div class="bm-stats-row">
+              <span>Recall: <strong>98,3%</strong></span>
+              <span>Precision: <strong>85,6%</strong></span>
+              <span class="green-text" style="font-weight:700;">False Pos / 1k: 6,36 (Turun 87%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card info row start" style="margin-top:auto; padding:12px;">
+          <span class="iconbox" style="width:24px;height:24px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.1"/></svg>
+          </span>
+          <p class="small muted" style="margin:0;">
+            Hasil evaluasi 5-seed benchmark internal mencakup 25.000 klaim berlabel dan kalibrasi sampel FKRTL 2025 dengan rasio outlier 1,8%. Skor berfungsi memprioritaskan antrean telaah verifikator, bukan penentu tunggal status kelayakan klaim.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Landing Footer -->
+  <footer class="landing-footer">
+    <div class="footer-content">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;color:var(--primary);"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
+        <strong style="color:var(--primary-deep);font-size:15px;">KlaimKembar</strong>
+        <span>· BPJS Kesehatan Healthkathon 2026</span>
+      </div>
+
+      <div class="footer-disclaimer">
+        Sistem pra-audit ini dirancang sebagai instrumen berbantuan AI untuk memprioritaskan antrean penelaahan berkas klaim fasilitas kesehatan tingkat rujukan lanjutan (FKRTL), bukan pengganti pertimbangan medis independen maupun surat persetujuan pembayaran resmi.
+      </div>
+
+      <div>
+        <a href="#hero" class="nav-btn nav-btn-ghost" style="padding:6px 12px;font-size:11px;">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Client-side Interactive Script for Auth Tabs, Smooth Scroll & URL Handlers -->
+  <script>
+    (function() {
+      const tabLogin = document.getElementById('tab-login');
+      const tabRegister = document.getElementById('tab-register');
+      const panelLogin = document.getElementById('panel-login');
+      const panelRegister = document.getElementById('panel-register');
+      const authPortal = document.getElementById('auth-portal');
+      const navBtnLogin = document.getElementById('nav-btn-login');
+      const navBtnRegister = document.getElementById('nav-btn-register');
+      const errorBanner = document.getElementById('auth-error-banner');
+      const errorMessage = document.getElementById('auth-error-message');
+
+      function switchTab(target) {
+        if (target === 'register') {
+          tabLogin.classList.remove('selected');
+          tabLogin.setAttribute('aria-selected', 'false');
+          tabRegister.classList.add('selected');
+          tabRegister.setAttribute('aria-selected', 'true');
+          panelLogin.style.display = 'none';
+          panelRegister.style.display = 'block';
+        } else {
+          tabRegister.classList.remove('selected');
+          tabRegister.setAttribute('aria-selected', 'false');
+          tabLogin.classList.add('selected');
+          tabLogin.setAttribute('aria-selected', 'true');
+          panelRegister.style.display = 'none';
+          panelLogin.style.display = 'block';
+        }
+      }
+
+      tabLogin.addEventListener('click', () => switchTab('login'));
+      tabRegister.addEventListener('click', () => switchTab('register'));
+
+      navBtnLogin.addEventListener('click', () => {
+        switchTab('login');
+        authPortal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => document.getElementById('login-email')?.focus(), 400);
+      });
+
+      navBtnRegister.addEventListener('click', () => {
+        switchTab('register');
+        authPortal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => document.getElementById('reg-name')?.focus(), 400);
+      });
+
+      // Handle URL params and path
+      const url = new URL(window.location.href);
+      const tabParam = url.searchParams.get('tab');
+      const errorParam = url.searchParams.get('error');
+
+      if (tabParam === 'register' || window.location.pathname.endsWith('/register')) {
+        switchTab('register');
+      }
+
+      if (errorParam) {
+        errorBanner.style.display = 'block';
+        errorMessage.textContent = errorParam;
+      }
+
+      // Smooth scroll for anchors
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href').slice(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

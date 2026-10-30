@@ -51,9 +51,20 @@ def install_ui(app: FastAPI, root: Path) -> None:
             raise Rejection(429, 'SESSION_LIMIT', 'Terlalu banyak sesi lokal. Tutup aplikasi dan jalankan ulang.')
         identity, csrf = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
         sessions[identity] = (csrf, now + 8 * 3600)
-        response = JSONResponse({'csrf': csrf, 'mode': 'local_synthetic_demo'}, headers={'Cache-Control': 'no-store'})
+        user_info = {'full_name': 'dr. Nadia Putri, M.Kes', 'role': 'reviewer', 'email': 'verifikator@klaimkembar.id'}
+        response = JSONResponse({'csrf': csrf, 'mode': 'local_synthetic_demo', 'user': user_info}, headers={'Cache-Control': 'no-store'})
         response.set_cookie('kk_session', identity, httponly=True, samesite='strict', max_age=8 * 3600, path='/')
         return response
+
+    @app.get('/login', include_in_schema=False)
+    @app.get('/register', include_in_schema=False)
+    def landing(request: Request) -> Any:
+        if not local_request(request):
+            raise Rejection(403, 'LOCAL_ONLY', 'Gunakan aplikasi melalui localhost.')
+        landing_file = root / 'frontend/landing.html'
+        if landing_file.exists():
+            return FileResponse(landing_file, headers={'Cache-Control': 'no-cache'})
+        return FileResponse(root / 'frontend/index.html', headers={'Cache-Control': 'no-cache'})
 
     @app.get('/', include_in_schema=False)
     def index(request: Request) -> Any:

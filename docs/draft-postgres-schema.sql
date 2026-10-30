@@ -42,6 +42,16 @@ CREATE TABLE IF NOT EXISTS klaimkembar.reviews (
  request_json TEXT NOT NULL, response_json TEXT NOT NULL, payload TEXT NOT NULL,
  version INTEGER NOT NULL CHECK(version > 0), PRIMARY KEY(case_id,review_id), UNIQUE(case_id,version)
 );
+CREATE TABLE IF NOT EXISTS klaimkembar.users (
+ id TEXT PRIMARY KEY,
+ email TEXT NOT NULL UNIQUE,
+ full_name TEXT NOT NULL,
+ institution TEXT NOT NULL DEFAULT 'BPJS Kesehatan — Unit Telaah Klaim',
+ role TEXT NOT NULL DEFAULT 'reviewer' CHECK(role IN ('reviewer','auditor')),
+ password_hash TEXT NOT NULL,
+ created_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS users_email_idx ON klaimkembar.users(email);
 CREATE OR REPLACE FUNCTION klaimkembar.reject_review_change() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
  RAISE EXCEPTION 'review audit is append-only';
@@ -59,5 +69,6 @@ ALTER TABLE klaimkembar.claims ENABLE ROW LEVEL SECURITY;
 ALTER TABLE klaimkembar.cases ENABLE ROW LEVEL SECURITY;
 ALTER TABLE klaimkembar.truth_pairs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE klaimkembar.reviews ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.users ENABLE ROW LEVEL SECURITY;
 INSERT INTO klaimkembar.schema_version(version) VALUES (1) ON CONFLICT DO NOTHING;
 COMMIT;

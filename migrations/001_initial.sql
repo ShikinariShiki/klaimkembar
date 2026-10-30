@@ -41,5 +41,14 @@ END;
 CREATE TRIGGER IF NOT EXISTS immutable_review_delete BEFORE DELETE ON reviews BEGIN
  SELECT RAISE(ABORT,'review audit is append-only');
 END;
+CREATE TABLE IF NOT EXISTS users (
+ id TEXT PRIMARY KEY,
+ email TEXT NOT NULL UNIQUE,
+ full_name TEXT NOT NULL,
+ institution TEXT NOT NULL DEFAULT 'BPJS Kesehatan — Unit Telaah Klaim',
+ role TEXT NOT NULL DEFAULT 'reviewer' CHECK(role IN ('reviewer','auditor')),
+ password_hash TEXT NOT NULL,
+ created_at TEXT NOT NULL
+);
 INSERT OR IGNORE INTO schema_version(version) VALUES (1);
 COMMIT;

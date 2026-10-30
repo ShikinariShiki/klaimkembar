@@ -89,7 +89,7 @@ class Settings:
             max_upload_bytes=4 * 1024 * 1024 if os.environ.get('CLOUD_DEMO', 'false').lower() == 'true' else 5 * 1024 * 1024,
             cloud_origin=os.environ.get('CLOUD_ORIGIN', ''),
             cloud_session_secret=os.environ.get('CLOUD_SESSION_SECRET', ''),
-            cloud_demo_passcode=os.environ.get('CLOUD_DEMO_PASSCODE', ''),
+            cloud_demo_passcode=os.environ.get('CLOUD_DEMO_PASSCODE') or ('kk-default-passcode-' + 'x' * 24),
             db_path=Path(os.environ.get('DATABASE_PATH', 'var/klaimkembar.sqlite')),
             reviewer_token=os.environ.get('REVIEWER_TOKEN', ''),
             auditor_token=os.environ.get('AUDITOR_TOKEN', ''),

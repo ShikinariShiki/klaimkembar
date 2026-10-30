@@ -19,7 +19,7 @@ from starlette.middleware import Middleware
 from starlette.middleware.base import RequestResponseEndpoint
 from starlette.responses import Response
 
-from klaimkembar.cloud_ui import cloud_session_actor, install_cloud_ui
+from klaimkembar.cloud_ui import cloud_session_actor, cloud_session_user, install_cloud_ui
 from klaimkembar.errors import Rejection
 from klaimkembar.local_ui import install_ui, session_actor
 from klaimkembar.models import (
@@ -115,6 +115,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     def authenticated(request: Request, credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(BEARER)]) -> Actor:
         if credentials is None and config.cloud_demo and cloud_session_actor(request, config.cloud_session_secret, config.cloud_origin):
+            user = cloud_session_user(request, config.cloud_session_secret)
+            if user:
+                return Actor(user.get('email', 'cloud-demo-reviewer'), user.get('role', 'reviewer'))
             return Actor('cloud-demo-reviewer', 'reviewer')
         if credentials is None and config.local_ui and session_actor(request, app.state.ui_sessions):
             return Actor('prototype-reviewer', 'reviewer')
@@ -220,6 +223,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     if config.local_ui:
         install_ui(app, ROOT)
     elif config.cloud_demo:
-        install_cloud_ui(app, ROOT, config.cloud_origin, config.cloud_session_secret, config.cloud_demo_passcode)
+        install_cloud_ui(app, ROOT, config.cloud_origin, config.cloud_session_secret, config.cloud_demo_passcode, workflow.db)
     return app
 

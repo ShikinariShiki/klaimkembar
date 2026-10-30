@@ -207,5 +207,6 @@ def test_postgres_database_init_schema_and_migrate():
         executed_ddl = mock_conn.execute.call_args[0][0]
         assert "CREATE SCHEMA IF NOT EXISTS klaimkembar" in executed_ddl
         assert "klaimkembar.schema_version" in executed_ddl
+        assert "klaimkembar.users" in executed_ddl
         assert "cases_ml_score_idx" in executed_ddl
         assert "cases_payload_gin" in executed_ddl
