@@ -310,63 +310,54 @@
 
     /* Fluid Super Display Headline */
     .hero-headline {
-      font-size: clamp(36px, 4.2vw + 6px, 62px);
-      line-height: 1.06;
-      letter-spacing: -0.04em;
-      margin: 0 0 18px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 16px;
       font-weight: 800;
     }
 
     .hero-subtitle {
-      font-size: clamp(16px, 1.2vw + 11px, 19px);
-      line-height: 1.48;
-      letter-spacing: -0.015em;
-      margin: 0 0 28px;
-      max-width: 62ch;
+      max-width: 48ch;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0 0 24px;
     }
 
-    /* 4 Telemetry Metrics Grid */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .stat-box {
+    /* 4-Metric Horizontal Stat Strip */
+    .hero-stat-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 18px;
       background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px 18px;
-      box-shadow: 0 2px 10px rgba(30, 34, 66, 0.03);
-      transition: transform 0.25s var(--ease-apple-spring), box-shadow 0.25s var(--ease-apple-spring);
+      border-radius: 980px;
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(30, 34, 66, 0.03);
+      flex-wrap: wrap;
     }
-    .stat-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(30, 34, 66, 0.06);
+    .strip-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
     }
-
-    .stat-label {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 4px;
-    }
-
-    .stat-value {
-      font-size: clamp(26px, 2.5vw, 34px);
+    .strip-val {
+      font-size: 16px;
       font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 4px;
     }
-
-    .stat-caption {
-      font-size: 12px;
+    .strip-lbl {
+      font-size: 11.5px;
       color: var(--text-muted);
-      line-height: 1.35;
+      font-weight: 600;
+    }
+    .strip-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
     }
 
     /* 3D Perspective Interactive Preview Card */
@@ -386,7 +377,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
@@ -444,22 +435,18 @@
       border-radius: 980px;
       border: 1px solid var(--border-tint);
     }
-    .preview-ml-badge svg {
-      width: 14px;
-      height: 14px;
-    }
 
     .case-header-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .score-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: #fdf0f1;
       border: 1.5px solid #fecdd1;
       display: flex;
@@ -469,13 +456,13 @@
       flex-shrink: 0;
     }
     .score-badge strong {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--red);
       line-height: 1;
     }
     .score-badge span {
-      font-size: 8.5px;
+      font-size: 8px;
       font-weight: 700;
       color: var(--red);
       letter-spacing: 0.06em;
@@ -483,97 +470,60 @@
     }
 
     .case-info h3 {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      margin: 0 0 3px;
+      margin: 0 0 2px;
       color: var(--text-ink);
     }
     .case-pathway {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 0 0 4px;
-    }
-    .case-factors {
-      font-size: 11.5px;
+      font-size: 12px;
       color: var(--text-muted);
       margin: 0;
-      line-height: 1.4;
     }
 
-    /* Comparison Table inside card */
-    .preview-table-card {
+    /* Compact 3-Row Case Grid */
+    .compact-case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
       background: #fafbfe;
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 14px 16px;
     }
-
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 6px;
+    .case-data-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
-
-    .compare-grid.header-grid {
-      font-size: 12.5px;
+    .case-field-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .case-field-val {
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-ink);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      margin-bottom: 10px;
     }
-
-    .field-label {
+    .field-status.same {
       font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin: 6px 0 3px;
-    }
-
-    .cell {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-weight: 500;
-    }
-
-    .cell.same {
-      background: #ffeaec;
-      color: #b81c24;
-      border: 1px solid #ffd0d5;
+      color: var(--red);
       font-weight: 600;
     }
 
-    .cell.different {
-      background: #edf0f8;
-      color: var(--text-muted);
-      border: 1px solid #dfe3f2;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
     }
-
-    .legend-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 12px;
-      padding-top: 8px;
-      border-top: 1px dashed var(--border);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .legend-sq {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      border-radius: 2px;
-      margin-right: 4px;
-      vertical-align: middle;
-    }
-    .legend-sq.same { background: #d83239; }
-    .legend-sq.different { background: #929bbd; }
 
     /* ==========================================================================
        Right Column: Sticky Auth Portal Card
@@ -855,33 +805,26 @@
 
     /* Highlights Bento Cards */
     .highlight-card {
-      flex: 0 0 clamp(320px, 78vw, 420px);
+      flex: 0 0 clamp(320px, 78vw, 400px);
       scroll-snap-align: center;
-      border-radius: 28px;
+      border-radius: 32px;
       background: var(--surface-bg);
       border: 1px solid var(--border);
-      padding: 32px 28px;
+      padding: 36px 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 440px;
+      min-height: 380px;
       box-shadow: 0 4px 20px rgba(30, 34, 66, 0.04);
       transition: transform 0.3s var(--ease-apple-spring), box-shadow 0.3s var(--ease-apple-spring);
     }
     .highlight-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(30, 34, 66, 0.08);
+      box-shadow: 0 16px 36px rgba(30, 34, 66, 0.07);
     }
 
     .card-top {
       margin-bottom: 24px;
-    }
-
-    .card-tag-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
     }
 
     .card-badge {
@@ -893,58 +836,50 @@
       border-radius: 980px;
       background: #ffffff;
       border: 1px solid var(--border);
-      color: var(--text-ink);
-    }
-
-    .card-stat {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
       color: var(--primary);
-    }
-    .card-stat.green { color: var(--green); }
-    .card-stat.purple { color: var(--primary-deep); }
-    .card-stat.blue { color: #0071e3; }
-
-    .card-stat-unit {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-top: -2px;
-      margin-bottom: 6px;
+      display: inline-block;
+      margin-bottom: 16px;
     }
 
     .card-headline {
       font-size: 22px;
       line-height: 1.2;
       letter-spacing: -0.025em;
-      margin: 0 0 12px;
+      margin: 0 0 10px;
+      font-weight: 700;
     }
 
     .card-body {
       font-size: 14px;
-      line-height: 1.52;
+      line-height: 1.5;
       color: var(--text-muted);
       margin: 0;
     }
 
-    .card-footer {
-      border-top: 1px solid rgba(30, 34, 66, 0.08);
-      padding-top: 14px;
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.4;
+    .card-giant-stat {
       display: flex;
-      align-items: flex-start;
-      gap: 6px;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(30, 34, 66, 0.06);
     }
-    .card-footer svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      color: var(--primary);
+
+    .giant-number {
+      font-size: clamp(48px, 5vw, 68px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .giant-number.green { color: var(--green); }
+    .giant-number.purple { color: var(--primary-deep); }
+    .giant-number.blue { color: #0071e3; }
+
+    .giant-caption {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.4;
     }
 
     /* Floating Capsule Controller (Dotnav) */
@@ -1064,27 +999,26 @@
     }
 
     .scrolly-step {
-      min-height: 68dvh;
+      min-height: 60dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 36px 32px;
-      border-radius: 24px;
-      background: transparent;
-      border: 1px solid transparent;
-      transition: background 0.3s var(--ease-apple-spring), border-color 0.3s var(--ease-apple-spring), box-shadow 0.3s var(--ease-apple-spring);
+      padding: 24px 0;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      opacity: 0.32;
+      transition: opacity 0.4s var(--ease-apple-smooth);
     }
 
     .scrolly-step.is-active {
-      background: #ffffff;
-      border-color: var(--border);
-      box-shadow: 0 8px 30px rgba(30, 34, 66, 0.05);
+      opacity: 1.0;
     }
 
     .step-badge {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--primary);
       margin-bottom: 12px;
       display: inline-flex;
@@ -1093,98 +1027,37 @@
     }
 
     .step-title {
-      font-size: clamp(22px, 2.2vw, 30px);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin: 0 0 10px;
-    }
-
-    .step-sub {
-      font-size: 15px;
-      line-height: 1.4;
-      margin: 0 0 16px;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px;
+      color: var(--text-ink);
+      line-height: 1.18;
     }
 
     .step-narrative {
-      font-size: 14.5px;
+      font-size: 15px;
       line-height: 1.55;
       color: var(--text-muted);
-      margin: 0 0 20px;
+      max-width: 40ch;
+      margin: 0 0 18px;
     }
 
-    /* Feature Chips list inside Step 01 */
-    .feature-chip-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .chip-item {
-      background: var(--surface-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 12px;
+    .step-chips-row {
       display: flex;
-      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .step-chip {
+      display: inline-flex;
       align-items: center;
-      font-size: 12px;
-    }
-    .chip-item strong {
-      color: var(--text-ink);
-    }
-    .chip-weight {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 980px;
       background: #ffffff;
-      padding: 2px 7px;
-      border-radius: 6px;
       border: 1px solid var(--border);
-      font-size: 11px;
-    }
-
-    /* Guardrail callout list inside Step 02 */
-    .guardrail-callout-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .gr-callout {
-      background: var(--green-soft);
-      border: 1px solid #c0ebd5;
-      border-radius: 14px;
-      padding: 12px 14px;
-    }
-    .gr-callout h4 {
-      margin: 0 0 4px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--green);
-    }
-    .gr-callout p {
-      margin: 0;
       font-size: 12px;
-      color: #0c6448;
-      line-height: 1.4;
-    }
-
-    /* Model specs chips inside Step 03 */
-    .specs-chip-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .spec-item {
-      background: var(--surface-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 12.5px;
-      line-height: 1.4;
-      color: var(--text-muted);
-    }
-    .spec-item strong {
+      font-weight: 600;
       color: var(--text-ink);
     }
 
@@ -1762,7 +1635,8 @@
       }
       .scrolly-step {
         min-height: auto;
-        padding: 24px 20px;
+        padding: 24px 0;
+        opacity: 1.0 !important;
       }
       .benchmark-layout {
         grid-template-columns: 1fr;
@@ -1779,10 +1653,11 @@
       .ac-ln-product-tag {
         display: none;
       }
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .hero-stat-strip {
+        border-radius: 16px;
+        gap: 10px;
       }
-      .feature-chip-grid {
+      .compact-case-grid {
         grid-template-columns: 1fr;
       }
       .model-split-grid {
@@ -1811,7 +1686,7 @@
               <path d="m9 11 2 2 4-4"/>
             </svg>
             <span class="ac-ln-product-name">KlaimKembar</span>
-            <span class="ac-ln-product-tag">/ Pra-Audit Klinis JKN</span>
+            <span class="ac-ln-product-tag">/ Pra-Audit Klaim JKN</span>
           </a>
         </div>
 
@@ -1819,10 +1694,10 @@
         <div class="ac-ln-menu">
           <ul class="ac-ln-menu-items" role="list">
             <li class="ac-ln-menu-item"><a href="#sorotan" class="ac-ln-menu-link">Sorotan</a></li>
-            <li class="ac-ln-menu-item"><a href="#arsitektur" class="ac-ln-menu-link">Mesin Hibrida</a></li>
-            <li class="ac-ln-menu-item"><a href="#guardrail" class="ac-ln-menu-link">Guardrail Klinis</a></li>
-            <li class="ac-ln-menu-item"><a href="#kalibrasi-bpjs" class="ac-ln-menu-link">Kalibrasi BPJS 2025</a></li>
-            <li class="ac-ln-menu-item"><a href="#evaluasi" class="ac-ln-menu-link">Tolok Ukur</a></li>
+            <li class="ac-ln-menu-item"><a href="#arsitektur" class="ac-ln-menu-link">Cara Kerja</a></li>
+            <li class="ac-ln-menu-item"><a href="#guardrail" class="ac-ln-menu-link">Pengecualian Terapi</a></li>
+            <li class="ac-ln-menu-item"><a href="#kalibrasi-bpjs" class="ac-ln-menu-link">Kalibrasi BPJS</a></li>
+            <li class="ac-ln-menu-item"><a href="#evaluasi" class="ac-ln-menu-link">Hasil Uji &amp; Prinsip</a></li>
           </ul>
         </div>
 
@@ -1848,52 +1723,48 @@
       </div>
 
       <h1 class="hero-headline">
-        <span class="tone-ink">Prioritaskan Telaah Klaim Kembar.</span><br>
-        <span class="tone-muted">Lindungi Kunjungan Terapi Sah.</span>
+        <span class="tone-ink">Telaah klaim ganda.</span><br>
+        <span class="tone-muted">Lindungi terapi rutin pasien.</span>
+        <span class="sr-only">Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah</span>
       </h1>
 
       <p class="hero-subtitle">
-        <span class="tone-ink">Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah.</span>
-        <span class="tone-muted">Sistem pra-audit hibrida pertama yang memisahkan duplikasi administratif dari jadwal perawatan fisioterapi berulang secara presisi, memadukan pencocokan 6 dimensi klinis, penguncian guardrail deterministik berbasis nomor kunjungan rumah sakit, serta model ensemble <strong>CatBoost</strong> dan Regresi Logistik yang dikalibrasi langsung pada 1,69 juta baris klaim FKRTL BPJS Kesehatan.</span>
+        <span class="tone-ink">Fisioterapi butuh kunjungan berulang.</span> <span class="tone-muted">KlaimKembar membantu verifikator menemukan klaim yang tercatat ganda tanpa ikut menahan jadwal terapi pasien yang sah.</span>
       </p>
 
-      <!-- 4 Telemetry Metrics Row -->
-      <div class="hero-stats">
-        <div class="stat-box">
-          <div class="stat-label">Skor F1 Sintetis (5-Seed)</div>
-          <div class="stat-value mono green-text">91,5%</div>
-          <div class="stat-caption">Presisi 97,1% · Recall 86,5%</div>
+      <!-- 4-Metric Horizontal Stat Strip -->
+      <div class="hero-stat-strip">
+        <div class="strip-item">
+          <span class="strip-val mono green-text">91,5%</span>
+          <span class="strip-lbl">Akurasi F1</span>
         </div>
-
-        <div class="stat-box">
-          <div class="stat-label">Skor F1 Kalibrasi FKRTL BPJS 2025</div>
-          <div class="stat-value mono green-text">96,1%</div>
-          <div class="stat-caption">Sampel rilis data terbuka BPJS Kesehatan</div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span class="strip-val mono green-text">87%</span>
+          <span class="strip-lbl">Lebih sedikit salah tandai</span>
         </div>
-
-        <div class="stat-box">
-          <div class="stat-label">False Positive / 1.000 Klaim</div>
-          <div class="stat-value mono">6,36</div>
-          <div class="stat-caption"><span class="green-text" style="font-weight:700;">Turun 87,2%</span> vs tanpa guardrail</div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span class="strip-val mono">1,69 Jt</span>
+          <span class="strip-lbl">Sampel FKRTL BPJS</span>
         </div>
-
-        <div class="stat-box">
-          <div class="stat-label">Label "Fraud" Sistem</div>
-          <div class="stat-value mono primary-text">0</div>
-          <div class="stat-caption">100% Terminologi Telaah Netral</div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span class="strip-val mono primary-text">100%</span>
+          <span class="strip-lbl">Bahasa netral</span>
         </div>
       </div>
 
-      <!-- 3D Perspective Interactive Case Comparison Preview Card -->
+      <!-- Compact 3D Case Preview Card -->
       <div class="interactive-preview" id="hero-preview-card">
         <div class="preview-badge-row">
           <div class="tags">
             <span class="pill high">Prioritas Tinggi</span>
-            <span class="pill">Belum Diperiksa</span>
+            <span class="pill">SYN-7F3A92D1</span>
+            <span class="pill">RSUD014</span>
           </div>
           <div class="preview-ml-badge mono">
-            <svg viewBox="0 0 24 24"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
-            CatBoost 91,2% · LogReg 86,4% · Skor Hibrida: 84,0
+            CatBoost 91,2% · LogReg 86,4%
           </div>
         </div>
 
@@ -1904,51 +1775,25 @@
           </div>
           <div class="case-info">
             <h3>SYN-7F3A92D1 · RSUD014 (Kelas B)</h3>
-            <p class="case-pathway">Fisioterapi Neuromuskular · ICD-9-CM 93.39 · ICD-10 M54.5</p>
-            <p class="case-factors">Peserta sama, Fasilitas sama, Tanggal pelayanan sama, Tindakan identik, Nilai klaim sama (Rp 185.000)</p>
+            <p class="case-pathway">Fisioterapi Saraf &amp; Otot · ICD-9-CM 93.39 · ICD-10 M54.5</p>
           </div>
         </div>
 
-        <!-- Side-by-side comparison table -->
-        <div class="preview-table-card">
-          <div class="compare-grid header-grid">
-            <strong>Klaim A (Tersimpan)</strong>
-            <strong>Klaim B (Pengajuan Baru)</strong>
+        <div class="compact-case-grid">
+          <div class="case-data-col">
+            <span class="case-field-title">PESERTA</span>
+            <span class="case-field-val mono">000182947192</span>
+            <span class="field-status same">Identik (Pasien Sama)</span>
           </div>
-
-          <div class="field-label">Nomor berkas klaim</div>
-          <div class="compare-grid">
-            <div class="cell different mono">CLM-2025-08419</div>
-            <div class="cell different mono">CLM-2025-08422</div>
+          <div class="case-data-col">
+            <span class="case-field-title">TINDAKAN</span>
+            <span class="case-field-val">Fisioterapi (93.39)</span>
+            <span class="field-status same">Identik di Hari Sama</span>
           </div>
-
-          <div class="field-label">Tanggal pelayanan medis</div>
-          <div class="compare-grid">
-            <div class="cell same mono">14 Agu 2025</div>
-            <div class="cell same mono">14 Agu 2025</div>
-          </div>
-
-          <div class="field-label">Tanggal pengajuan berkas</div>
-          <div class="compare-grid">
-            <div class="cell different mono">16 Agu 2025</div>
-            <div class="cell different mono">17 Agu 2025</div>
-          </div>
-
-          <div class="field-label">Nilai tarif klaim (INA-CBG)</div>
-          <div class="compare-grid">
-            <div class="cell same mono">Rp 185.000</div>
-            <div class="cell same mono">Rp 185.000</div>
-          </div>
-
-          <div class="field-label">Tindakan (ICD-9-CM) &amp; Diagnosis (ICD-10)</div>
-          <div class="compare-grid">
-            <div class="cell same">93.39 · M54.5 (Nyeri Pinggang)</div>
-            <div class="cell same">93.39 · M54.5 (Nyeri Pinggang)</div>
-          </div>
-
-          <div class="legend-row">
-            <span><span class="legend-sq same"></span> Identik (Meningkatkan Risiko)</span>
-            <span><span class="legend-sq different"></span> Berbeda (Pemisah Administratif)</span>
+          <div class="case-data-col">
+            <span class="case-field-title">NILAI KLAIM</span>
+            <span class="case-field-val mono">Rp 185.000</span>
+            <span class="field-status same">Nilai Sama</span>
           </div>
         </div>
       </div>
@@ -1959,7 +1804,7 @@
       <div class="auth-portal-card">
         <div class="auth-header">
           <h2>Portal Verifikator &amp; Auditor</h2>
-          <p>Masuk ke ruang kerja penelaahan pra-audit klaim JKN</p>
+          <p>Masuk ke ruang kerja penelaahan klaim JKN</p>
         </div>
 
         <!-- Alert Banner (shown when URL has ?error=...) -->
@@ -2073,11 +1918,11 @@
     <div class="highlights-header">
       <div class="highlights-eyebrow">SOROTAN UTAMA</div>
       <h2 class="highlights-headline">
-        <span class="tone-ink">Keunggulan demi keunggulan.</span>
-        <span class="tone-muted">Solusi teruji untuk integritas klaim JKN.</span>
+        <span class="tone-ink">Lebih teliti.</span>
+        <span class="tone-muted">Bekerja cerdas tanpa bikin repot faskes.</span>
       </h2>
       <p class="highlights-lead">
-        Empat keunggulan teruji yang membedakan KlaimKembar dari perkakas audit konvensional dalam menata antrean verifikasi FKRTL.
+        Empat alasan verifikator memilih KlaimKembar untuk menyaring antrean klaim.
       </p>
     </div>
 
@@ -2088,88 +1933,72 @@
         <!-- Card 1: 87,2% Pengurangan False Positive -->
         <article class="highlight-card" data-highlight-index="0" id="sorotan-card-1">
           <div class="card-top">
-            <div class="card-tag-row">
-              <span class="card-badge">PENCEGAHAN SALAH TUDUH</span>
-              <span class="card-stat mono green">6,36</span>
-            </div>
-            <div class="card-stat-unit">FP / 1.000 klaim (Turun 87,2%)</div>
+            <span class="card-badge">LEBIH AKURAT</span>
             <h3 class="card-headline">
-              <span class="tone-ink">Pangkas alarm palsu 87,2%.</span><br>
-              <span class="tone-muted">Jaga kelancaran klaim fasilitas kesehatan.</span>
+              <span class="tone-ink">Salah tandai turun 87,2%.</span><br>
+              <span class="tone-muted">Klaim sah tetap lancar.</span>
             </h3>
             <p class="card-body">
-              Penyaringan kemiripan teks biasa kerap menuduh sesi terapi berkala sebagai duplikasi ilegal. KlaimKembar mengintegrasikan guardrail klinis deterministik sehingga frekuensi alarm palsu anjlok ke tingkat aman, membebaskan verifikator dari tumpukan sanggahan administratif.
+              Hanya 6 dari 1.000 klaim sah yang masuk antrean periksa ulang.
             </p>
           </div>
-          <div class="card-footer">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            <span>Menjaga arus kas rumah sakit dan menghormati integritas dokter penanggung jawab pelayanan.</span>
+          <div class="card-giant-stat">
+            <div class="giant-number mono green">87,2%</div>
+            <div class="giant-caption">Turun dari 49,70 kasus pada metode biasa (kini 6,36 FP / 1.000 klaim).</div>
           </div>
         </article>
 
         <!-- Card 2: 1.699.219 Baris Kalibrasi FKRTL BPJS 2025 -->
         <article class="highlight-card" data-highlight-index="1" id="sorotan-card-2">
           <div class="card-top">
-            <div class="card-tag-row">
-              <span class="card-badge">KALIBRASI SKALA BESAR</span>
-              <span class="card-stat mono purple">1.699.219</span>
-            </div>
-            <div class="card-stat-unit">Baris data FKRTL (229.682 klaim fisioterapi)</div>
+            <span class="card-badge">TERUJI DATA NYATA</span>
             <h3 class="card-headline">
-              <span class="tone-ink">Ditempa 1,69 juta baris klaim.</span><br>
-              <span class="tone-muted">Tangguh menghadapi data rujukan riil.</span>
+              <span class="tone-ink">Diuji pada 1,69 juta klaim.</span><br>
+              <span class="tone-muted">Kuat hadapi data lapangan.</span>
             </h3>
             <p class="card-body">
-              Distribusi fitur dilatih dan divalidasi langsung pada data rilis resmi BPJS Kesehatan 2025. Sistem tetap bekerja stabil kendati menghadapi 41,69% kekosongan kode tindakan FKL30 pada data umum, menurunkan risiko salah penafsiran pada berkas yang belum lengkap.
+              Mengikuti pola riil 229 ribu klaim fisioterapi rawat jalan BPJS 2025.
             </p>
           </div>
-          <div class="card-footer">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            <span>Tahan terhadap anomali pencatatan lapangan tanpa mengorbankan ketajaman deteksi.</span>
+          <div class="card-giant-stat">
+            <div class="giant-number mono purple">1,69 Jt</div>
+            <div class="giant-caption">1.699.219 baris data FKRTL BPJS Kesehatan 2025.</div>
           </div>
         </article>
 
         <!-- Card 3: 0,0 Skor Risiko pada visit_id Berbeda -->
         <article class="highlight-card" data-highlight-index="2" id="sorotan-card-3">
           <div class="card-top">
-            <div class="card-tag-row">
-              <span class="card-badge">INTEGRITAS REKAM MEDIS</span>
-              <span class="card-stat mono green">0,0</span>
-            </div>
-            <div class="card-stat-unit">Skor risiko akhir (Protected aktif)</div>
+            <span class="card-badge">KENALI TERAPI RUTIN</span>
             <h3 class="card-headline">
-              <span class="tone-ink">visit_id berbeda, proteksi seketika.</span><br>
-              <span class="tone-muted">Terapi sah tak tersentuh.</span>
+              <span class="tone-ink">Beda kunjungan, langsung aman.</span><br>
+              <span class="tone-muted">Terapi rutin tak tertahan.</span>
             </h3>
             <p class="card-body">
-              Saat sistem mendeteksi nomor registrasi kunjungan rumah sakit yang berbeda atau jadwal terapi berkala yang terencana, klaim langsung dikunci dengan nilai risiko nol. Mesin pembelajaran dilarang menganulir bukti otentik rekam medis rumah sakit.
+              Klaim dengan bukti kunjungan berbeda otomatis dilewati dari antrean.
             </p>
           </div>
-          <div class="card-footer">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            <span>Keputusan didasarkan pada bukti registrasi rumah sakit, bukan tebakan probabilitas.</span>
+          <div class="card-giant-stat">
+            <div class="giant-number mono green">0,0</div>
+            <div class="giant-caption">Skor risiko akhir saat bukti kunjungan terverifikasi di sistem.</div>
           </div>
         </article>
 
         <!-- Card 4: 96,1% F1 CatBoost + Regresi Logistik -->
         <article class="highlight-card" data-highlight-index="3" id="sorotan-card-4">
           <div class="card-top">
-            <div class="card-tag-row">
-              <span class="card-badge">KECERDASAN TANPA KOTAK HITAM</span>
-              <span class="card-stat mono blue">96,1%</span>
-            </div>
-            <div class="card-stat-unit">Skor F1 kalibrasi (Presisi 94,8% · Recall 97,3%)</div>
+            <span class="card-badge">PRIORITAS CERDAS</span>
             <h3 class="card-headline">
-              <span class="tone-ink">CatBoost dan Regresi Logistik.</span><br>
-              <span class="tone-muted">Penilaian probabilistik transparan.</span>
+              <span class="tone-ink">Antrean rapi dengan CatBoost.</span><br>
+              <span class="tone-muted">Urutan telaah makin tepat.</span>
             </h3>
             <p class="card-body">
-              Ensemble CatBoost 12 pohon simetris berkedalaman 3 berbobot 0,62 berpadu dengan Regresi Logistik L2 berbobot 0,38 dan 6 interaksi non-linear. Berjalan murni dalam mode shadow untuk menyusun urutan telaah dan rincian faktor risiko tanpa mengambil alih keputusan petugas manusia.
+              Model membantu mengurutkan kasus yang paling butuh dicek lebih dulu.
             </p>
           </div>
-          <div class="card-footer">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            <span>Setiap skor risiko disertai daftar atribut pemicu yang dapat diperiksa langsung.</span>
+          <div class="card-giant-stat">
+            <div class="giant-number mono blue">96,1%</div>
+            <div class="giant-caption">Skor F1 data BPJS (Presisi 94,8% dan Recall 97,3%).</div>
           </div>
         </article>
 
@@ -2200,13 +2029,13 @@
        ========================================================================== -->
   <section class="section-scrolly" id="arsitektur" data-scrolly-container>
     <div class="scrolly-header">
-      <div class="scrolly-eyebrow">ARSITEKTUR BERTINGKAT</div>
+      <div class="scrolly-eyebrow">CARA KERJA</div>
       <h2 class="scrolly-headline">
-        <span class="tone-ink">Tiga lapis penyaringan terpadu.</span>
-        <span class="tone-muted">Dari data mentah hingga rekomendasi telaah yang presisi.</span>
+        <span class="tone-ink">Tiga langkah penyaringan.</span>
+        <span class="tone-muted">Cepat, adil, dan transparan.</span>
       </h2>
       <p class="scrolly-lead">
-        Alur kerja sistematis yang memastikan setiap pasangan berkas diperiksa secara objektif dan proporsional.
+        Bagaimana sistem memilah berkas sebelum sampai di meja verifikator.
       </p>
     </div>
 
@@ -2216,103 +2045,40 @@
 
         <!-- Step 0: 6-Dimensi Kemiripan -->
         <article class="scrolly-step is-active" data-step="0">
-          <div class="step-badge mono">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
-            LANGKAH 01 / ENAM DIMENSI KEMIRIPAN
-          </div>
-          <h3 class="step-title">Enam dimensi kemiripan. Satu pemblokiran presisi.</h3>
-          <p class="step-sub">
-            <span class="tone-ink">Penyaringan awal berkecepatan tinggi.</span>
-            <span class="tone-muted">Mendeteksi kesamaan pola tanpa membebani komputasi.</span>
-          </p>
+          <div class="step-badge mono">LANGKAH 01</div>
+          <h3 class="step-title">Cek 6 kemiripan dasar sekaligus.</h3>
           <p class="step-narrative">
-            Pemeriksaan diawali dengan pemblokiran berbasis token peserta berkecepatan O(N) untuk memastikan komparasi hanya dilakukan pada pasien yang sama. Mesin kemudian menghitung skor komposit berbasis 6 dimensi klinis dan administratif berbobot total 100 poin, menghasilkan gambaran menyeluruh terhadap potensi duplikasi berkas.
+            Sistem membandingkan peserta, faskes, tanggal layanan, tindakan, diagnosis, dan nilai klaim dalam sekali jalan.
           </p>
-
-          <div class="feature-chip-grid">
-            <div class="chip-item">
-              <span>Identitas Peserta</span>
-              <span class="chip-weight">+30 poin</span>
-            </div>
-            <div class="chip-item">
-              <span>Fasilitas Kesehatan</span>
-              <span class="chip-weight">+15 poin</span>
-            </div>
-            <div class="chip-item">
-              <span>Tanggal Pelayanan</span>
-              <span class="chip-weight">+15 poin</span>
-            </div>
-            <div class="chip-item">
-              <span>Tindakan ICD-9-CM</span>
-              <span class="chip-weight">+15 poin</span>
-            </div>
-            <div class="chip-item">
-              <span>Diagnosis ICD-10</span>
-              <span class="chip-weight">+10 poin</span>
-            </div>
-            <div class="chip-item">
-              <span>Kesesuaian Tarif</span>
-              <span class="chip-weight">+10 poin</span>
-            </div>
+          <div class="step-chips-row">
+            <span class="step-chip">Maksimal 100 poin</span>
+            <span class="step-chip">Wajib peserta sama</span>
           </div>
         </article>
 
         <!-- Step 1: Guardrail Klinis Deterministik -->
         <article class="scrolly-step" data-step="1" id="guardrail">
-          <div class="step-badge mono">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--green);"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-            LANGKAH 02 / GUARDRAIL KLINIS DETERMINISTIK
-          </div>
-          <h3 class="step-title">Guardrail klinis deterministik. Kunjungan terapi sah tak tersentuh.</h3>
-          <p class="step-sub">
-            <span class="tone-ink">Keadilan bagi perawatan berkala.</span>
-            <span class="tone-muted">Aturan pasti mengalahkan tebakan algoritma.</span>
-          </p>
+          <div class="step-badge mono">LANGKAH 02</div>
+          <h3 class="step-title">Pisahkan terapi rutin dari klaim ganda.</h3>
           <p class="step-narrative">
-            Pasien fisioterapi dan rehabilitasi medik memerlukan kunjungan berkelanjutan dengan diagnosis dan tindakan serupa. Menilai berkas-berkas ini semata-mata dengan kemiripan teks akan menghasilkan ratusan peringatan palsu. KlaimKembar menyematkan aturan deterministik yang mengunci skor risiko pada nilai nol begitu keabsahan episode kunjungan terverifikasi.
+            Kalau ada nomor kunjungan berbeda (DISTINCT_VISITS) atau jadwal terapi rutin (SCHEDULED_REHAB), skor langsung turun ke nol.
           </p>
-
-          <div class="guardrail-callout-stack">
-            <div class="gr-callout">
-              <h4>1. Distinct Visits Guardrail (DISTINCT_VISITS)</h4>
-              <p>Nomor registrasi visit_id pada rekam medis terbukti berbeda. Pengurangan 100 poin, status protected aktif, ml_score = 0,0.</p>
-            </div>
-            <div class="gr-callout">
-              <h4>2. Scheduled Recurring Rehab (SCHEDULED_REHAB)</h4>
-              <p>Kunjungan terdaftar dalam protokol rencana terapi berkala yang terverifikasi. Pengurangan 100 poin, status protected aktif.</p>
-            </div>
-            <div class="gr-callout" style="background:#f4f5fc; border-color:#d5d8f0;">
-              <h4 style="color:var(--primary);">3. Correction Superseded (CORRECTION_SUPERSEDED)</h4>
-              <p style="color:var(--text-muted);">Pasangan klaim tercatat sebagai revisi sah dari berkas lama yang dibatalkan. Pengurangan 50 poin peredam alarm.</p>
-            </div>
+          <div class="step-chips-row">
+            <span class="step-chip">Skor turun ke nol</span>
+            <span class="step-chip">Langsung lolos antrean</span>
           </div>
         </article>
 
         <!-- Step 2: Ensemble CatBoost dan Regresi Logistik -->
         <article class="scrolly-step" data-step="2">
-          <div class="step-badge mono">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--primary);"><path d="M8 15a6 6 0 1 1 8 0l-2 3h-4zM10 21h4"/></svg>
-            LANGKAH 03 / ENSEMBLE CATBOOST DAN REGRESI LOGISTIK
-          </div>
-          <h3 class="step-title">Ensemble CatBoost dan Regresi Logistik. Dikalibrasi pada 1,69 juta klaim FKRTL.</h3>
-          <p class="step-sub">
-            <span class="tone-ink">Penilaian pendamping yang akurat.</span>
-            <span class="tone-muted">Memberi konteks probabilitas tanpa mengambil alih keputusan.</span>
-          </p>
+          <div class="step-badge mono">LANGKAH 03</div>
+          <h3 class="step-title">Urutkan antrean dengan CatBoost &amp; LogReg.</h3>
           <p class="step-narrative">
-            Pada pasangan berkas yang tidak terlindungi guardrail, model kk-catboost-logreg-v1.0 menghitung probabilitas risiko secara halus. Model memadukan pohon keputusan simetris CatBoost dengan Regresi Logistik teratur L2 dan 6 interaksi non-linear, dikalibrasi menggunakan metode Platt Scaling pada data rilis BPJS Kesehatan 2025.
+            Kasus yang belum punya bukti pembeda diurutkan skornya supaya petugas memeriksa yang paling penting dulu.
           </p>
-
-          <div class="specs-chip-stack">
-            <div class="spec-item">
-              <strong>CatBoost Config:</strong> 12 Oblivious Decision Trees, kedalaman seragam 3, bobot 0,62
-            </div>
-            <div class="spec-item">
-              <strong>Regresi Logistik Config:</strong> L2 regularized, 14 fitur terstandar, 6 interaksi non-linear, bobot 0,38
-            </div>
-            <div class="spec-item">
-              <strong>Aturan Penguncian Mutlak:</strong> ml_score dan hybrid_score wajib 0,0 ketika status protected bernilai True
-            </div>
+          <div class="step-chips-row">
+            <span class="step-chip">Bantu urutan antrean</span>
+            <span class="step-chip">Keputusan di tangan petugas</span>
           </div>
         </article>
 
@@ -2339,17 +2105,16 @@
 
             <!-- State 01 Card: 6-Feature Weight Matrix -->
             <div class="stage-card is-active" data-stage-card="0">
-              <div class="row between" style="margin-bottom:8px;">
+              <div class="row between" style="margin-bottom:12px;">
                 <span class="pill high">Kasus SYN-7F3A92D1</span>
                 <span class="mono text-muted" style="font-size:12px;">Total: 84 / 100 Poin</span>
               </div>
-              <h4 style="margin:0 0 4px; font-size:15px;">Matriks Penilaian 6 Dimensi Kemiripan</h4>
-              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Pencocokan atribut administratif dan klinis berbobot 100 poin:</p>
+              <h4 style="margin:0 0 12px; font-size:16px;">Matriks 6 Dimensi Kemiripan</h4>
 
               <div class="weight-matrix-grid">
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Identitas Peserta</strong> (SAME_PARTICIPANT)</span>
+                    <span><strong>Identitas Peserta</strong></span>
                     <span class="mono primary-text"><strong>+30</strong> / 30</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
@@ -2357,7 +2122,7 @@
 
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Fasilitas Kesehatan</strong> (RSUD Kelas B)</span>
+                    <span><strong>Fasilitas Kesehatan</strong></span>
                     <span class="mono primary-text"><strong>+15</strong> / 15</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
@@ -2365,7 +2130,7 @@
 
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Tanggal Pelayanan</strong> (Hari sama)</span>
+                    <span><strong>Tanggal Pelayanan</strong></span>
                     <span class="mono primary-text"><strong>+15</strong> / 15</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
@@ -2373,7 +2138,7 @@
 
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Tindakan Prosedur</strong> (ICD-9-CM 93.39)</span>
+                    <span><strong>Tindakan Prosedur</strong></span>
                     <span class="mono primary-text"><strong>+15</strong> / 15</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
@@ -2381,7 +2146,7 @@
 
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Diagnosis Utama</strong> (ICD-10 M54.5)</span>
+                    <span><strong>Diagnosis Utama</strong></span>
                     <span class="mono primary-text"><strong>+10</strong> / 10</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
@@ -2389,39 +2154,24 @@
 
                 <div class="matrix-row">
                   <div class="matrix-info">
-                    <span><strong>Kesesuaian Tarif</strong> (Rp 185.000 · Deviasi 0%)</span>
+                    <span><strong>Kesesuaian Tarif</strong></span>
                     <span class="mono primary-text"><strong>+10</strong> / 10</span>
                   </div>
                   <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:100%;"></div></div>
-                </div>
-
-                <div class="matrix-row">
-                  <div class="matrix-info">
-                    <span><strong>Kedekatan Pengajuan</strong> (Selang 1 hari)</span>
-                    <span class="mono muted">0 / 5</span>
-                  </div>
-                  <div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:0%;"></div></div>
                 </div>
               </div>
             </div>
 
             <!-- State 02 Card: Guardrail Protection Active -->
             <div class="stage-card" data-stage-card="1">
-              <div class="row between" style="margin-bottom:8px;">
+              <div class="row between" style="margin-bottom:12px;">
                 <span class="pill valid">Kasus SYN-4B9E10C2</span>
                 <span class="mono green-text" style="font-size:12px; font-weight:700;">PROTECTED ACTIVE</span>
               </div>
-              <h4 style="margin:0 0 4px; font-size:15px;">Simulasi Penguncian Guardrail Klinis</h4>
-              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Pencegahan salah tuduh pada perawatan berkala fisioterapi:</p>
+              <h4 style="margin:0 0 12px; font-size:16px;">Penguncian Guardrail Klinis</h4>
 
               <div class="guardrail-visual-deck">
-                <div class="guardrail-status-banner">
-                  <span class="status-badge">KUNJUNGAN_TERPISAH_VALID</span>
-                  <h3>Status Terlindungi (Protected = True)</h3>
-                  <p>Nomor kunjungan rekam medis terdaftar resmi sebagai episode terpisah, menghapus seluruh risiko duplikasi.</p>
-                </div>
-
-                <div class="guardrail-metric-pair">
+                <div class="guardrail-metric-pair" style="margin-bottom:14px;">
                   <div class="gr-metric-card">
                     <div class="val">0,0</div>
                     <div class="lbl">Skor Risiko Akhir</div>
@@ -2432,17 +2182,17 @@
                   </div>
                 </div>
 
-                <div style="background:#ffffff; border:1px solid var(--border); border-radius:14px; padding:12px;">
-                  <div class="field-label" style="margin-top:0;">Perbandingan Encounter Rekam Medis</div>
-                  <div class="compare-grid" style="margin-bottom:0;">
+                <div style="background:#ffffff; border:1px solid var(--border); border-radius:14px; padding:14px;">
+                  <div class="field-label" style="margin-top:0; margin-bottom:8px;">Perbandingan Rekam Medis</div>
+                  <div class="compare-grid" style="margin-bottom:10px;">
                     <div class="cell different mono" style="font-size:11px;">VST-2025-0891 (08:30 WIB)</div>
                     <div class="cell different mono" style="font-size:11px;">VST-2025-0944 (11:15 WIB)</div>
                   </div>
-                  <div style="margin-top:8px; font-size:11.5px; color:var(--green); font-weight:600;">
-                    ✓ DISTINCT_VISITS: Terbukti kunjungan berbeda (−100 poin)
+                  <div style="font-size:12px; color:var(--green); font-weight:600; margin-bottom:4px;">
+                    ✓ DISTINCT_VISITS: Bukti kunjungan berbeda (−100 poin)
                   </div>
-                  <div style="margin-top:4px; font-size:11.5px; color:var(--green); font-weight:600;">
-                    ✓ SCHEDULED_REHAB: Siklus rehabilitasi medik sah (−100 poin)
+                  <div style="font-size:12px; color:var(--green); font-weight:600;">
+                    ✓ SCHEDULED_REHAB: Jadwal terapi rutin sah (−100 poin)
                   </div>
                 </div>
               </div>
@@ -2450,42 +2200,34 @@
 
             <!-- State 03 Card: CatBoost + LogReg Shadow Scorer -->
             <div class="stage-card" data-stage-card="2">
-              <div class="row between" style="margin-bottom:8px;">
+              <div class="row between" style="margin-bottom:12px;">
                 <span class="pill low">Model kk-catboost-logreg-v1.0</span>
-                <span class="mono primary-text" style="font-size:12px; font-weight:700;">SHADOW MODE</span>
+                <span class="mono primary-text" style="font-size:12px; font-weight:700;">SHADOW SCORER</span>
               </div>
-              <h4 style="margin:0 0 4px; font-size:15px;">Ensemble CatBoost &amp; Regresi Logistik</h4>
-              <p class="small muted" style="margin:0 0 12px; font-size:12px;">Penilaian probabilitas non-linear berkalibrasi data rilis BPJS 2025:</p>
+              <h4 style="margin:0 0 12px; font-size:16px;">Ensemble CatBoost &amp; Regresi Logistik</h4>
 
               <div class="shadow-scorer-deck">
-                <div class="model-split-grid">
+                <div class="model-split-grid" style="margin-bottom:14px;">
                   <div class="model-card">
                     <h4>CatBoost Trees</h4>
                     <div class="model-score">91,2%</div>
-                    <p>12 Oblivious Decision Trees berkedalaman 3 (Bobot 0,62)</p>
+                    <p>12 Pohon Keputusan (Bobot 0,62)</p>
                   </div>
                   <div class="model-card">
                     <h4>Regresi Logistik L2</h4>
                     <div class="model-score">86,4%</div>
-                    <p>14 Fitur + 6 Interaksi non-linear (Bobot 0,38)</p>
+                    <p>14 Fitur Terstandar (Bobot 0,38)</p>
                   </div>
                 </div>
 
-                <div class="calibration-badge-box">
-                  <svg viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M12 3 5 6v6c0 4 7 8 7 8s7-4 7-8V6z"/><path d="m9 11 2 2 4-4"/></svg>
-                  <div>
-                    <strong>Platt Scaling Calibrated:</strong> Dikalibrasi langsung pada 1.699.219 baris data FKRTL 2025.
-                  </div>
-                </div>
-
-                <div style="background:var(--surface-bg); border:1px solid var(--border); border-radius:14px; padding:12px;">
+                <div style="background:var(--surface-bg); border:1px solid var(--border); border-radius:14px; padding:14px;">
                   <div class="row between">
-                    <span style="font-size:12.5px; font-weight:700;">Keluaran Skor Hibrida</span>
+                    <span style="font-size:13px; font-weight:700;">Keluaran Skor Hibrida</span>
                     <span class="mono" style="font-size:18px; font-weight:800; color:var(--primary);">84,0 / 100</span>
                   </div>
-                  <p class="small muted" style="margin:4px 0 0; font-size:11.5px; line-height:1.4;">
-                    Skor berfungsi memprioritaskan antrean telaah verifikator, bukan penentu kelayakan tunggal.
-                  </p>
+                  <div class="small muted" style="margin-top:6px; font-size:11.5px;">
+                    Dikalibrasi langsung pada 1.699.219 baris data FKRTL BPJS Kesehatan 2025.
+                  </div>
                 </div>
               </div>
             </div>
@@ -2501,28 +2243,28 @@
        ========================================================================== -->
   <section class="section-benchmark" id="kalibrasi-bpjs">
     <div class="benchmark-header" id="evaluasi">
-      <div class="benchmark-eyebrow">BUKTI EMPIRIS &amp; TATA KELOLA</div>
+      <div class="benchmark-eyebrow">HASIL UJI &amp; PRINSIP</div>
       <h2 class="benchmark-headline">
-        <span class="tone-ink">Kinerja terukur di atas data nyata.</span>
-        <span class="tone-muted">Didukung tiga lapis perlindungan tata kelola dan etika audit.</span>
+        <span class="tone-ink">Bukti nyata di lapangan.</span>
+        <span class="tone-muted">Akurasi tinggi dengan etika kerja yang terjaga.</span>
       </h2>
       <p class="benchmark-lead">
-        Evaluasi ketat membandingkan KlaimKembar dengan pendekatan audit lain, disokong kepatuhan mutlak pada standar kerahasiaan data medis.
+        Perbandingan hasil uji pada data klaim riil dan tiga prinsip kerja KlaimKembar.
       </p>
     </div>
 
     <div class="benchmark-layout">
       <!-- Left: Multi-Method Comparison Bars -->
       <div class="benchmark-bars-card">
-        <h3 class="bm-card-title">Perbandingan Kinerja Multi-Metode</h3>
+        <h3 class="bm-card-title">Perbandingan Hasil Uji</h3>
         <p class="bm-card-sub">
-          Evaluasi 5-Seed Benchmark pada 25.000 klaim berlabel serta kalibrasi empiris pada sampel rilis data BPJS Kesehatan 2025.
+          Diuji pada 25.000 klaim berlabel dan data rilis terbuka BPJS Kesehatan 2025.
         </p>
 
         <!-- Method 1: Exact Match -->
         <div class="bm-row">
           <div class="bm-title-row">
-            <span><strong>1. Pencocokan Persis (Exact Match)</strong></span>
+            <span><strong>Cara Lama: Pencocokan Persis (Exact Match)</strong></span>
             <span class="pill">F1: 29,3%</span>
           </div>
           <div class="bar-track">
@@ -2531,17 +2273,17 @@
           <div class="bm-stats-row mono">
             <span>Presisi: <strong>65,9%</strong></span>
             <span>Recall: <strong>18,9%</strong></span>
-            <span>FP / 1k: <strong>6,76</strong></span>
+            <span>FP: <strong>6,76</strong> / 1k</span>
           </div>
           <div class="bm-critique">
-            Hanya mendeteksi duplikasi identik sempurna. Melewatkan lebih dari 80% klaim kembar akibat sedikit variasi penulisan tanggal atau kode tindakan.
+            Hanya mendeteksi data yang sama persis, melewatkan 80% klaim ganda lainnya.
           </div>
         </div>
 
         <!-- Method 2: Similarity without Guardrail -->
         <div class="bm-row">
           <div class="bm-title-row">
-            <span><strong>2. Kemiripan Tanpa Guardrail</strong></span>
+            <span><strong>Kemiripan Biasa Tanpa Pengecualian</strong></span>
             <span class="pill medium">F1: 67,0%</span>
           </div>
           <div class="bar-track">
@@ -2550,18 +2292,18 @@
           <div class="bm-stats-row mono">
             <span>Presisi: <strong>54,6%</strong></span>
             <span>Recall: <strong>86,5%</strong></span>
-            <span class="amber-text">FP / 1k: <strong>49,70</strong> (Tinggi)</span>
+            <span class="amber-text">FP: <strong>49,70</strong> / 1k</span>
           </div>
           <div class="bm-critique">
-            Mampu menjaring lebih banyak kasus namun memicu 49,70 alarm keliru per 1.000 klaim, membebani rumah sakit dengan sanggahan administratif berkepanjangan.
+            Menemukan banyak klaim, tapi memicu 49 alarm salah per 1.000 berkas.
           </div>
         </div>
 
         <!-- Method 3: KlaimKembar Hybrid -->
         <div class="bm-row featured">
           <div class="bm-title-row">
-            <span><strong style="color:var(--primary);">3. Mesin Hibrida KlaimKembar (Guardrail + ML)</strong></span>
-            <span class="pill valid" style="font-weight:700;">F1: 91,5% · BPJS: 96,1%</span>
+            <span><strong style="color:var(--primary);">KlaimKembar (Aturan + CatBoost)</strong></span>
+            <span class="pill valid" style="font-weight:700;">91,5% · BPJS: 96,1%</span>
           </div>
           <div class="bar-track" style="height:12px;">
             <div class="bar method2" data-width="96.1%"></div>
@@ -2569,19 +2311,19 @@
           <div class="bm-stats-row mono">
             <span>Presisi: <strong>94,8%</strong></span>
             <span>Recall: <strong>97,3%</strong></span>
-            <span class="green-text" style="font-weight:700;">FP / 1k: 6,36 (Turun 87,2%)</span>
+            <span class="green-text" style="font-weight:700;">FP: 6,36 / 1k (Turun 87%)</span>
           </div>
-          <div class="bm-critique" style="color:var(--text-ink); font-weight:500;">
-            Menyeimbangkan kepekaan deteksi kasus duplikasi dengan kepastian perlindungan jadwal terapi berkala peserta.
+          <div class="bm-critique" style="color:var(--text-ink); font-weight:600;">
+            Klaim ganda terjaring tepat, jadwal terapi pasien tetap aman tanpa tertahan.
           </div>
         </div>
       </div>
 
       <!-- Right: 3-Layer Clinical Ethics & Governance Bento -->
       <div class="ethics-bento-card">
-        <h3 class="ethics-card-title">Tiga Lapis Tata Kelola dan Perlindungan Etika</h3>
+        <h3 class="ethics-card-title">Tiga Prinsip Kerja KlaimKembar</h3>
         <p class="ethics-card-sub">
-          Standar kerahasiaan data medis dan transparansi hukum yang tertanam di level inti sistem.
+          Melindungi privasi pasien dan menjaga objektivitas hasil pemeriksaan.
         </p>
 
         <div class="ethics-stack">
@@ -2589,10 +2331,10 @@
           <div class="ethics-item-box">
             <div class="ethics-badge-circle">1</div>
             <div class="ethics-body">
-              <span class="ethics-rule-pill">Wajib token anonim SYN-</span>
-              <h4>Pseudosasi Privasi Kriptografis</h4>
+              <span class="ethics-rule-pill">Kode acak SYN-</span>
+              <h4>Data Peserta Disamarkan (SYN-)</h4>
               <p>
-                Validasi skema gerbang API mengubah nomor kepesertaan dan nomor kartu menjadi kode acak bergaram melalui algoritma HMAC-SHA256, menjamin tidak ada NIK atau identitas sensitif yang tersimpan dalam format teks terbuka.
+                Identitas peserta diubah menjadi kode acak sebelum masuk ke sistem.
               </p>
             </div>
           </div>
@@ -2601,10 +2343,10 @@
           <div class="ethics-item-box">
             <div class="ethics-badge-circle">2</div>
             <div class="ethics-body">
-              <span class="ethics-rule-pill">Pemicu reject_review_change()</span>
-              <h4>Jejak Audit Kekal UTC dan Kendali Peran (RBAC)</h4>
+              <span class="ethics-rule-pill">Pencatatan otomatis</span>
+              <h4>Riwayat Keputusan Tersimpan Rapi</h4>
               <p>
-                Seluruh tindakan verifikator disimpan ke dalam tabel log append-only dengan stempel waktu UTC presisi dan versi snapshot kasus, mencegah perubahan riwayat keputusan dan menegakkan batas kewenangan Verifikator serta Auditor.
+                Setiap catatan petugas tercatat otomatis lengkap dengan waktu dan nama pemeriksa.
               </p>
             </div>
           </div>
@@ -2613,10 +2355,10 @@
           <div class="ethics-item-box">
             <div class="ethics-badge-circle">3</div>
             <div class="ethics-body">
-              <span class="ethics-rule-pill">Nol label kecurangan otomatis</span>
-              <h4>Tata Bahasa Telaah Netral dan Berkeadilan</h4>
+              <span class="ethics-rule-pill">Tiga status netral</span>
+              <h4>Tanpa Label Tuduhan "Fraud"</h4>
               <p>
-                Antarmuka sistem hanya menyediakan tiga pilihan status hasil telaah: <em>Valid</em>, <em>Perlu dokumen tambahan</em>, atau <em>Perlu pemeriksaan lebih lanjut</em>, menjaga asas praduga tak bersalah dan menempatkan keputusan akhir di tangan verifikator manusia.
+                Hasil pemeriksaan memakai status yang jelas: Valid, Perlu dokumen tambahan, atau Perlu pemeriksaan lanjut.
               </p>
             </div>
           </div>
@@ -2637,7 +2379,7 @@
       </div>
 
       <div class="footer-disclaimer">
-        Sistem pra-audit ini dirancang sebagai instrumen berbantuan AI untuk memprioritaskan antrean penelaahan berkas klaim fasilitas kesehatan tingkat rujukan lanjutan (FKRTL), bukan pengganti pertimbangan medis independen maupun surat persetujuan pembayaran resmi.
+        Sistem berbantuan AI untuk membantu verifikator menata antrean periksa klaim FKRTL secara tertib dan adil. Keputusan akhir tetap berada pada petugas verifikator.
       </div>
 
       <div>

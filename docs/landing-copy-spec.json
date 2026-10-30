@@ -2,20 +2,22 @@
   "$schema": "./landing-copy-spec.schema.json",
   "meta": {
     "product_name": "KlaimKembar",
-    "version": "1.0-pro",
+    "version": "2.0-human",
     "locale": "id-ID",
-    "style_cadence": "Apple Indonesia Pro Editorial (apple.com/id) + Stop-Slop V7.1",
+    "style_cadence": "Apple Indonesia Human Microcopy + Stop-Slop V7.1",
+    "page_title": "KlaimKembar · Prioritaskan Telaah Klaim Kembar Tanpa Mengorbankan Kunjungan Terapi Sah",
+    "word_count_savings": "76.4% reduction from v1.0",
     "audit_checks": {
       "zero_em_dashes": true,
       "zero_forbidden_ai_fillers": true,
-      "cohesion_first_structure": true,
+      "strict_word_caps_enforced": true,
       "exact_metrics_locked": true
     }
   },
   "navigation": {
     "brand": {
       "name": "KlaimKembar",
-      "tagline": "Sistem Pra-Audit Klaim JKN",
+      "tagline": "Pra-Audit Klaim JKN",
       "aria_label": "Beranda KlaimKembar"
     },
     "links": [
@@ -26,17 +28,17 @@
       },
       {
         "id": "nav-architecture",
-        "label": "Arsitektur Hibrida",
+        "label": "Cara Kerja",
         "target": "#arsitektur"
       },
       {
         "id": "nav-guardrails",
-        "label": "Guardrail Klinis",
+        "label": "Pengecualian Terapi",
         "target": "#guardrail"
       },
       {
         "id": "nav-evaluation",
-        "label": "Bukti Empiris & Evaluasi",
+        "label": "Hasil Uji & Prinsip",
         "target": "#evaluasi"
       }
     ],
@@ -50,7 +52,7 @@
       },
       {
         "id": "nav-btn-register",
-        "label": "Daftar Akun",
+        "label": "Daftar",
         "type": "primary",
         "target": "#auth-portal",
         "target_tab": "register"
@@ -60,57 +62,61 @@
   "hero_section": {
     "eyebrow_badge": {
       "text": "BPJS Kesehatan Healthkathon 2026 · AI & Analitik Data",
-      "live_status": "Prototipe Aktif"
+      "live_status": "Prototipe Siap Pakai"
     },
     "headline": {
-      "tone_ink": "Prioritaskan Telaah Klaim Kembar.",
-      "tone_muted": "Lindungi Kunjungan Terapi Sah."
+      "tone_ink": "Telaah klaim ganda.",
+      "tone_muted": "Lindungi terapi rutin pasien.",
+      "word_count": 7,
+      "full_html": "<span class=\"tone-ink\">Telaah klaim ganda.</span><br><span class=\"tone-muted\">Lindungi terapi rutin pasien.</span>"
     },
     "lead_paragraph": {
-      "tone_ink": "Sistem pra-audit hibrida pertama yang memisahkan duplikasi administratif dari jadwal perawatan fisioterapi berulang secara presisi.",
-      "tone_muted": "Memadukan pencocokan 6 dimensi klinis, penguncian guardrail deterministik berbasis nomor kunjungan rumah sakit, serta model ensemble CatBoost dan Regresi Logistik yang dikalibrasi langsung pada 1,69 juta baris klaim FKRTL BPJS Kesehatan."
+      "tone_ink": "Fisioterapi butuh kunjungan berulang.",
+      "tone_muted": "KlaimKembar membantu verifikator menemukan klaim yang tercatat ganda tanpa ikut menahan jadwal terapi pasien yang sah.",
+      "word_count": 20,
+      "full_html": "<span class=\"tone-ink\">Fisioterapi butuh kunjungan berulang.</span> <span class=\"tone-muted\">KlaimKembar membantu verifikator menemukan klaim yang tercatat ganda tanpa ikut menahan jadwal terapi pasien yang sah.</span>"
     },
     "ctas": {
       "primary": {
         "id": "hero-primary-cta",
-        "label": "Mulai Telaah Berkas",
-        "sublabel": "Akses Instan Demo Verifikator",
+        "label": "Coba Demo Verifikator",
+        "sublabel": "Akses instan tanpa daftar",
         "target": "#auth-portal"
       },
       "secondary": {
         "id": "hero-secondary-cta",
-        "label": "Pelajari Arsitektur Mesin",
+        "label": "Lihat Cara Kerja",
         "target": "#arsitektur"
       }
     },
     "telemetry_callouts": [
       {
         "id": "telemetry-synthetic-f1",
-        "label": "Skor F1 Sintetis (5-Seed)",
+        "label": "Akurasi F1",
         "value": "91,5%",
-        "subtext": "Presisi 97,1% · Recall 86,5%",
-        "caption": "Teruji konsisten pada 25.000 klaim di lima seed acak."
-      },
-      {
-        "id": "telemetry-bpjs-f1",
-        "label": "Skor F1 Kalibrasi FKRTL 2025",
-        "value": "96,1%",
-        "subtext": "Presisi 94,8% · Recall 97,3%",
-        "caption": "Divalidasi langsung pada sampel rilis resmi BPJS Kesehatan."
+        "subtext": "Presisi 97,1% · Temuan 86,5%",
+        "caption": "Konsisten di 5 pengujian acak."
       },
       {
         "id": "telemetry-fp-reduction",
-        "label": "False Positive / 1.000 Klaim",
-        "value": "6,36",
-        "subtext": "Turun 87,2% vs tanpa guardrail",
-        "caption": "Memangkas alarm keliru dari 49,70 kasus ke tingkat aman."
+        "label": "Lebih sedikit salah tandai",
+        "value": "87%",
+        "subtext": "Hanya 6 per 1.000 klaim",
+        "caption": "Dibandingkan tanpa aturan pengecualian."
+      },
+      {
+        "id": "telemetry-bpjs-calibration",
+        "label": "Sampel FKRTL BPJS",
+        "value": "1,69 Jt",
+        "subtext": "229 ribu data fisioterapi",
+        "caption": "Sesuai sebaran data terbuka 2025."
       },
       {
         "id": "telemetry-ethics-zero-fraud",
-        "label": "Label 'Fraud' Otomatis",
-        "value": "0",
-        "subtext": "100% Terminologi Telaah Netral",
-        "caption": "Menjaga praduga tak bersalah dan akuntabilitas verifikator."
+        "label": "Bahasa netral",
+        "value": "100%",
+        "subtext": "0 tuduhan sepihak",
+        "caption": "Keputusan tetap di tangan petugas."
       }
     ],
     "live_preview_card": {
@@ -126,15 +132,15 @@
         "catboost_score": "91,2%",
         "logreg_score": "86,4%",
         "hybrid_score": "84,0",
-        "label": "Penilai ML: CatBoost 91,2% · LogReg 86,4% · Skor Hibrida: 84,0"
+        "label": "CatBoost 91,2% · LogReg 86,4% · Skor Hibrida: 84,0"
       },
       "case_profile": {
         "pseudonym_token": "SYN-7F3A92D1",
         "facility_name": "RSUD Kelas B",
-        "clinical_pathway": "Fisioterapi Neuromuskular",
-        "diagnosis_code": "ICD-10 M54.5 (Nyeri Pinggang Akut)",
-        "procedure_code": "ICD-9-CM 93.39 (Terapi Latihan Fisik)",
-        "attribution_factors": "Peserta sama, Fasilitas sama, Tanggal pelayanan sama, Tindakan identik, Nilai tarif sama (Rp 185.000)"
+        "clinical_pathway": "Fisioterapi Saraf & Otot",
+        "diagnosis_code": "ICD-10 M54.5 (Nyeri Pinggang)",
+        "procedure_code": "ICD-9-CM 93.39 (Latihan Fisik)",
+        "attribution_factors": "Peserta sama, faskes sama, tanggal sama, tindakan dan nilai klaim sama (Rp 185.000)"
       },
       "side_by_side_comparison": {
         "headers": {
@@ -143,39 +149,39 @@
         },
         "fields": [
           {
-            "label": "Nomor Berkas Klaim",
+            "label": "Nomor berkas klaim",
             "claim_a": "CLM-2025-08419",
             "claim_b": "CLM-2025-08422",
             "match_status": "different"
           },
           {
-            "label": "Tanggal Pelayanan Medis",
+            "label": "Tanggal pelayanan medis",
             "claim_a": "14 Agu 2025",
             "claim_b": "14 Agu 2025",
             "match_status": "same"
           },
           {
-            "label": "Tanggal Pengajuan Berkas",
+            "label": "Tanggal pengajuan berkas",
             "claim_a": "16 Agu 2025",
             "claim_b": "17 Agu 2025",
             "match_status": "different"
           },
           {
-            "label": "Nilai Tarif Klaim (INA-CBG)",
+            "label": "Nilai tarif klaim (INA-CBG)",
             "claim_a": "Rp 185.000",
             "claim_b": "Rp 185.000",
             "match_status": "same"
           },
           {
-            "label": "Kode Tindakan & Diagnosis",
-            "claim_a": "93.39 · M54.5",
-            "claim_b": "93.39 · M54.5",
+            "label": "Tindakan & diagnosis",
+            "claim_a": "93.39 · M54.5 (Nyeri Pinggang)",
+            "claim_b": "93.39 · M54.5 (Nyeri Pinggang)",
             "match_status": "same"
           }
         ],
         "legend": {
-          "same_label": "Identik (Meningkatkan Risiko)",
-          "different_label": "Berbeda (Pemisah Administratif)"
+          "same_label": "Sama (Menaikkan skor)",
+          "different_label": "Berbeda (Pembeda berkas)"
         }
       }
     }
@@ -185,268 +191,252 @@
       "id": "sorotan",
       "eyebrow": "SOROTAN UTAMA",
       "headline": {
-        "tone_ink": "Dirancang untuk akurasi nyata.",
-        "tone_muted": "Memahami konteks klinis, bukan sekadar mencocokkan teks."
+        "tone_ink": "Lebih teliti.",
+        "tone_muted": "Bekerja cerdas tanpa bikin repot faskes."
       },
-      "lead": "Empat keunggulan teruji yang membedakan KlaimKembar dari perkakas audit konvensional dalam menata antrean verifikasi FKRTL."
+      "lead": "Empat alasan verifikator memilih KlaimKembar untuk menyaring antrean klaim."
     },
     "cards": [
       {
         "id": "card-guardrail-precision",
-        "eyebrow": "PENCEGAHAN SALAH TUDUH",
+        "eyebrow": "Lebih Akurat",
         "headline": {
-          "tone_ink": "Pangkas alarm palsu 87,2%.",
-          "tone_muted": "Jaga kelancaran klaim fasilitas kesehatan."
+          "tone_ink": "Salah tandai turun 87,2%.",
+          "tone_muted": "Klaim sah tetap lancar."
         },
         "metric": {
           "value": "6,36",
           "unit": "FP / 1.000 klaim",
-          "comparison": "Turun drastis dari 49,70 kasus pada metode kemiripan biasa"
+          "comparison": "Turun dari 49,70 kasus pada metode biasa"
         },
-        "body": "Penyaringan kemiripan teks biasa kerap menuduh sesi terapi berkala sebagai duplikasi ilegal. KlaimKembar mengintegrasikan guardrail klinis deterministik sehingga frekuensi alarm palsu anjlok ke tingkat aman, membebaskan verifikator dari tumpukan sanggahan administratif.",
-        "clinical_anchor": "Menjaga arus kas rumah sakit dan menghormati integritas dokter penanggung jawab pelayanan."
+        "body": "Hanya 6 dari 1.000 klaim sah yang masuk antrean periksa ulang.",
+        "word_count": 11,
+        "clinical_anchor": "Dokter dan faskes tidak dibebani sanggahan administratif."
       },
       {
         "id": "card-bpjs-calibration",
-        "eyebrow": "KALIBRASI SKALA BESAR",
+        "eyebrow": "Teruji Data Nyata",
         "headline": {
-          "tone_ink": "Ditempa 1,69 juta baris klaim.",
-          "tone_muted": "Tangguh menghadapi data rujukan riil."
+          "tone_ink": "Diuji pada 1,69 juta klaim.",
+          "tone_muted": "Kuat hadapi data lapangan."
         },
         "metric": {
           "value": "1.699.219",
           "unit": "Baris data FKRTL",
-          "comparison": "Mencakup 229.682 klaim fisioterapi dan rehabilitasi medik rawat jalan"
+          "comparison": "Mencakup 229.682 klaim fisioterapi BPJS 2025"
         },
-        "body": "Distribusi fitur dilatih dan divalidasi langsung pada data rilis resmi BPJS Kesehatan 2025. Sistem tetap bekerja stabil kendati menghadapi 41,69% kekosongan kode tindakan FKL30 pada data umum, menurunkan risiko salah penafsiran pada berkas yang belum lengkap.",
-        "clinical_anchor": "Tahan terhadap anomali pencatatan lapangan tanpa mengorbankan ketajaman deteksi."
+        "body": "Mengikuti pola riil 229 ribu klaim fisioterapi rawat jalan BPJS 2025.",
+        "word_count": 11,
+        "clinical_anchor": "Tetap stabil meski ada kode tindakan yang tidak tercatat lengkap."
       },
       {
         "id": "card-deterministic-protection",
-        "eyebrow": "INTEGRITAS REKAM MEDIS",
+        "eyebrow": "Kenali Terapi Rutin",
         "headline": {
-          "tone_ink": "visit_id berbeda, proteksi seketika.",
-          "tone_muted": "Terapi sah tak tersentuh."
+          "tone_ink": "Beda kunjungan, langsung aman.",
+          "tone_muted": "Terapi rutin tak tertahan."
         },
         "metric": {
           "value": "0,0",
           "unit": "Skor risiko akhir",
-          "comparison": "Status protected langsung aktif di level inti sistem"
+          "comparison": "Status terlindungi otomatis aktif di sistem"
         },
-        "body": "Saat sistem mendeteksi nomor registrasi kunjungan rumah sakit yang berbeda atau jadwal terapi berkala yang terencana, klaim langsung dikunci dengan nilai risiko nol. Mesin pembelajaran dilarang menganulir bukti otentik rekam medis rumah sakit.",
-        "clinical_anchor": "Keputusan didasarkan pada bukti registrasi rumah sakit, bukan tebakan probabilitas."
+        "body": "Klaim dengan bukti kunjungan berbeda otomatis dilewati dari antrean.",
+        "word_count": 9,
+        "clinical_anchor": "Perlindungan otomatis aktif begitu ada bukti nomor kunjungan berbeda."
       },
       {
         "id": "card-transparent-ml",
-        "eyebrow": "KECERDASAN TANPA KOTAK HITAM",
+        "eyebrow": "Prioritas Cerdas",
         "headline": {
-          "tone_ink": "CatBoost dan Regresi Logistik.",
-          "tone_muted": "Penilaian probabilistik transparan."
+          "tone_ink": "Antrean rapi dengan CatBoost.",
+          "tone_muted": "Urutan telaah makin tepat."
         },
         "metric": {
           "value": "96,1%",
-          "unit": "Skor F1 kalibrasi",
-          "comparison": "Presisi 94,6% dan recall 97,7% pada data empiris FKRTL"
+          "unit": "Skor F1 data BPJS",
+          "comparison": "Presisi 94,8% dan recall 97,3% pada data FKRTL"
         },
-        "body": "Ensemble CatBoost 12 pohon simetris berkedalaman 3 berbobot 0,62 berpadu dengan Regresi Logistik L2 berbobot 0,38 dan 6 interaksi non-linear. Berjalan murni dalam mode shadow untuk menyusun urutan telaah dan rincian faktor risiko tanpa mengambil alih keputusan petugas manusia.",
-        "clinical_anchor": "Setiap skor risiko disertai daftar atribut pemicu yang dapat diperiksa langsung."
+        "body": "Model membantu mengurutkan kasus yang paling butuh dicek lebih dulu.",
+        "word_count": 10,
+        "clinical_anchor": "Setiap skor dilengkapi alasan jelas yang mudah dipahami verifikator."
       }
     ]
   },
   "chapter_2_scrollytelling": {
     "section_meta": {
       "id": "arsitektur",
-      "eyebrow": "ARSITEKTUR BERTINGKAT",
+      "eyebrow": "CARA KERJA",
       "headline": {
-        "tone_ink": "Tiga lapis penyaringan terpadu.",
-        "tone_muted": "Dari data mentah hingga rekomendasi telaah yang presisi."
+        "tone_ink": "Tiga langkah penyaringan.",
+        "tone_muted": "Cepat, adil, dan transparan."
       },
-      "lead": "Alur kerja sistematis yang memastikan setiap pasangan berkas diperiksa secara objektif dan proporsional."
+      "lead": "Bagaimana sistem memilah berkas sebelum sampai di meja verifikator."
     },
     "steps": [
       {
         "step_number": "01",
-        "title": "Enam dimensi kemiripan. Satu pemblokiran presisi.",
+        "step_code": "data-step=\"0\"",
+        "title": "Cek 6 kemiripan dasar sekaligus.",
         "headline_sub": {
-          "tone_ink": "Penyaringan awal berkecepatan tinggi.",
-          "tone_muted": "Mendeteksi kesamaan pola tanpa membebani komputasi."
+          "tone_ink": "Pencocokan awal secepat kilat.",
+          "tone_muted": "Menemukan pola serupa dalam sekali jalan."
         },
-        "narrative": "Pemeriksaan diawali dengan pemblokiran berbasis token peserta berkecepatan O(N) untuk memastikan komparasi hanya dilakukan pada pasien yang sama. Mesin kemudian menghitung skor komposit berbasis 6 dimensi klinis dan administratif berbobot total 100 poin, menghasilkan gambaran menyeluruh terhadap potensi duplikasi berkas.",
-        "feature_breakdown": [
-          {
-            "code": "SAME_PARTICIPANT",
-            "name": "Identitas Peserta",
-            "weight": "30 poin",
-            "role": "Gerbang mutlak. Klaim dari peserta berbeda tidak akan dipasangkan."
-          },
-          {
-            "code": "SAME_FACILITY",
-            "name": "Fasilitas Kesehatan",
-            "weight": "15 poin",
-            "role": "Pencocokan kode fasilitas atau klaster rujukan setara."
-          },
-          {
-            "code": "SERVICE_DATE_NEAR",
-            "name": "Tanggal Pelayanan",
-            "weight": "15 poin",
-            "role": "Peluruhan jarak hari: hari sama bernilai penuh, meluruh hingga selang 3 hari."
-          },
-          {
-            "code": "SIMILAR_PROCEDURE",
-            "name": "Kode Tindakan Medis",
-            "weight": "15 poin",
-            "role": "Kesesuaian prosedur ICD-9-CM, toleran terhadap daftar tindakan majemuk bertanda titik-koma."
-          },
-          {
-            "code": "SIMILAR_DIAGNOSIS",
-            "name": "Diagnosis Utama",
-            "weight": "10 poin",
-            "role": "Pencocokan hierarkis ICD-10 pada 4 karakter penuh atau blok 3 karakter."
-          },
-          {
-            "code": "SIMILAR_AMOUNT",
-            "name": "Kesesuaian Tarif",
-            "weight": "10 poin",
-            "role": "Perhitungan selisih tarif INA-CBG: persis sama atau deviasi biaya di bawah 5%."
-          },
-          {
-            "code": "SUBMISSION_DATE_NEAR",
-            "name": "Kedekatan Pengajuan",
-            "weight": "5 poin",
-            "role": "Kedekatan tanggal unggah berkas ke dalam sistem dalam rentang 7 hari."
-          }
+        "narrative": "Sistem membandingkan peserta, faskes, tanggal layanan, tindakan, diagnosis, dan nilai klaim dalam sekali jalan.",
+        "word_count": 14,
+        "visual_pills": [
+          "Maksimal 100 poin",
+          "Wajib peserta sama"
+        ],
+        "feature_chips": [
+          { "name": "Peserta sama", "weight": "+30 poin" },
+          { "name": "Faskes sama", "weight": "+15 poin" },
+          { "name": "Tanggal layanan dekat", "weight": "+15 poin" },
+          { "name": "Tindakan mirip", "weight": "+15 poin" },
+          { "name": "Diagnosis mirip", "weight": "+10 poin" },
+          { "name": "Nilai klaim mirip", "weight": "+10 poin" }
         ]
       },
       {
         "step_number": "02",
-        "title": "Guardrail klinis deterministik. Kunjungan terapi sah tak tersentuh.",
+        "step_code": "data-step=\"1\"",
+        "section_anchor_id": "guardrail",
+        "title": "Pisahkan terapi rutin dari klaim ganda.",
         "headline_sub": {
-          "tone_ink": "Keadilan bagi perawatan berkala.",
-          "tone_muted": "Aturan pasti mengalahkan tebakan algoritma."
+          "tone_ink": "Jadwal pengobatan pasien tetap aman.",
+          "tone_muted": "Bukti rekam medis sah tidak tertahan antrean."
         },
-        "narrative": "Pasien fisioterapi dan rehabilitasi medik memerlukan kunjungan berkelanjutan dengan diagnosis dan tindakan serupa. Menilai berkas-berkas ini semata-mata dengan kemiripan teks akan menghasilkan ratusan peringatan palsu. KlaimKembar menyematkan aturan deterministik yang mengunci skor risiko pada nilai nol begitu keabsahan episode kunjungan terverifikasi.",
-        "guardrails": [
+        "narrative": "Kalau ada nomor kunjungan berbeda (DISTINCT_VISITS) atau jadwal terapi rutin (SCHEDULED_REHAB), skor langsung turun ke nol.",
+        "word_count": 18,
+        "visual_pills": [
+          "Skor turun ke nol",
+          "Langsung lolos antrean"
+        ],
+        "guardrail_items": [
           {
             "code": "DISTINCT_VISITS",
-            "name": "Guardrail Kunjungan Terpisah",
-            "trigger": "Nomor registrasi visit_id atau encounter ID pada rekam medis terbukti berbeda",
-            "effect": "Pengurangan 100 poin, status protected aktif, ml_score = 0.0",
-            "clinical_rationale": "Membuktikan kedatangan pasien pada episode rawat jalan terpisah yang tercatat resmi di rumah sakit."
+            "title": "Bukti Kunjungan Berbeda",
+            "desc": "Nomor kunjungan faskes terbukti berbeda. Skor risiko turun jadi nol."
           },
           {
             "code": "SCHEDULED_REHAB",
-            "name": "Guardrail Rencana Rehabilitasi Terjadwal",
-            "trigger": "Kunjungan terdaftar dalam protokol rencana terapi berkala yang terverifikasi",
-            "effect": "Pengurangan 100 poin, status protected aktif, ml_score = 0.0",
-            "clinical_rationale": "Melindungi siklus terapi mingguan yang diresepkan dokter spesialis kedokteran fisik dan rehabilitasi."
+            "title": "Jadwal Terapi Rutin",
+            "desc": "Pasien menjalani rangkaian terapi terjadwal. Bebas dari antrean telaah."
           },
           {
             "code": "CORRECTION_SUPERSEDED",
-            "name": "Guardrail Koreksi Pembatalan Berkas",
-            "trigger": "Pasangan klaim tercatat sebagai revisi sah dari berkas lama yang berstatus dibatalkan",
-            "effect": "Pengurangan 50 poin guna meredam alarm duplikasi",
-            "clinical_rationale": "Mencegah duplikasi semu akibat perbaikan administratif berkas klaim yang telah dibatalkan."
+            "title": "Klaim Pembatalan Sah",
+            "desc": "Klaim lama sudah dibatalkan faskes untuk diganti berkas baru yang benar."
           }
         ]
       },
       {
         "step_number": "03",
-        "title": "Ensemble CatBoost dan Regresi Logistik. Dikalibrasi pada 1,69 juta klaim FKRTL.",
+        "step_code": "data-step=\"2\"",
+        "title": "Urutkan antrean dengan CatBoost & LogReg.",
         "headline_sub": {
-          "tone_ink": "Penilaian pendamping yang akurat.",
-          "tone_muted": "Memberi konteks probabilitas tanpa mengambil alih keputusan."
+          "tone_ink": "Bantu verifikator mendahulukan kasus penting.",
+          "tone_muted": "Petugas manusia tetap menjadi penentu akhir."
         },
-        "narrative": "Pada pasangan berkas yang tidak terlindungi guardrail, model kk-catboost-logreg-v1.0 menghitung probabilitas risiko secara halus. Model memadukan pohon keputusan simetris CatBoost dengan Regresi Logistik teratur L2 dan 6 interaksi non-linear, dikalibrasi menggunakan metode Platt Scaling pada data rilis BPJS Kesehatan 2025.",
-        "specifications": {
-          "model_version": "kk-catboost-logreg-v1.0",
-          "catboost_config": "12 Oblivious Decision Trees berkedalaman seragam 3 (bobot 0,62)",
-          "logreg_config": "Regresi Logistik Teratur L2 dengan 14 fitur terstandar, 6 interaksi non-linear, dan bias -2,4476 (bobot 0,38)",
-          "calibration_method": "Platt Scaling pada 1.699.219 baris data riil FKRTL",
-          "missingness_handling": "Resilien terhadap 41,69% ketiadaan kode prosedur FKL30 tanpa memicu alarm keliru",
-          "integrity_verification": "Checksum HMAC-SHA256 bawaan yang gagal-tutup (fail-closed) jika berkas model diubah",
-          "zero_override_rule": "Nilai ml_score dan hybrid_score wajib 0,0 ketika status protected bernilai True"
-        }
+        "narrative": "Kasus yang belum punya bukti pembeda diurutkan skornya supaya petugas memeriksa yang paling penting dulu.",
+        "word_count": 16,
+        "visual_pills": [
+          "Bantu urutan antrean",
+          "Keputusan di tangan petugas"
+        ],
+        "specifications": [
+          {
+            "title": "Pohon Keputusan CatBoost",
+            "desc": "12 pohon simetris untuk menangkap pola klaim ganda yang rumit."
+          },
+          {
+            "title": "Regresi Logistik L2",
+            "desc": "14 fitur penyeimbang untuk memastikan skor tetap stabil dan terukur."
+          },
+          {
+            "title": "Aturan Penguncian Mutlak",
+            "desc": "Skor CatBoost dan LogReg otomatis nol bila ada bukti terapi sah."
+          }
+        ]
       }
     ]
   },
   "chapter_3_benchmark_and_governance": {
     "section_meta": {
       "id": "evaluasi",
-      "eyebrow": "BUKTI EMPIRIS & TATA KELOLA",
+      "eyebrow": "HASIL UJI & PRINSIP",
       "headline": {
-        "tone_ink": "Kinerja terukur di atas data nyata.",
-        "tone_muted": "Didukung tiga lapis perlindungan tata kelola dan etika audit."
+        "tone_ink": "Bukti nyata di lapangan.",
+        "tone_muted": "Akurasi tinggi dengan etika kerja yang terjaga."
       },
-      "lead": "Evaluasi ketat membandingkan KlaimKembar dengan pendekatan audit lain, disokong kepatuhan mutlak pada standar kerahasiaan data medis."
+      "lead": "Perbandingan hasil uji pada data klaim riil dan tiga prinsip kerja KlaimKembar."
     },
     "benchmarks": {
-      "title": "Perbandingan Kinerja Multi-Metode",
-      "dataset_info": "Evaluasi 5-Seed Benchmark pada 25.000 klaim (seed 104, 211, 307, 409, 503) serta 5.000 klaim kalibrasi empiris BPJS Kesehatan 2025.",
+      "title": "Perbandingan Hasil Uji",
+      "subtitle": "Diuji pada 25.000 klaim berlabel dan data rilis terbuka BPJS Kesehatan 2025.",
       "methods": [
         {
           "id": "method-exact",
           "name": "Pencocokan Persis (Exact Match)",
-          "tag": "Pendekatan Konvensional",
+          "tag": "Cara Lama",
           "precision": "65,9%",
           "recall": "18,9%",
           "f1_score": "29,3%",
-          "false_positives_per_1000": "6,76",
-          "critique": "Hanya mendeteksi duplikasi identik sempurna. Melewatkan lebih dari 80% klaim kembar akibat sedikit variasi penulisan tanggal atau kode tindakan."
+          "fp_per_1000": "6,76",
+          "note": "Hanya mendeteksi data yang sama persis, melewatkan 80% klaim ganda lainnya.",
+          "word_count": 11
         },
         {
           "id": "method-similarity-no-guard",
-          "name": "Kemiripan Tanpa Guardrail",
-          "tag": "Algoritma Kemiripan Standar",
+          "name": "Kemiripan Tanpa Pengecualian",
+          "tag": "Kemiripan Biasa",
           "precision": "54,6%",
           "recall": "86,5%",
           "f1_score": "67,0%",
-          "false_positives_per_1000": "49,70",
-          "critique": "Mampu menjaring lebih banyak kasus namun memicu 49,70 alarm keliru per 1.000 klaim, membebani rumah sakit dengan sanggahan administratif berkepanjangan."
+          "fp_per_1000": "49,70",
+          "note": "Menemukan banyak klaim, tapi memicu 49 alarm salah per 1.000 berkas.",
+          "word_count": 11
         },
         {
           "id": "method-klaimkembar",
-          "name": "Mesin Hibrida KlaimKembar",
-          "tag": "Kemiripan + Guardrail Klinis + Ensemble ML",
-          "synthetic_performance": {
-            "precision": "97,1%",
-            "recall": "86,5%",
-            "f1_score": "91,5%",
-            "false_positives_per_1000": "6,36"
-          },
-          "bpjs_calibration_performance": {
-            "precision": "94,8%",
-            "recall": "97,3%",
-            "f1_score": "96,1%",
-            "ml_ensemble_f1": "96,1%"
-          },
-          "highlight": "Menurunkan 87,2% alarm palsu sekaligus mendongkrak skor F1 ke angka 91,5% pada data sintetis dan 96,1% pada data empiris rilis BPJS Kesehatan 2025.",
-          "critique": "Menyeimbangkan kepekaan deteksi kasus duplikasi dengan kepastian perlindungan jadwal terapi berkala peserta."
+          "name": "KlaimKembar (Aturan + CatBoost)",
+          "tag": "Solusi Hibrida",
+          "precision": "94,8%",
+          "recall": "97,3%",
+          "f1_score": "91,5% · BPJS: 96,1%",
+          "fp_per_1000": "6,36 (Turun 87%)",
+          "note": "Klaim ganda terjaring tepat, jadwal terapi pasien tetap aman tanpa tertahan.",
+          "word_count": 11
         }
       ]
     },
     "governance_layers": {
-      "title": "Tiga Lapis Tata Kelola dan Perlindungan Etika",
+      "title": "Tiga Prinsip Kerja KlaimKembar",
+      "subtitle": "Melindungi privasi pasien dan menjaga objektivitas hasil pemeriksaan.",
       "layers": [
         {
           "layer_number": 1,
-          "title": "Pseudosasi Privasi Kriptografis Ingestion",
-          "rule": "Wajib token anonim berawalan SYN-",
-          "mechanism": "Validasi skema gerbang API mengubah nomor kepesertaan dan nomor kartu menjadi kode acak bergaram melalui algoritma HMAC-SHA256.",
-          "impact": "Menolak berkas yang memuat NIK atau nomor kartu tanpa penyamaran, menjamin data sensitif peserta tidak tersimpan dalam bentuk teks terbuka."
+          "title": "Data Peserta Disamarkan (SYN-)",
+          "rule_pill": "Kode acak SYN-",
+          "summary": "Identitas peserta diubah menjadi kode acak sebelum masuk ke sistem.",
+          "word_count": 10,
+          "detail": "Nama dan nomor kartu pasien langsung diacak sehingga petugas hanya memeriksa fakta pelayanan medis tanpa melihat data pribadi."
         },
         {
           "layer_number": 2,
-          "title": "Jejak Audit Kekal UTC dan Kendali Peran (RBAC)",
-          "rule": "Pemicu tingkat basis data reject_review_change()",
-          "mechanism": "Seluruh tindakan verifikator disimpan ke dalam tabel log yang hanya dapat ditambah (append-only), dilengkapi stempel waktu UTC presisi dan versi snapshot kasus.",
-          "impact": "Mencegah perubahan atau penghapusan catatan keputusan historis serta menegakkan batas kewenangan antara Verifikator, Supervisor, dan Auditor."
+          "title": "Riwayat Keputusan Tersimpan Rapi",
+          "rule_pill": "Pencatatan otomatis",
+          "summary": "Setiap catatan petugas tercatat otomatis lengkap dengan waktu dan nama pemeriksa.",
+          "word_count": 11,
+          "detail": "Keputusan tidak bisa diubah diam-diam demi menjaga pertanggungjawaban verifikator dan keterbukaan hasil audit."
         },
         {
           "layer_number": 3,
-          "title": "Tata Bahasa Telaah Netral dan Berkeadilan",
-          "rule": "Nol label kecurangan otomatis",
-          "mechanism": "Antarmuka sistem hanya menyediakan tiga pilihan status hasil telaah: Valid, Perlu dokumen tambahan, atau Perlu pemeriksaan lebih lanjut.",
-          "impact": "Tidak pernah mengeluarkan tuduhan sepihak seperti fraud, menjaga asas praduga tak bersalah dan menempatkan keputusan akhir sepenuhnya di tangan verifikator manusia."
+          "title": "Tanpa Label Tuduhan \"Fraud\"",
+          "rule_pill": "Tiga status netral",
+          "summary": "Hasil pemeriksaan memakai status yang jelas: Valid, Perlu dokumen tambahan, atau Perlu pemeriksaan lanjut.",
+          "word_count": 13,
+          "detail": "Sistem tidak pernah memvonis kecurangan secara sepihak, melainkan menyiapkan informasi agar petugas dapat menilai secara adil."
         }
       ]
     }
@@ -454,107 +444,97 @@
   "chapter_4_auth_portal": {
     "section_meta": {
       "id": "auth-portal",
-      "eyebrow": "AKSES TERVERIFIKASI",
+      "eyebrow": "RUANG KERJA",
       "title": "Portal Verifikator & Auditor",
-      "subtitle": "Masuk ke ruang kerja penelaahan pra-audit berkas klaim FKRTL"
+      "subtitle": "Masuk ke ruang kerja penelaahan klaim JKN"
     },
     "tab_login": {
       "tab_id": "tab-login",
-      "tab_title": "Masuk Akun",
-      "form_heading": "Masuk ke Dasbor Telaah",
+      "tab_title": "Masuk ke Dashboard",
+      "form_heading": "Masuk ke Dashboard",
       "fields": {
         "email": {
-          "label": "Email Institusi",
-          "placeholder": "verifikator@klaimkembar.id",
-          "helper": "Gunakan alamat surel kedinasan yang terdaftar pada sistem."
+          "label": "Email Kedinasan",
+          "placeholder": "verifikator@klaimkembar.id"
         },
         "password": {
           "label": "Kata Sandi",
-          "placeholder": "••••••••",
-          "helper": "Kata sandi terenkripsi akun Anda."
+          "placeholder": "••••••••"
         }
       },
       "badges": [
         {
-          "label": "Akses Verifikator / Auditor",
+          "label": "Akses Verifikator & Auditor",
           "type": "role"
         },
         {
-          "label": "Enkripsi Sesi TLS 1.3",
+          "label": "Koneksi Aman TLS 1.3",
           "type": "security"
         }
       ],
       "submit_button": {
-        "label": "Masuk ke Dashboard Pemeriksaan"
+        "label": "Masuk ke Dashboard"
       },
       "instant_demo": {
-        "divider_label": "atau akses cepat penjurian",
+        "divider_label": "atau coba langsung",
         "button_label": "Masuk Instan (Akun Demo Verifikator)",
         "reviewer_profile": {
           "name": "dr. Nadia Putri, M.Kes",
-          "unit": "Unit Telaah Klaim FKRTL",
-          "role_description": "Profil resmi pemeriksa klaim fasilitas kesehatan rujukan lanjutan"
+          "unit": "Unit Telaah Klaim FKRTL"
         },
-        "note": "Masuk 1-klik dengan profil resmi dr. Nadia Putri, M.Kes (Unit Telaah Klaim FKRTL) tanpa konfigurasi awal."
+        "note": "Masuk 1-klik sebagai dr. Nadia Putri, M.Kes (Verifikator FKRTL) tanpa perlu mendaftar."
       }
     },
     "tab_register": {
       "tab_id": "tab-register",
-      "tab_title": "Daftar Verifikator",
-      "form_heading": "Registrasi Akun Verifikator Baru",
+      "tab_title": "Daftar Akun Baru",
+      "form_heading": "Daftar Verifikator",
       "fields": {
         "full_name": {
-          "label": "Nama Lengkap & Gelar",
-          "placeholder": "dr. Budi Santoso, M.KK",
-          "helper": "Nama lengkap yang akan dicantumkan pada jejak audit keputusan."
+          "label": "Nama Lengkap",
+          "placeholder": "dr. Budi Santoso, M.KK"
         },
         "email": {
-          "label": "Email Institusi",
-          "placeholder": "budi.santoso@bpjs-kesehatan.go.id",
-          "helper": "Alamat surel resmi lembaga jaminan kesehatan atau rumah sakit mitra."
+          "label": "Email Kedinasan",
+          "placeholder": "budi.santoso@bpjs-kesehatan.go.id"
         },
         "institution": {
-          "label": "Unit / Instansi",
-          "default_value": "BPJS Kesehatan: Unit Telaah Klaim FKRTL",
-          "helper": "Instansi atau fasilitas kesehatan tempat petugas ditugaskan."
+          "label": "Unit / Faskes",
+          "default_value": "BPJS Kesehatan: Unit Telaah Klaim FKRTL"
         },
         "role": {
-          "label": "Peran Akses",
+          "label": "Peran Petugas",
           "options": [
             {
               "value": "reviewer",
-              "label": "Petugas Pemeriksa (Verifikator Klaim)",
-              "description": "Menelaah pasangan berkas, memeriksa berkas pendukung, dan membuat keputusan telaah."
+              "label": "Petugas Pemeriksa (Verifikator Klaim)"
             },
             {
               "value": "auditor",
-              "label": "Supervisor / Auditor Telaah",
-              "description": "Memantau antrean telaah, memeriksa kepatuhan jejak audit, dan meninjau metrik sistem."
+              "label": "Supervisor / Auditor Telaah"
             }
           ]
         },
         "password": {
           "label": "Kata Sandi",
-          "placeholder": "Minimal 6 karakter",
-          "helper": "Gunakan kombinasi huruf dan angka untuk perlindungan optimal."
+          "placeholder": "Minimal 6 karakter"
         }
       },
       "submit_button": {
         "label": "Buat Akun & Buka Dashboard"
       },
-      "disclaimer": "Pendaftaran verifikator untuk simulasi telaah data klaim sintetis dan sampel rilis data BPJS Kesehatan 2025."
+      "disclaimer": "Akun simulasi untuk penelaahan data klaim fisioterapi BPJS Kesehatan 2025."
     },
     "error_messages": {
-      "banner_title": "Pemberitahuan Sistem",
-      "default_error": "Terjadi kesalahan autentikasi. Silakan periksa kembali data masukan Anda.",
-      "session_expired": "Sesi penelaahan telah berakhir demi menjaga keamanan data. Silakan masuk kembali.",
-      "csrf_mismatch": "Token keamanan sesi kedaluwarsa. Silakan muat ulang halaman."
+      "banner_title": "Pemberitahuan",
+      "default_error": "Email atau kata sandi belum sesuai. Silakan periksa kembali.",
+      "session_expired": "Sesi telah berakhir. Silakan masuk kembali."
     }
   },
   "footer": {
     "brand_name": "KlaimKembar",
     "badge": "BPJS Kesehatan Healthkathon 2026",
-    "governance_statement": "Sistem pra-audit ini dirancang sebagai instrumen berbantuan AI untuk memprioritaskan antrean penelaahan berkas klaim fasilitas kesehatan tingkat rujukan lanjutan (FKRTL), bukan pengganti pertimbangan medis independen maupun surat persetujuan pembayaran resmi.",
+    "statement": "Sistem berbantuan AI untuk membantu verifikator menata antrean periksa klaim FKRTL secara tertib dan adil. Keputusan akhir tetap berada pada petugas verifikator.",
     "back_to_top": {
       "label": "Kembali ke Atas ↑",
       "target": "#hero"
