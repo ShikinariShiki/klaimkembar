@@ -98,12 +98,49 @@ def cloud_session_user(request: Request, secret: str) -> dict[str, Any] | None:
     return _read_session(request, secret)
 
 
+def _origin_allowed(request: Request, configured_origin: str, allow_null_form: bool = False) -> bool:
+    origin_header = request.headers.get("origin")
+
+    # Allow null or missing origin only for form submissions from same-origin / navigation
+    if origin_header is None or origin_header == "null":
+        if allow_null_form:
+            sec_fetch_site = request.headers.get("sec-fetch-site")
+            if sec_fetch_site in (None, "same-origin", "none"):
+                return True
+        return False
+
+    # Normalize configured origin
+    configured = configured_origin.rstrip("/")
+    allowed = {configured}
+
+    # Request host/netloc origin
+    host_header = request.headers.get("host") or request.url.netloc
+    scheme = request.headers.get("x-forwarded-proto") or request.url.scheme or "https"
+    if host_header:
+        allowed.add(f"{scheme}://{host_header}".rstrip("/"))
+
+    # Forwarded host origin
+    x_forwarded_host = request.headers.get("x-forwarded-host")
+    if x_forwarded_host:
+        allowed.add(f"https://{x_forwarded_host}".rstrip("/"))
+
+    header_clean = origin_header.rstrip("/")
+    if header_clean in allowed:
+        return True
+
+    # Allow official Vercel preview/production domains for klaimkembar-demo
+    if header_clean.startswith("https://klaimkembar-demo") and header_clean.endswith(".vercel.app"):
+        return True
+
+    return False
+
+
 def cloud_session_actor(request: Request, secret: str, origin: str) -> bool:
     csrf = _read(request, secret)
     if csrf is None:
         return False
     if request.method not in {"GET", "HEAD", "OPTIONS"}:
-        if request.headers.get("origin") != origin or not hmac.compare_digest(request.headers.get("x-csrf-token", ""), csrf):
+        if not _origin_allowed(request, origin, allow_null_form=False) or not hmac.compare_digest(request.headers.get("x-csrf-token", ""), csrf):
             raise Rejection(403, "CSRF_REJECTED", "Permintaan harus berasal dari aplikasi yang sama.")
     return True
 
@@ -395,8 +432,7 @@ def install_cloud_ui(
 
     @app.post("/ui/register", include_in_schema=False)
     async def register(request: Request) -> Any:
-        origin_header = request.headers.get("origin")
-        if origin_header and origin_header != origin:
+        if not _origin_allowed(request, origin, allow_null_form=True):
             raise Rejection(403, "ORIGIN_REJECTED", "Permintaan harus berasal dari aplikasi yang sama.")
 
         content_type = request.headers.get("content-type", "")
@@ -446,8 +482,7 @@ def install_cloud_ui(
 
     @app.post("/ui/login", include_in_schema=False)
     async def login(request: Request) -> Any:
-        origin_header = request.headers.get("origin")
-        if origin_header and origin_header != origin:
+        if not _origin_allowed(request, origin, allow_null_form=True):
             return HTMLResponse(
                 "Kode akses tidak sesuai atau permintaan ditolak. <a href=\"/login\">Coba lagi</a>.",
                 status_code=403,
@@ -470,7 +505,7 @@ def install_cloud_ui(
         user: dict[str, str] | None = None
 
         # 1. Quick demo login
-        demo_flag = data.get("demo")
+        demo_flag = data.get("demo") or request.query_params.get("demo")
         if demo_flag in (True, "1", "true", "True"):
             user = ensure_demo_user(target_db)
 
@@ -520,7 +555,7 @@ def install_cloud_ui(
     @app.post("/ui/session", include_in_schema=False)
     def bootstrap(request: Request) -> JSONResponse:
         session = _read_session(request, secret)
-        if session is None or request.headers.get("origin") != origin:
+        if session is None or not _origin_allowed(request, origin, allow_null_form=False):
             raise Rejection(401, "AUTH_REQUIRED", "Sesi demo berakhir. Masuk kembali.")
         user_info = {
             "email": session["email"],

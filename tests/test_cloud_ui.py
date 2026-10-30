@@ -339,3 +339,11 @@ def test_landing_page_and_extended_auth(tmp_path):
         assert reg_sess['user']['full_name'] == 'dr. Budi Santoso, M.KK'
         assert reg_sess['user']['role'] == 'auditor'
 
+        # Privacy mode / form POST with origin: null
+        null_login = c.post('/ui/login', data={'demo': '1'}, headers={'origin': 'null', 'sec-fetch-site': 'same-origin'})
+        assert null_login.status_code == 303
+
+        # Cross-site attacker attempting null origin form POST
+        cross_login = c.post('/ui/login', data={'demo': '1'}, headers={'origin': 'null', 'sec-fetch-site': 'cross-site'})
+        assert cross_login.status_code == 403
+
