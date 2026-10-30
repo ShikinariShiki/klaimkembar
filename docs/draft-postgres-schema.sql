@@ -1,4 +1,4 @@
-﻿-- Draft schema for an isolated PostgreSQL deployment. Do not apply to real JKN data.
+-- Draft schema for an isolated PostgreSQL deployment. Do not apply to real JKN data.
 -- Application query adapter, identity and authorization are prerequisites for use.
 BEGIN;
 CREATE SCHEMA IF NOT EXISTS klaimkembar;
@@ -48,5 +48,13 @@ DROP TRIGGER IF EXISTS immutable_review_update ON klaimkembar.reviews;
 CREATE TRIGGER immutable_review_update BEFORE UPDATE OR DELETE ON klaimkembar.reviews
  FOR EACH ROW EXECUTE FUNCTION klaimkembar.reject_review_change();
 REVOKE ALL ON ALL TABLES IN SCHEMA klaimkembar FROM PUBLIC;
+REVOKE ALL ON SCHEMA klaimkembar FROM anon, authenticated;
+REVOKE ALL ON ALL TABLES IN SCHEMA klaimkembar FROM anon, authenticated;
+ALTER TABLE klaimkembar.schema_version ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.datasets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.claims ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.cases ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.truth_pairs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE klaimkembar.reviews ENABLE ROW LEVEL SECURITY;
 INSERT INTO klaimkembar.schema_version(version) VALUES (1) ON CONFLICT DO NOTHING;
 COMMIT;
