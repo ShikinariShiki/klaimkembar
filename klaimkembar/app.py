@@ -140,7 +140,30 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get('/api/v1/ml/status', response_model=MLStatusResponse)
     def ml_status(actor: Annotated[Actor, Depends(authenticated)]) -> MLStatusResponse:
-        return MLStatusResponse()
+        from klaimkembar.ml_shadow import load_default_scorer
+        try:
+            scorer = load_default_scorer()
+            return MLStatusResponse(
+                mode='shadow',
+                model_status='active',
+                model_version=scorer.version,
+                algorithms=['CatBoost Oblivious Decision Trees (depth=3, trees=12)', 'L2-Regularized Logistic Regression'],
+                shadow_enabled=True,
+                bpjs2025_calibrated=True,
+                validation_metrics=scorer.validation_metrics,
+                message='Penilai ML (CatBoost & Logistic Regression) aktif dalam mode shadow dan terkalibrasi distribusi BPJS 2025. Skor merupakan prioritas pemeriksaan; aturan guardrail tetap melindungi kasus sah.',
+            )
+        except Exception:
+            return MLStatusResponse(
+                mode='rules_only',
+                model_status='not_available',
+                model_version=None,
+                algorithms=[],
+                shadow_enabled=False,
+                bpjs2025_calibrated=False,
+                validation_metrics={},
+                message='Model ML belum tersedia; antrean menggunakan aturan.',
+            )
 
     @app.post('/api/v1/datasets/upload', response_model=UploadResponse, status_code=201)
     async def upload(request: Request, file: Annotated[UploadFile, File()], synthetic: Annotated[bool, Form()],
@@ -152,8 +175,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise Rejection(422, 'DEMO_FIXTURE_ONLY', 'Demo online hanya menerima file contoh sintetis yang disediakan.')
         content = await file.read(config.max_upload_bytes + 1)
         if config.cloud_demo:
-            expected = hashlib.sha256((ROOT / 'examples/claims.csv').read_bytes()).digest()
-            if not hmac.compare_digest(hashlib.sha256(content).digest(), expected):
+            digest = hashlib.sha256(content).digest()
+            allowed_files = [ROOT / 'examples/claims.csv', ROOT / 'examples/bpjs2025_claims.csv']
+            allowed_digests = [hashlib.sha256(p.read_bytes()).digest() for p in allowed_files if p.exists()]
+            if not any(hmac.compare_digest(digest, expected) for expected in allowed_digests):
                 raise Rejection(422, 'DEMO_FIXTURE_ONLY', 'Demo online hanya menerima file contoh sintetis yang disediakan.')
         truth = await labels.read(config.max_upload_bytes + 1) if labels is not None else None
         return await run_in_threadpool(workflow.upload, file.filename or '', content, synthetic, truth)

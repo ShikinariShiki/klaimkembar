@@ -1,5 +1,5 @@
 {
-  "engine_sha256": "c8ead65c5b675b4b50e077cf44c03c0b716256e0c16aeb2aa90de8bb2894f766",
+  "engine_sha256": "20eb2ff803fe9ab4d31a295064ba7ac6d6ebb74c6d4cc1ff712d00a1b7bdc921",
   "rules_sha256": "984adbd54f237ee0947c52d68f0ab24c980bf1e75dc3b3ab84b36f8af6783608",
   "seeds": [
     104,
@@ -9,5 +9,5 @@
     503
   ],
   "claims_per_seed": 5000,
-  "created_at": "2026-10-04T09:06:39.731731+00:00"
+  "created_at": "2026-10-30T14:36:47.118718+00:00"
 }

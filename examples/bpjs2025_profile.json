@@ -1,0 +1,204 @@
+{
+  "source_dataset": "BPJS Kesehatan 2025 Regular Sample Release (202403_fkrtl.dta)",
+  "description": "Aggregate empirical profile of outpatient/RJTL physiotherapy and rehabilitation records",
+  "total_rows_inspected": 1699219,
+  "rjtl_rows": 1503675,
+  "physiotherapy_subset_size": 229682,
+  "missingness": {
+    "full_dataset": {
+      "FKL30_procedure_blank_count": 708359,
+      "FKL30_procedure_missingness_rate": 0.41687,
+      "FKL15A_dx_masuk_blank_count": 11,
+      "FKL15A_dx_masuk_missingness_rate": 1e-05,
+      "FKL17A_dx_primer_blank_count": 0,
+      "FKL17A_dx_primer_missingness_rate": 0.0,
+      "FKL18_dx_primer_detailed_blank_count": 0,
+      "FKL18_dx_primer_detailed_missingness_rate": 0.0
+    },
+    "physiotherapy_subset": {
+      "FKL30_procedure_blank_count": 8013,
+      "FKL30_procedure_missingness_rate": 0.03489,
+      "FKL15A_dx_masuk_blank_count": 0,
+      "FKL15A_dx_masuk_missingness_rate": 0.0,
+      "FKL17A_dx_primer_blank_count": 0,
+      "FKL17A_dx_primer_missingness_rate": 0.0,
+      "FKL18_dx_primer_detailed_blank_count": 0,
+      "FKL18_dx_primer_detailed_missingness_rate": 0.0
+    }
+  },
+  "top_diagnosis_groups_icd10": {
+    "Z50": 135550,
+    "Z09": 50853,
+    "Z48": 12418,
+    "M54": 6033,
+    "Z39": 3421,
+    "Z47": 1712,
+    "M17": 1496,
+    "Z87": 1487,
+    "Z71": 1407,
+    "M79": 1227,
+    "I69": 1052,
+    "M51": 913,
+    "M75": 809,
+    "Z86": 699,
+    "Z08": 543,
+    "I63": 518,
+    "M25": 505,
+    "Z54": 472,
+    "Z03": 466,
+    "T14": 455,
+    "Z51": 392,
+    "Z98": 379,
+    "Z04": 374,
+    "G81": 366,
+    "F80": 317
+  },
+  "top_diagnosis_codes_detailed": {
+    "Z501": 96456,
+    "Z098": 43462,
+    "Z509": 18095,
+    "Z508": 8335,
+    "Z480": 6576,
+    "Z505": 6391,
+    "Z090": 4748,
+    "Z507": 4711,
+    "Z488": 3700,
+    "M545": 2650,
+    "Z392": 2376,
+    "Z489": 2142,
+    "Z873": 1270,
+    "Z504": 1200,
+    "Z719": 1176,
+    "M5459": 1157,
+    "Z099": 1089,
+    "M179": 1084,
+    "Z390": 1041,
+    "Z094": 806,
+    "Z478": 673,
+    "M791": 603,
+    "Z479": 576,
+    "M750": 573,
+    "Z097": 533
+  },
+  "top_procedure_codes_icd9cm": {
+    "9357 - Application of other wound dressing": 27021,
+    "9339 - Other physical therapy": 15268,
+    "9335 - Other heat therapy;9339 - Other physical therapy": 14328,
+    "9334 - Diathermy;9339 - Other physical therapy": 13223,
+    "9375 - Other speech training and therapy": 8860,
+    "9335 - Other heat therapy": 8573,
+    "9383 - Occupational therapy": 6599,
+    "9334 - Diathermy": 5766,
+    "9312 - Other active musculoskeletal exercise": 4223,
+    "9312 - Other active musculoskeletal exercise;9335 - Other heat therapy;9339 - Other physical therapy": 3747,
+    "9312 - Other active musculoskeletal exercise;9339 - Other physical therapy": 3635,
+    "9338 - Combined physical therapy without mention of the components": 3307,
+    "9311 - Assisting exercise;9335 - Other heat therapy;9339 - Other physical therapy": 3305,
+    "9312 - Other active musculoskeletal exercise;9335 - Other heat therapy": 2974,
+    "9312 - Other active musculoskeletal exercise;9334 - Diathermy;9339 - Other physical therapy": 2923,
+    "9312 - Other active musculoskeletal exercise;9334 - Diathermy": 2815,
+    "9311 - Assisting exercise;9339 - Other physical therapy": 2703,
+    "9357 - Application of other wound dressing;9789 - Removal of other therapeutic device": 2520,
+    "9311 - Assisting exercise;9335 - Other heat therapy": 2456,
+    "9334 - Diathermy;9335 - Other heat therapy": 2446,
+    "9311 - Assisting exercise;9334 - Diathermy;9339 - Other physical therapy": 2323,
+    "9311 - Assisting exercise;9334 - Diathermy": 1764,
+    "9301 - Functional evaluation": 1534,
+    "9313 - Resistive exercise;9334 - Diathermy;9339 - Other physical therapy": 1488,
+    "9334 - Diathermy;9335 - Other heat therapy;9339 - Other physical therapy": 1412
+  },
+  "tariffs_idr": {
+    "FKL47_biaya_tagih": {
+      "min": 106200.0,
+      "p25": 134300.0,
+      "median": 138000.0,
+      "p75": 191900.0,
+      "p90": 205200.0,
+      "p95": 224400.0,
+      "p99": 487300.0,
+      "max": 7476200.0
+    },
+    "FKL48_biaya_verifikasi": {
+      "min": 106200.0,
+      "p25": 134300.0,
+      "median": 138000.0,
+      "p75": 191900.0,
+      "p90": 205200.0,
+      "p95": 224400.0,
+      "p99": 487300.0,
+      "max": 7476200.0
+    }
+  },
+  "inter_visit_gaps_days": {
+    "percentiles": {
+      "min": 0,
+      "p25": 3,
+      "median": 5,
+      "p75": 7,
+      "p90": 15,
+      "p95": 28,
+      "p99": 101,
+      "max": 362
+    },
+    "distribution_bins": {
+      "same_day_0d": 13,
+      "next_day_1d": 5432,
+      "short_gap_2_3d": 53062,
+      "weekly_gap_4_7d": 85757,
+      "biweekly_gap_8_14d": 24289,
+      "monthly_gap_15_30d": 11325,
+      "long_gap_gt_30d": 8104
+    },
+    "total_gap_pairs": 187982
+  },
+  "participant_visit_counts": {
+    "total_participants": 41700,
+    "one_visit": 21363,
+    "two_visits": 5219,
+    "three_to_five_visits": 5122,
+    "six_to_ten_visits": 4202,
+    "more_than_ten_visits": 5794
+  },
+  "facility_types": {
+    "7": {
+      "label": "RS Swasta Setara Type C",
+      "count": 87123
+    },
+    "2": {
+      "label": "RS Kelas B",
+      "count": 35765
+    },
+    "3": {
+      "label": "RS Kelas C",
+      "count": 35336
+    },
+    "6": {
+      "label": "RS Swasta Setara Type B",
+      "count": 22047
+    },
+    "8": {
+      "label": "RS Swasta Setara Type D",
+      "count": 12599
+    },
+    "1": {
+      "label": "RS Kelas A",
+      "count": 9579
+    },
+    "11": {
+      "label": "RS TNI Polri Kelas III",
+      "count": 5859
+    },
+    "99": {
+      "label": "Missing",
+      "count": 3904
+    },
+    "10": {
+      "label": "RS TNI Polri Kelas II",
+      "count": 3690
+    },
+    "4": {
+      "label": "RS Kelas D",
+      "count": 2998
+    }
+  }
+}

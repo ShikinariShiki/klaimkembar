@@ -1,5 +1,4 @@
--- Draft schema for an isolated PostgreSQL deployment. Do not apply to real JKN data.
--- Application query adapter, identity and authorization are prerequisites for use.
+-- PostgreSQL schema for klaimkembar isolated deployment.
 BEGIN;
 CREATE SCHEMA IF NOT EXISTS klaimkembar;
 REVOKE ALL ON SCHEMA klaimkembar FROM PUBLIC;
@@ -16,6 +15,7 @@ CREATE TABLE IF NOT EXISTS klaimkembar.claims (
  payload TEXT NOT NULL, PRIMARY KEY(dataset_id, claim_id)
 );
 CREATE INDEX IF NOT EXISTS claim_block ON klaimkembar.claims(dataset_id,participant_token,facility_id,service_date);
+CREATE INDEX IF NOT EXISTS claims_dataset_facility_idx ON klaimkembar.claims(dataset_id, facility_id);
 CREATE TABLE IF NOT EXISTS klaimkembar.cases (
  id TEXT PRIMARY KEY, dataset_id TEXT NOT NULL REFERENCES klaimkembar.datasets(id),
  claim_a TEXT NOT NULL, claim_b TEXT NOT NULL, payload TEXT NOT NULL,
@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS klaimkembar.cases (
  CHECK(claim_a < claim_b), UNIQUE(dataset_id,claim_a,claim_b)
 );
 CREATE INDEX IF NOT EXISTS queue_order ON klaimkembar.cases(dataset_id,protected,review_status,risk_score DESC);
+CREATE INDEX IF NOT EXISTS cases_payload_gin ON klaimkembar.cases USING gin ((payload::jsonb));
+CREATE INDEX IF NOT EXISTS cases_risk_level_idx ON klaimkembar.cases(dataset_id, (payload::jsonb->>'risk_level'));
+CREATE INDEX IF NOT EXISTS cases_ml_score_idx ON klaimkembar.cases(dataset_id, (COALESCE((payload::jsonb->>'ml_score')::double precision, 0.0)) DESC);
 CREATE TABLE IF NOT EXISTS klaimkembar.truth_pairs (
  dataset_id TEXT NOT NULL REFERENCES klaimkembar.datasets(id), claim_a TEXT NOT NULL, claim_b TEXT NOT NULL,
  is_duplicate INTEGER NOT NULL CHECK(is_duplicate IN (0,1)),

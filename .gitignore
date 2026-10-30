@@ -1,4 +1,6 @@
 .env
+.env.*
+!.env.example
 .venv/
 var/
 __pycache__/
@@ -8,6 +10,5 @@ __pycache__/
 .coverage
 node_modules/
 var/browser-qa/
-
 .vercel
-.env*
+supabase/.temp/

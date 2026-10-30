@@ -98,6 +98,13 @@ class PairAssessment(Record):
     missing_information: list[str]
     protected: bool
     needs_data: bool
+    ml_status: Literal['shadow_scored', 'fallback', 'not_available'] = 'not_available'
+    ml_score: float | None = None
+    ml_catboost_score: float | None = None
+    ml_logreg_score: float | None = None
+    ml_hybrid_score: float | None = None
+    ml_model_version: str | None = None
+    ml_top_factors: list[str] = Field(default_factory=list)
 
 
 class CaseSummary(Record):
@@ -245,8 +252,11 @@ class FacetsResponse(Record):
     reasons: list[str]
 
 class MLStatusResponse(Record):
-    mode: Literal['rules_only'] = 'rules_only'
-    model_status: Literal['not_available'] = 'not_available'
+    mode: Literal['rules_only', 'shadow'] = 'shadow'
+    model_status: Literal['active', 'fallback', 'not_available'] = 'active'
     model_version: str | None = None
-    shadow_enabled: bool = False
-    message: str = 'Model ML belum tersedia; antrean menggunakan aturan.'
+    algorithms: list[str] = Field(default_factory=list)
+    shadow_enabled: bool = True
+    bpjs2025_calibrated: bool = True
+    validation_metrics: dict[str, float] = Field(default_factory=dict)
+    message: str = 'Penilai ML (CatBoost & Logistic Regression) aktif dalam mode shadow dan terkalibrasi distribusi BPJS 2025.'

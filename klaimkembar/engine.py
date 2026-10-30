@@ -3,6 +3,7 @@ from collections import defaultdict
 from datetime import date
 from decimal import Decimal
 from difflib import SequenceMatcher
+from typing import Literal
 
 from klaimkembar.errors import Rejection
 from klaimkembar.models import Claim, Contribution, PairAssessment, Priority, Reducer
@@ -84,10 +85,20 @@ def assess(left: Claim, right: Claim, rules: Rules, episode_group: str) -> PairA
     score = 0.0 if protected else round(max(0.0, raw_score - sum(item.points for item in reducers)), 4)
     priority: Priority = 'high' if score >= rules.high_priority else 'medium' if score >= rules.medium_priority else 'low'
     a, b = sorted([left.claim_id, right.claim_id])
+    from klaimkembar.ml_shadow import evaluate_pair_ml
+    ml_res = evaluate_pair_ml(left, right, rules, score, protected)
+    ml_status: Literal['shadow_scored', 'fallback', 'not_available'] = (
+        'shadow_scored' if ml_res.status == 'shadow_scored'
+        else 'fallback' if ml_res.status == 'fallback'
+        else 'not_available'
+    )
     return PairAssessment(claim_a=a, claim_b=b, episode_group=episode_group, baseline_match=exact_match(left, right),
                           raw_score=raw_score, risk_score=score, risk_level=priority, triggered_reasons=reasons,
                           contributions=contributions, risk_reducers=reducers, missing_information=missing,
-                          protected=protected, needs_data=needs_data)
+                          protected=protected, needs_data=needs_data, ml_status=ml_status, ml_score=ml_res.score,
+                          ml_catboost_score=ml_res.catboost_score, ml_logreg_score=ml_res.logreg_score,
+                          ml_hybrid_score=ml_res.hybrid_score, ml_model_version=ml_res.model_version,
+                          ml_top_factors=list(ml_res.top_factors))
 
 
 def detect(claims: list[Claim], rules: Rules) -> list[PairAssessment]:

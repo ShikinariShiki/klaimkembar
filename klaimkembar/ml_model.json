@@ -1,0 +1,409 @@
+{
+  "model_version": "kk-catboost-logreg-v1.0",
+  "trained_at": "2026-10-30T14:29:33.943601+00:00",
+  "algorithms": [
+    "CatBoost Oblivious Decision Trees (depth=3, trees=12)",
+    "L2-Regularized Logistic Regression + Interactions"
+  ],
+  "bpjs2025_calibrated": true,
+  "feature_names": [
+    "same_participant",
+    "same_facility",
+    "same_facility_group",
+    "service_date_proximity",
+    "exact_service_date",
+    "submission_date_proximity",
+    "procedure_similarity",
+    "diagnosis_similarity",
+    "amount_similarity",
+    "exact_amount",
+    "episode_split_signal",
+    "missing_clinical_info",
+    "guardrail_correction_signal",
+    "guardrail_schedule_or_visit_signal"
+  ],
+  "weights": {
+    "same_participant": 3.0282,
+    "same_facility": 0.5057,
+    "same_facility_group": 0.2569,
+    "service_date_proximity": 0.1384,
+    "exact_service_date": -1.0787,
+    "submission_date_proximity": 0.6961,
+    "procedure_similarity": -1.4131,
+    "diagnosis_similarity": 0.8362,
+    "amount_similarity": -0.2997,
+    "exact_amount": -0.9689,
+    "episode_split_signal": 1.3426,
+    "missing_clinical_info": -2.3852,
+    "guardrail_correction_signal": -3.1408,
+    "guardrail_schedule_or_visit_signal": -4.2353
+  },
+  "bias": -2.4476,
+  "interaction_rules": [
+    {
+      "name": "same_facility_and_procedure",
+      "feature_a": "same_facility",
+      "feature_b": "procedure_similarity",
+      "weight": 0.9361
+    },
+    {
+      "name": "exact_date_and_amount",
+      "feature_a": "exact_service_date",
+      "feature_b": "exact_amount",
+      "weight": 1.854
+    },
+    {
+      "name": "same_facility_and_amount",
+      "feature_a": "same_facility",
+      "feature_b": "amount_similarity",
+      "weight": -0.1074
+    },
+    {
+      "name": "procedure_and_diagnosis",
+      "feature_a": "procedure_similarity",
+      "feature_b": "diagnosis_similarity",
+      "weight": 0.62
+    },
+    {
+      "name": "service_date_and_procedure",
+      "feature_a": "service_date_proximity",
+      "feature_b": "procedure_similarity",
+      "weight": 0.3217
+    },
+    {
+      "name": "service_date_and_amount",
+      "feature_a": "service_date_proximity",
+      "feature_b": "amount_similarity",
+      "weight": -0.3651
+    }
+  ],
+  "catboost_base_margin": -0.352,
+  "catboost_trees": [
+    {
+      "splits": [
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.5886,
+        -0.4553,
+        0.6928,
+        -0.5892,
+        0.0,
+        0.0,
+        -0.574,
+        0.0
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        },
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.3801,
+        0.0,
+        -0.7958,
+        0.0,
+        -0.4788,
+        -0.3745,
+        0.4567,
+        -0.4798
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "episode_split_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        0.1082,
+        0.4925,
+        -0.5472,
+        0.0,
+        -0.428,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.3439,
+        -0.5645,
+        0.0,
+        0.0,
+        -0.4357,
+        0.3366,
+        -0.2727,
+        -0.3955
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.4019,
+        0.0,
+        0.3233,
+        -0.5061,
+        -0.2438,
+        0.0,
+        -0.3748,
+        0.0
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.2623,
+        -0.3781,
+        0.0,
+        0.0,
+        -0.5128,
+        0.2457,
+        0.0,
+        -0.4342
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.2365,
+        -0.3606,
+        0.0,
+        -0.1826,
+        -0.4336,
+        0.2552,
+        0.0,
+        -0.3691
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.387,
+        0.0,
+        0.2277,
+        -0.4154,
+        0.0,
+        0.0,
+        -0.3555,
+        0.0
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.3559,
+        0.0,
+        0.2657,
+        -0.3801,
+        -0.1275,
+        0.0,
+        -0.286,
+        0.0
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.1286,
+        -0.3058,
+        0.0,
+        0.0,
+        -0.3772,
+        0.1777,
+        0.0,
+        -0.3545
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "same_participant",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.1136,
+        -0.2288,
+        0.0,
+        -0.084,
+        -0.3478,
+        0.2176,
+        0.0,
+        -0.2578
+      ]
+    },
+    {
+      "splits": [
+        {
+          "feature": "guardrail_correction_signal",
+          "threshold": 0.05
+        },
+        {
+          "feature": "diagnosis_similarity",
+          "threshold": 0.05
+        },
+        {
+          "feature": "guardrail_schedule_or_visit_signal",
+          "threshold": 0.05
+        }
+      ],
+      "leaf_values": [
+        -0.3106,
+        0.0,
+        0.1452,
+        -0.3461,
+        0.0,
+        0.0,
+        -0.2007,
+        0.0
+      ]
+    }
+  ],
+  "threshold": 0.5,
+  "validation_metrics": {
+    "pr_auc": 1.0,
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_at_top_10_percent": 0.1823,
+    "false_positive_pairs_per_1000_claims": 0.0,
+    "catboost_f1": 1.0,
+    "catboost_pr_auc": 1.0,
+    "logreg_f1": 1.0,
+    "logreg_pr_auc": 1.0
+  },
+  "checksum": "e47f810d56a6b04e9eb33596f1ae4b153549ce846f0d7f64c3086f30e9d384f1"
+}

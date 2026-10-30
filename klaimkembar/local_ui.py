@@ -67,4 +67,10 @@ def install_ui(app: FastAPI, root: Path) -> None:
             raise Rejection(403, 'LOCAL_ONLY', 'Gunakan aplikasi melalui localhost.')
         return FileResponse(root / 'examples/claims.csv', filename='klaim_fisioterapi_sintetis.csv', media_type='text/csv')
 
+    @app.get('/bpjs2025-sample.csv', include_in_schema=False)
+    def bpjs_sample(request: Request) -> Any:
+        if not local_request(request):
+            raise Rejection(403, 'LOCAL_ONLY', 'Gunakan aplikasi melalui localhost.')
+        return FileResponse(root / 'examples/bpjs2025_claims.csv', filename='klaim_fisioterapi_bpjs2025_sintetis.csv', media_type='text/csv')
+
     app.mount('/assets', StaticFiles(directory=root / 'frontend'), name='frontend')

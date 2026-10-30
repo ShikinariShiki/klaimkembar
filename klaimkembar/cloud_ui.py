@@ -97,4 +97,10 @@ def install_cloud_ui(app: FastAPI, root: Path, origin: str, secret: str, passcod
             raise Rejection(401, 'AUTH_REQUIRED', 'Masuk terlebih dahulu.')
         return FileResponse(root / 'examples/claims.csv', filename='klaim_fisioterapi_sintetis.csv', media_type='text/csv', headers={'Cache-Control': 'no-store'})
 
+    @app.get('/bpjs2025-sample.csv', include_in_schema=False)
+    def bpjs_sample(request: Request) -> Any:
+        if _read(request, secret) is None:
+            raise Rejection(401, 'AUTH_REQUIRED', 'Masuk terlebih dahulu.')
+        return FileResponse(root / 'examples/bpjs2025_claims.csv', filename='klaim_fisioterapi_bpjs2025_sintetis.csv', media_type='text/csv', headers={'Cache-Control': 'no-store'})
+
     app.mount('/assets', StaticFiles(directory=root / 'frontend'), name='frontend')

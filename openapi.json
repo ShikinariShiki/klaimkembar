@@ -1666,6 +1666,83 @@
           "needs_data": {
             "title": "Needs Data",
             "type": "boolean"
+          },
+          "ml_status": {
+            "default": "not_available",
+            "enum": [
+              "shadow_scored",
+              "fallback",
+              "not_available"
+            ],
+            "title": "Ml Status",
+            "type": "string"
+          },
+          "ml_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ml Score"
+          },
+          "ml_catboost_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ml Catboost Score"
+          },
+          "ml_logreg_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ml Logreg Score"
+          },
+          "ml_hybrid_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ml Hybrid Score"
+          },
+          "ml_model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ml Model Version"
+          },
+          "ml_top_factors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Ml Top Factors",
+            "type": "array"
           }
         },
         "required": [
@@ -2292,14 +2369,21 @@
         "additionalProperties": false,
         "properties": {
           "mode": {
-            "const": "rules_only",
-            "default": "rules_only",
+            "default": "shadow",
+            "enum": [
+              "rules_only",
+              "shadow"
+            ],
             "title": "Mode",
             "type": "string"
           },
           "model_status": {
-            "const": "not_available",
-            "default": "not_available",
+            "default": "active",
+            "enum": [
+              "active",
+              "fallback",
+              "not_available"
+            ],
             "title": "Model Status",
             "type": "string"
           },
@@ -2315,13 +2399,32 @@
             "default": null,
             "title": "Model Version"
           },
+          "algorithms": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Algorithms",
+            "type": "array"
+          },
           "shadow_enabled": {
-            "default": false,
+            "default": true,
             "title": "Shadow Enabled",
             "type": "boolean"
           },
+          "bpjs2025_calibrated": {
+            "default": true,
+            "title": "Bpjs2025 Calibrated",
+            "type": "boolean"
+          },
+          "validation_metrics": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Validation Metrics",
+            "type": "object"
+          },
           "message": {
-            "default": "Model ML belum tersedia; antrean menggunakan aturan.",
+            "default": "Penilai ML (CatBoost & Logistic Regression) aktif dalam mode shadow dan terkalibrasi distribusi BPJS 2025.",
             "title": "Message",
             "type": "string"
           }
